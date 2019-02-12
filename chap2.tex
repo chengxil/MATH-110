@@ -1,0 +1,147 @@
+\section{Finite Dimensional Vector Spaces}
+\subsection{Linear Dependence and Independence} 
+\begin{definition}
+    We will works with lists of vectors $\li vk$, then the span of $\li vk$ can be defined as
+    \begin{align*}
+         \spa (\li{\vec v}k) &:= \lb \alpha_1\vec v_1 + \alpha_2 \vec v_2 + \cdots  + \alpha_k \vec v_k \rb \\
+        & \forall \alpha_i \in \b F 
+    \end{align*}
+    If the the list happens to cover the entire vector space $V$, we call the list a spanning list of $V$.
+\end{definition}
+\begin{definition}
+    $V$ is finite dimensional if $V$ is a span of finitely many vectors.
+\end{definition}
+\begin{remark}
+    $V$ is not finite dimensional is logically equivalent to $V$ is infinite dimensional.
+\end{remark}
+\begin{example}
+    Consider the vector spaces: $\c P(x) : = \lb \alpha_0 + \alpha_1 x + \cdots + a_kx^k : a_j \in \b F \text{ for some } k \rb$. We can see that $\c P(x) \subseteq \b F^{\b F}$, and $\c P(x)$ is infinite dimensional.
+\end{example}
+\begin{definition}
+    We can define the degree of a polynomial, denoted as $\deg(f(x))$, is the highest power of $x$ where hose coefficient ($\alpha_k$) is nonzero. The zero function $f(x) = 0$ has $-\infty$ degree. 
+\end{definition} 
+\begin{example}
+    $\c P(x)$ is infinite dimensional.
+\end{example}
+\begin{proof}
+    Suppose $\c P(x) = \text{span}(\li fk)$, where $f_j$ is polynomials, for all $j$. 
+    Let \[D := \text{max}\lb\deg(f_1), \deg(f_2), \cdots, \deg(f_k)\rb\] Suppose $f(x) =  x^{D + 1} \in \c P(x)$ however, $x \not\in \text{span}(\li fk)$. Since $f(x)$ is not a linear combination of $\li fk$. A contradiction, therefore $\c P(x)$ is a infinite dimensional vector space.
+\end{proof}
+\begin{definition}
+    $V$ has dimension $k$ over $\b F$ if you can find vectors $\li vk$ such that
+    \[\forall v \in V : v = \sum f_iv_i \text{ uniquely}\]
+\end{definition}
+\begin{definition}
+    $\c P_d(x) : =$ all polynomials in $g(x)$ of degree $\leq d$. \\ Note that $\{ 1, x, x^2, \cdots, x^d\}$ is a spanning list for $\c P_d(x)$
+\end{definition}
+\begin{definition}
+    A list $\li vk \in V$ is called \textbf{linearly independent} if the equation
+    \[ \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k = 0 \implies \li \alpha k = 0\]
+\end{definition}
+\begin{definition}
+    A list $\li vk \in V$ is called \textbf{linearly dependent} if it is not independent.
+\end{definition}
+\subsection*{Digression on Logic}
+Logic: $A \implies B$ is equivalent to $\neg A \lor B$. Then we know that \[\neg (A \implies B) \iff (\neg(\neg A \lor B)) \iff A \land \neg B\]
+\begin{definition}[The better definition]
+    A list $\li vk \in V$ is called \textbf{linearly dependent} if for equation
+    \[ \alpha_1 v_1 + \alpha_2 v_2 + \cdots + \alpha_k v_k = 0\] has a nontrivial solution such that $\li vk \neq 0$
+\end{definition}
+\begin{example}
+    Is $\lb \rb$ linearly independent? \\
+    By definition, it is linearly independent, because it is not linearly dependent. A set $S$ is linearly dependent if there exists a finite set of vectors $\li vn$ and corresponding scalars $\li \alpha n$ such that there exists at least one $\alpha_i \neq 0$ so that \[ \sum_{i= 0}^n \alpha_i v_i = 0\] since $\alpha_i$ doesn't exist, we know that $\lb \rb$ is linearly independent.
+\end{example}
+\begin{example}
+    Is $\lb (1,0,0),(0,1,0),(0,0,1)\rb$ linearly independent on $\b R^3$?
+    \begin{align*}
+        \alpha_1(1,0,0) + \alpha_2(0,1,0) + \alpha_3(0,0,1) &= (0,0,0) \\
+        \implies (\alpha_1, \alpha_2, \alpha_3) &= (0,0,0) \\
+        \implies \alpha_1 = \alpha_2 = \alpha_3 &= 0
+    \end{align*}    
+\end{example}
+\begin{remark}
+    We can remove vectors from a linearly independent list can still remain independent, however, we cannot guarantee the result if we are still adding vectors; In mathematical terms, any sublist of the list is linearly independent, since $\lb \rb$ is a sublist of any list, therefore its linearly independent.
+\end{remark}
+\begin{lemma}[Linear Dependence Lemma]
+    Suppose $\li {\vec v} h$ is linearly independent. Then there exists $j$ between $1$ and $k$ such that 
+    \begin{itemize}
+        \item $v_j \in \spa \lb \vec v_1, \vec v_2, \vec v_{j-1} \rb$
+        \item $\spa \lb \li {\vec v} h \rb = \spa \lb \li {\vec v}{j-1}, \vec v_{j+1} , \cdots, \vec v_k \rb$
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    If $\li{\vec v}k$ is a linearly dependent list, there are coefficients $\li \alpha k$ not all $0$, such that 
+    \[ \alpha_1 \vec v_1 + \alpha \vec v_2 + \cdots \alpha_k v_k = 0\]
+    Take $j$ such that $\alpha_j$ is the largest index with $\alpha_j \neq 0$. Then $\alpha_{j + 1}=  \alpha_{j + 2} = \cdots = \alpha_k = 0$ and \[ \vec v_j = \frac{-1}{\alpha_j} (\alpha_1 \vec v_1 + \alpha \vec v_2 + \cdots + \alpha_{j - 1} v_{j-1})\] hence $\vec v_j \in \spa \lb \li{\vec v}{j-1} \rb$.
+\end{proof}
+\begin{remark}[Very Important, a.k.a. Magic Lemma]
+    The length of the independent list $\leq$ length of any spanning list. 
+\end{remark}
+\begin{proof}
+    Say $\li {\vec u}n$ is linearly independent say $\li {\vec v} m$ is spanning. Then we want to establish that $ m \leq n$. 
+    \begin{enumerate}[label = {Step \arabic*.}]
+        \item Take the list $\vec u_1, \li {\vec v} m$ It is linearly independent since $\vec u_1 \in \spa \lb \li {\vec v}m \rb$. By the linear dependence lemma, there is a $j$ such that $\vec v_j$ can be removed (noted that $\vec u_1$ cannot be subject to removal since $\vec u_1$ comes from a linearly independent list). Consider the new list $\lb \vec u_1, \li {\vec v}{j-1} , \cdots, \vec v_m\rb$
+        \item We can continue this process by bringing $\vec u_2, \vec u_3, \cdots \vec u_n$, we know that $\vec u_i$ since they are linearly independent.
+    \end{enumerate}
+    Note that this process preserves linear span of the whole list.  \\
+    We know that this list contains all the $\vec u_i$ (plus possibly some remaining $\vec v_j$) and the length of the list is always $n$. So $\boxed{m \leq n}$.
+\end{proof}
+\subsection{Bases and Dimension}
+\begin{definition}
+    A basis a linearly independent spanning list.
+\end{definition}
+\begin{theorem}
+    Any two basis in a finite dimensional space have the same number of vectors.
+\end{theorem}
+\begin{remark}
+    The span of $\lb \rb$ is the zero vector.
+\end{remark}
+\begin{theorem}
+    Suppose $V$ is a finite dimensional vector space. Let $W$ be a subspace of $V$, then $W$ is finite dimensional.
+\end{theorem}
+\begin{proof}
+    $V$ is finite dimensional means that $V$ is spanned by some $k$ vectors. Consider $W$. If $W = \lb \vec 0 \rb$, then $w$ is spanned by the empty list $\vec 0$. If $W \neq \vec 0$, there exists $\vec w_1 \in W$ such that $W = \spa\lb \vec u_1 \rb$, done. Otherwise take $\vec w_2 \in W \ \backslash \  \spa \lb \vec w_1 \rb$. Repeat this algorithm until it terminates. Now we want to show that this algorithm will terminate at $\vec w_k$, we know that $\li {\vec w}j$ is linearly independent by construction and the linearly dependence lemma. By remark 2.16, we know that the length of any such list will not exceed length $k$, therefore we know the algorithm will terminate in finite steps. This implies that $W$ is finitely spanned, or $W$ is finite dimension.
+\end{proof}
+\subsubsection{Dimension}
+\begin{definition}
+    Dimension of a vector space $V$ is the cardinality of any basis in a finite dimensional space.
+\end{definition}
+\begin{proposition}[Criterion for a Basis]
+    $\li {\vec v}k$ is a basis for $V$ if and only if any $v \in V$ can be uniquely written as a lineat combination
+    \[ \lambda_1 \vec v_1 + \lambda_2 \vec v_2 + \cdots + \lambda \vec v_n \]
+\end{proposition}
+\begin{proof}
+    We know that ``can be written  as linear combination" is logically equivalent a $\li {\vec x} k$ is a spanning list for $V$. ``uniqueness" is logically equivalent as linear independence. Suppose
+    \[ \vec v = \alpha_1 \vec v_1 + \alpha_2 \vec v_2 + \cdots + \alpha_k \vec v_k = \beta_1 \vec v_1 + \beta_2 \vec v_2 + \cdots + \beta_k \vec v_k\]
+    Not all $\alpha_j = \beta_j$. Then $(\alpha_1 -\beta_1) \vec v_1 + (\alpha_2 - \beta_2) \vec v_2 + \cdots (\alpha_k - \beta k) \vec v_k = \vec 0$ is a nontrivial linear combination of $\li {\vec v} k$ and vice versa. 
+\end{proof}
+\begin{theorem}
+    Any spanning set for a finite dimensional space can be shrink down to a basis.
+\end{theorem}
+\begin{proof}
+    Trivial by the linear dependence lemma.
+\end{proof}
+\begin{example}
+    Consider $\c P_2(x)$ is spanned by $\lb x^2, (x-1)^2, (x-3)^2, (x-3)^2\rb$, we can see that this can be thinned down to $\lb x^2, (x-1)^2, (x-2)^2 \rb$.
+\end{example}
+\begin{corollary}
+    Any linearly independent list in a finite dimensional space can be enlarged to a basis.
+\end{corollary}
+\begin{proof}
+    Add a spanning list at the back of our given list, then do removal for the linearly independent lemma.
+\end{proof}
+\begin{theorem}
+    Suppose $V$ is finite dimensional and $W$ is a subspace, then there is a subspace $U$ such that $V = W \oplus U$.
+\end{theorem}
+\begin{proof}
+    We already know by proceeding stuff $W$ is finite dimensional an its dimensional does not exceed that of $V$. Take any basis of $\li{\vec w}k$ of $W$. It's linearly independent so can be enlarged to a basis for $V$. Suppose the resulting basis is $\li{\vec w}k, \li{\vec u}l$. Take $U = \spa (\li{\vec v}l)$. Then $W + U = V$ and $W \cap U = \lb 0 \rb$. 
+\end{proof}
+\begin{remark}
+    $\spa (\li{\vec n}n)$ is a subspace of $V$ by construction.
+\end{remark}
+\begin{example}
+    Consider $\c P(x)$. We define $W$ as
+    \[ W:= \lb f \in \c P_3(x) : f'(5) = 0 \rb\]
+    A basis for $W$ can be taken as $\lb 1, (x - 5)^2, (x-5)^3 \rb$.
+\end{example}
+

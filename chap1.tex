@@ -1,0 +1,210 @@
+\section{Vector Space}
+\subsection{Vector Space over a field and subspace}
+Recall that $(\b F, + , \cdot)$ or $\la \b F, + , \cdot \ra$, where $\b F$ is a set, and $+ , \cdot $ are binary operations. \\
+We know that $(\b F, +)$ and $(\b F \ \backslash \lb 0 \rb, \cdot)$ and $+, \cdot $ satisfy distributivity.
+\begin{definition}
+$V$ is a vector space over a field $\b F$ is $V$ is equipped with vector addition $+ : V \times V \to V$ and scalar multiplication $\cdot : \b F \times V \to V$.
+\end{definition}
+\subsubsection{Lists (and vector spaces of lists)}
+\begin{example} 
+$\b R^n, \b C^n$, or generally $\b F^n$. 
+\[ \b R^{n} = \lb (x_1,x_2, \cdots x_n) : x_i \in \b R \ \forall \ j = 1,2 \cdots n \rb \]
+\[ \b F^{n} = \lb (x_1,x_2, \cdots x_n) : x_i \in \b F \ \forall \ j = 1,2 \cdots n \rb \]
+\end{example}
+\noindent We claim that $\b F^n$ is a vector space over $\b F$ provided $\b F$ is a field. We can define addition and scalar multiplication as 
+\[ (\li xn) + (\li yn) := (x_1 + y_1, x_2 + y_2, \cdots , x_n + y_n)\]
+\[ \alpha \cdot (\li xn) =  ( \alpha \cdot x_1, \alpha \cdot x_2, \cdots, \alpha \cdot x_n)\ \ \ \alpha \cdot x_i \in \b F\]
+\textbf{What rules / axioms should we impose?}
+\begin{itemize}
+    \item Commutativity \\
+    $\vec v + \vec w = \vec w + \vec v \ \forall \ \vec v,\vec w \in V$. 
+    \item Associativity \\
+    $(\vec v + \vec w) + \vec u = \vec v + (\vec w + \vec u) \ \forall \ \vec v, \vec w, \vec u \in V$. 
+    \item Additive Identity \\
+    $\exists \ \vec 0 \in V : \vec v + \vec 0 = \vec v + \vec 0 = \vec v$ 
+    \item Additive Inverse
+    $\forall v \in V \ \exists \ \vec w \in V : \vec v + \vec w = \vec 0$.
+    \item (Mixed) Scalar Multiplication Rules \\
+    $1 \cdot v \in v \tab \forall v \in V$
+    \item Distributivity:  \\
+    $(\alpha + \beta ) \cdot \vec v = \alpha \cdot \vec v + \beta \cdot \vec v \tab \forall \ a,b, \in \b F \tab \forall \ \vec v \in V$ \\
+    $\alpha \cdot (\vec v + \vec w) = \alpha \cdot \vec v + \alpha \cdot \vec w \tab \forall \ a \in \b F \tab \forall \ \vec v ,\vec w \in V$
+\end{itemize}
+Now we can check that these rules hold in $\b F^2$:
+\begin{align*}
+    (0,0,\cdots,0) + (\li xn) &= (\li xn) \\
+    (\li xn) + (\li{-x}n) &= (0,0,\cdots,0) 
+\end{align*} \\
+\textbf{Basic Observation}  
+$\vec 0$ is unique 
+\begin{proof}
+    Suppose $\vec 0_1$ and $\vec 0_2$ are both identity element with respect to $+$:
+    \[ \vec 0_1 = \vec 0_1 + \vec 0_2 + \vec 0_2\]
+    A contradiction.
+\end{proof}
+Additive inverse ate unique, i.e., if $\vec v + \vec w = \vec 0$ and $\vec v + \vec w = 0$, then $\vec u = \vec w$. 
+\begin{proof}
+    Suppose $\vec v + \vec w = \vec 0$ and $\vec v + \vec w = 0$, then
+    \[\vec w = \vec w + \vec 0 = \vec w + (\vec v + \vec u) = (\vec w + \vec v) + \vec u = \vec 0 + \vec u = \vec u\]
+    A contradiction.
+\end{proof}
+\noindent \textbf{Additive Inverse} 
+\begin{align*}
+    (-1) \cdot \vec v + \vec v &= (-1) \cdot \vec v + 1 \cdot \vec v \\
+    &= ((-1) + 1) \cdot \vec v \\
+    &= \vec 0 \cdot v \\
+    0 \cdot \vec v + 0 \cdot \vec v &= (0 + 0) \cdot \vec v \\ &= 0 \vec v \implies \boxed{ 0 \cdot \vec v = \vec 0}
+\end{align*} 
+Additive inverse $\implies$ $0 \cdot \vec v = \vec 0$ on both sides. 
+\subsection{Subspaces}
+\begin{definition}
+    $V$ is a vector space over a field $\b F$, Let $W \subseteq V$. \\
+    $W$ is called a subspace of $V$ if $W$ equipped with the same operations $+, \cdot$ inherited from $V$ is still a vector space.
+\end{definition}
+\textbf{Is it enough for $W$ to be just a subset of $V$?} \\
+Suppose $V = \b R^3$ is a vector space over $\b R$. Let $W := \lb (1,1,1) \rb$, the additive inverse doesn't exist. Note that $W$ is not closed in addition and scalar multiplication. \\
+\[W := \lb (x,0,0) \ : \ x_1 \in \b R \rb\]
+\textbf{Why is $\vec 0$ in every subspace?} \\
+We know that a vector space is a \textit{non empty} set, and $W$ is closed under multiplication, so since $0 \in \b F$, therefore $0 \cdot \vec v = \vec 0 \in W$. 
+\begin{remark}
+If $\vec v + \vec w = \vec v$, for some $\vec v \in V$, then $\vec w = \vec 0$.
+\end{remark}
+\begin{proof}
+    Suppose $\vec v + \vec w = \vec v$, then $- \vec v + \vec v  +\vec w = - \vec v + \vec v \implies \vec 0 + \vec w = \vec 0 \implies \vec w = \vec 0$
+\end{proof}
+We recall that $\b F^n$ is defined as 
+\[\b F^n = \lb (\li xn)\ : \ x_i \in \b F \rb \]
+We can define $\b F^S$ for $S$ being a set as $\b F^{S} = \lb f :  \underbrace{S}_{\text{no structure needed}} \to \underbrace{\b F}_{\text{field}} \rb $ \\
+We can define addition and multiplication as
+\[ (f + g)(s) := f(s) + g(s) \ \forall s \in S \]
+\[ (\lambda \cdot f)(s) := \lambda \cdot f(s) \in \b F\]
+Suppose $S = \lb 1,2,3 \rb$, what is $\b F^S$ or $\b R^S$?
+We can thought of $\b R^S$ as $\b R^3$..... why?
+\begin{remark}
+    We can conclude $\b F^S \cong \b F^{|S|}$, where $|S|$ is the cardinality of $S$. If $S$ is finite.
+\end{remark}
+What is $\b R^{\b N}$? $\leftarrow$ the set of all of all real sequences.
+\begin{remark}
+    In the book we uses $\b R^\infty$, we can conclude that \[ \b R^\infty \cong \b R^{\b N} \]
+\end{remark}
+We say that $W$ is a subspace of $\b R^\infty$ with $+, \cdot$
+\[ W := \lb s \ : \ \lim_{n \to \infty} s(n) = 0 \rb \]
+\begin{proof}
+    We can see that if $\displaystyle \lim_{n \to \infty} s(n) = 0$ and $\displaystyle \lim_{n \to \infty} t(n) = 0$, then $\displaystyle \lim_{n \to \infty} (s + t)(n) = 0 $. \\
+    If $\lambda \in \b R$, then $\displaystyle \lim_{n \to \infty} s(n) = 0 \implies \lim_{n \to \infty} (\lambda \cdot s)(n) = 0$. \\ The zero sequence is in $W$ so $\vec 0 \in V$. Therefore $W$ is a subspace of $V$.
+\end{proof}
+\begin{theorem}
+    $W$ is a subspace of $V$ iff $W$ is closed under addition, multiplication by scalar multiplication by scalars, and $\vec 0 \in V$.
+\end{theorem}
+Since the operation in inherent from vector space $V$, we do not need to verify the other property since they all for all $V$ and $W$ is a subspace of $V$. \\
+\textbf{How do we form new subspaces from existing ones?}
+
+\begin{theorem}
+    Suppose $W_1,W_2$ are subspaces of $V$, then $W_1 \cap W_2$ is a subspace of $V$.
+\end{theorem}
+\begin{proof}
+    We know that $W_1,W_2$ are subspaces of $V$, therefore $\vec 0 \in W_1$ and $\vec 0 \in W_2$, then $0 \in W_1 \cap W_2$. \\
+    Suppose $\vec v,\vec u \in W_1 \cap W_2$, we know that $\vec v,u \in W_1$ and $\vec v,u \in W_2$. Since $W_1,W_2$ is a subspace, therefore $\vec u + \vec v \in W_1 \land \vec u + \vec v \in W_2 \implies \vec u + \vec v \in W_1 \cap W_2$, therefore $W_1 \cap W_2$ is closed under vector addition. \\ 
+    Suppose $\alpha \in \b F$ and $\vec v \in W_1 \cap W_2$. We know that $\alpha \cdot \vec v \in W_1$ and $\alpha \cdot \vec v \in W_2$ since they are both subspaces of $V$. Therefore we conclude $\alpha \cdot \vec v \in W_1 \cap W_2$, therefore $W_1 \cap W_2$ is closed under multiplication. \\
+    Therefore $W_1 \cap W_2$ is a subspace of $V$.
+\end{proof}
+\begin{proposition}
+    The union of two subspace of $V$ are generally not a subspace of $V$
+\end{proposition}
+\begin{proof}
+    We can see that $\text{span} \lb e_1 \rb$ and $\text{span} \lb e_2 \rb$ is not a subspace if $\b R^2$ as $(1,1) \not\in W_1 \cup W_2$ 
+\end{proof}
+\begin{theorem}
+    Union of two subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces is contained in the other.
+\end{theorem}
+\begin{proof}
+    The proof is left as an exercise.
+\end{proof}
+\begin{theorem}
+    $W_1 + W_2$ is a subspace of $V$.
+\end{theorem}
+\begin{proof}
+    (identity) $\vec 0 \in W_1 \land \vec 0 \in W_2 \implies \vec 0 + \vec 0 = \vec 0 \in W_1 + W_2$. \\
+    (closure under addition) Suppose $\vec w_1 + \vec w_2 \in W_1 + W_2$ and $\tilde w_1 + \tilde w_2 \in W_1 + W_2$. We compute $(\vec w_1 + \vec w_2) + (\tilde w_1 + \tilde w_2) = \underbrace{(\vec w_1 + \tilde w_1)}_{\in W_1} + \underbrace{(\vec w_2 + \tilde w_2)}_{\in W_2} \implies (\vec w_1 + \vec w_2) + (\tilde w_1 + \tilde w_2) \in W_1 + W_2$. \\
+    (closure under scalar multiplication) Suppose $\vec w_1 + \vec w_2 \in W_1 + W_2$, and $\lambda \in \b F$, we compute $\lambda \cdot (\vec w_1 + \vec w_2)  = \underbrace{(\lambda \cdot \vec w_1)}_{\in W_1} + \underbrace{(\lambda \cdot \vec w_2)}_{\in W_2} \implies \lambda \cdot (\vec w_1 + \vec w_2) W_1 + W_2$
+\end{proof}
+\begin{remark}
+    $W_1 + W_2 + \cdots + W_n$ if the smallest subspace containing $\li Wn$. \\
+    If $\tilde v$ is a subspace of $V \supseteq W_j \ \forall j$, since $\tilde v$ is closed under $+$, $w_1 + w_2 + \cdots + w_n \in W_n$
+\end{remark}
+\begin{example}
+Suppose $V = \b R^3$. Let $W_1 = \spa \{e_1, e_2\}$, $W_2 = \spa \{(0,1,1)\}$, $W_3 = \spa \lb (x,y,z) : x + y + z = 0 \rb$. 
+What is $W_1 + W_2 + W_3$?
+\end{example}
+Note that $(0,0,1) = \underbrace{\left(0,\frac12,\frac12\right)}_{\in W_2} +  \underbrace{\left(0,-\frac12,\frac12\right)}_{\in W_3}$. We also know that $(1,0,0) \in W_1$ and $(0,1,0) \in W_2$, therefore $W_1 + W_2 + W_3 = \b R^3$ \\
+\section*{Discussion}
+\begin{definition}
+    A vector space, is often denoted as $(\underbrace{\b F}_{\text{scalars}}, \underbrace{V}_{\text{vectors}}, \cdot : \underbrace{\b F \to B}_{scaling})$
+\end{definition}
+\begin{example}
+    $(\b R,\b R^n, \cdot : \b R \times \b R^n \to \b R^n)$ is a vector space.
+\end{example}
+\begin{example}
+    $(\b R, \b R, \cdot : \b R \times \b R \to \b R)$ is also a vector space.
+\end{example}
+\subsubsection*{Notion of a field}
+Suppose $F  = \lb 0,1,2,3 \rb$. Can $F$ be a field?
+\begin{definition}
+    A subset $W$ of the vector space $V$ is a subspace of $V$ if it satisfy the following:
+    \begin{enumerate} [label  = \arabic*)]
+        \item $\vec 0 \in W$ 
+        \item $+ : W \times W \to W \subseteq V$ (closure under addition)
+        \item $\cdot : \b F \times W \to W \subseteq V$ (closure under scalar multiplication)
+    \end{enumerate}
+\end{definition}
+\begin{example}
+    Can we find a subset $W$ of $V$ such that $W$ satisfy property 1), 2) but not 3)? \\
+    Suppose $W  =\lb (x,0) : x \in \b Z\ \rb$ the proof is trivial and is left as an exercise.
+\end{example}
+\begin{example}
+    The set of functions $\lb f : (0 ,\infty) \to \b R \rb = \b R^{(0,\infty)}$ is a vector space. We claim that $W$ is a subspace of $V$.
+    \[ W = \lb f : (0,\infty) \to \b R : f'(1) = 0 \rb\]
+\end{example}
+\begin{proof}
+    We begin by verifying the three properties
+    \begin{enumerate} [label  = \arabic*)]
+        \item The zero function is in $W$
+        \item Suppose $f,g \in W$, then $(f + g)'(1) = f'(1) + g'(1) = 0 + 0 = 0 \implies f(x) + g(x) \in V$
+        \item Suppose $f \in W$ and $\lambda \in \b F$, then $\lambda \cdot f'(1) = \lambda \cdot 0 = 0 \implies \lambda \cdot f(x) \in V$
+    \end{enumerate}
+    Therefore $W$ is a subspace of $V$. 
+\end{proof}
+\subsection{Direct Sum}
+\begin{definition}
+    Let $(\b F, V, \cdot : \b F \times V \to V)$ be a vector space. Given that $\li Un \subseteq V$ are subspaces of $V$, we can define the sum of the subspaces as 
+    \[ U_1 + U_2 + \cdots + U_n = \lb u_1 + u_2 + \cdots + u_n : u_i \in U_i \rb \]
+\end{definition}
+\begin{proof}
+    \begin{enumerate} [label  = \arabic*)]
+        \item We can see that $\vec 0 \in U_i \ \forall i$, and $\vec 0 + \vec 0 + \cdots + \vec 0 = \vec 0$
+        \item Suppose $\vec x = \sum_{i = 1}^n \vec x_i \in U_i$ and $\vec  y = \sum_{j = 1}^n \vec y_j \in U_j$, we can see that $\vec x + \vec y = \sum_{k = 0}^n \vec x_k + \vec y_k \in U_k$, therefore it's closed under addition.
+        \item Suppose $\lambda \in \b F$ and $\vec x = \sum_{i = 1}^n \vec x_i \in U_i$, we compute $\lambda \cdot \vec x = \lambda \cdot \sum_{i = 1}^n \vec x_i \in U_i$, therefore it's closed under scalar multiplication.
+    \end{enumerate}
+\end{proof}
+\begin{definition}
+    We say that $U_1 + U_2 + \cdots + U_n$ is a direct sum, denoted as $U_1 \oplus U_2 \oplus \cdots \oplus U_n$ if for every $\vec v \in U_1 + U_2 + \cdots + U_n$, $\vec v = \vec u_1 + \vec u_2 + \cdots + \vec u_n$ has a unique representation. 
+\end{definition} 
+\begin{remark}
+    How best to check $U_1 + U_2 + \cdots + U_n$ is a direct sum? \\
+    Check that $U_i \cap U_j = \lb \vec 0 \rb$. We will go over in depth later.
+\end{remark}
+What about $W_1 + W_2 + \cdots W_n$ being a direct sum?
+\begin{theorem}
+    The sum of subspaces $\li Wn$: 
+    \[W_1 + W_2 + \cdots + W_n\]
+    is a direct sum iff $\vec 0$ can be written in only \textbf{one way} as a sum 
+    \[ \vec w_1 + \vec w_2 + \cdots + \vec w_n = 0\]
+    namely $\vec 0 + \vec 0 + \cdots + \vec 0 = 0$.
+\end{theorem}
+\begin{remark}
+    If $W_1 \cap W_2 \neq \lb 0 \rb, W_1 \cap W_3 \neq \lb 0 \rb, W_2 \cap W_3 \neq \lb 0 \rb$, it is not possible for $W_1,W_2,W_3$ to be a direct sum, However, the opposite of the proposition is not sufficient for being a direct sum as demonstrated in Remark 1.25.
+\end{remark}
+\begin{remark}
+    $W_1 \cap W_2 = \lb 0 \rb$, $W_1 \cap W_2 = \lb 0 \rb$, $W_2 \cap W_3 = \lb 0 \rb$ and $W_1 + W_2 + W_3$ being not a direct sum is possible. For example, consider $\b R_2$, for line $x = y, y = 0$ and $x = 0$, we can see that they only have the trivial intersection but they are not a direct sum. (credit: Catherine)
+\end{remark}
+\newpage 

@@ -1,0 +1,899 @@
+\ProvidesPackage{beel}
+\usepackage{amsmath,amssymb,amsthm}
+%%fakesection Argument processing
+% Default Arguments
+% We include "beel" in all of these to make sure
+% that they don't collide with anything in external packages
+\newif\ifbeelfancy\beelfancytrue
+\newif\ifbeelhdr\beelhdrtrue
+\newif\ifbeelhref\beelhreftrue
+\newif\ifbeelsetup\beelsetuptrue
+\newif\ifbeelthm\beelthmtrue
+\newif\ifbeelsecthm\beelsecthmfalse
+\newif\ifbeelht\beelhtfalse
+\newif\ifbeelpkg\beelpkgtrue
+\newif\ifbeelpdf\beelpdftrue
+\newif\ifbeeltitling\beeltitlingtrue
+\newif\ifbeelauthor\beelauthortrue
+\newif\ifbeelchinese\beelchinesefalse
+\newif\ifbeelmdthm\beelmdthmfalse
+\newif\ifbeeldiagrams\beeldiagramsfalse
+\newif\ifbeelpatchasy\beelpatchasyfalse
+\newif\ifbeelhints\beelhintsfalse
+\newif\ifbeelasy\beelasytrue
+\newif\ifbeelcolorsec\beelcolorsecfalse
+\newif\ifbeelscibowl\beelscibowlfalse
+\newif\ifbeelsimplethm\beelsimplethmtrue
+\newif\ifbeelpalatino\beelpalatinofalse
+\newif\ifbeelgraythm\beelgraythmfalse
+
+%~~~ MY COMMANDS ~~~%
+%PoP
+\newcommand{\pow}[2]{\text{Pow}_{#1}(#2)}
+
+%Parentheses
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+%~~~%%%%%%%%%%%%%~~~%
+
+%Receive Arguments
+\DeclareOption{chinese}{\beelhreffalse\beelchinesetrue} % Chinese support
+% allow href to override this one
+
+\DeclareOption{sexy}{\beelsecthmtrue\beelmdthmtrue\beelcolorsectrue} % long docs
+
+\DeclareOption{fancy}{\beelfancytrue}
+\DeclareOption{nofancy}{\beelfancyfalse}
+\DeclareOption{hdr}{\beelhdrtrue}
+\DeclareOption{nohdr}{\beelhdrfalse}
+\DeclareOption{href}{\beelhreftrue}
+\DeclareOption{nohref}{\beelhreffalse}
+
+\DeclareOption{nosetup}{\beelsetupfalse}
+\DeclareOption{thm}{\beelthmtrue}
+\DeclareOption{nothm}{\beelthmfalse}
+\DeclareOption{secthm}{\beelsecthmtrue}
+\DeclareOption{nosecthm}{\beelsecthmfalse}
+\DeclareOption{simplethm}{\beelsimplethmtrue\beelmdthmtrue}
+\DeclareOption{nosimplethm}{\beelsimplethmfalse}
+\DeclareOption{graythm}{\beelmdthmtrue\beelgraythmtrue}
+
+\DeclareOption{ht}{\beelhttrue}
+\DeclareOption{nopdf}{\beelpdffalse}
+\DeclareOption{nopkg}{\beelpkgfalse}
+\DeclareOption{oldtitle}{\beeltitlingfalse}
+\DeclareOption{newtitle}{\beeltitlingtrue}
+\DeclareOption{noauthor}{\beelauthorfalse}
+
+\DeclareOption{mdthm}{\beelmdthmtrue}
+\DeclareOption{nomdthm}{\beelmdthmfalse}
+\DeclareOption{diagrams}{\beeldiagramstrue}
+\DeclareOption{nodiagrams}{\beeldiagramsfalse}
+\DeclareOption{colorsec}{\beelcolorsectrue}
+\DeclareOption{nocolorsec}{\beelcolorsecfalse}
+
+\DeclareOption{patchasy}{\beelpatchasytrue}
+\DeclareOption{noasy}{\beelasyfalse}
+
+\DeclareOption{hints}{\beelhintstrue}
+\DeclareOption{scibowl}{\beelscibowltrue}
+\DeclareOption{palatino}{\beelpalatinotrue}
+
+\ProcessOptions\relax
+
+% if packages not loaded, turn off mdthm and asy
+\ifbeelpkg\else\beelmdthmfalse\fi
+\ifbeelpkg\else\beelasyfalse\fi
+
+%%fakesection Some macros
+%Small commands
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\eps}{\varepsilon}
+%\renewcommand{\iff}{\Leftrightarrow}
+%\renewcommand{\implies}{\Rightarrow}
+\newcommand{\vocab}[1]{\textbf{\color{blue} #1}}
+\newcommand{\catname}{\mathsf}
+\newcommand{\hrulebar}{
+	\par\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+	\par\nointerlineskip \vspace{\baselineskip}
+}
+\newcommand{\half}{\frac{1}{2}}
+
+%For use in author command
+\newcommand{\plusemail}[1]{\\ \normalfont \texttt{\mailto{#1}}}
+
+%More commands and math operators
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+
+%Convenient Environments
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+\newenvironment{parlist}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\newenvironment{gobble}{\setbox\z@\vbox\bgroup}{\egroup}
+
+%Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+
+%From H113 "Introduction to Abstract Algebra" at UC Berkeley
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\charin}{\text{ char }}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL} % General linear group
+\DeclareMathOperator{\SL}{SL} % Special linear group
+
+%From Kiran Kedlaya's "Geometry Unbound"
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\ray}[1]{\overrightarrow{#1}} 
+\newcommand{\seg}[1]{\overline{#1}}
+\newcommand{\arc}[1]{\wideparen{#1}}
+
+%From M275 "Topology" at SJSU
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\taking}[1]{\xrightarrow{#1}}
+\newcommand{\inv}{^{-1}}
+
+%From M170 "Introduction to Graph Theory" at SJSU
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ord}{ord}
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}}
+
+%From the USAMO .tex filse
+\newcommand{\st}{^{\text{st}}}
+\newcommand{\nd}{^{\text{nd}}}
+\renewcommand{\th}{^{\text{th}}}
+\newcommand{\nth}{^{\text{th}}}
+\newcommand{\dg}{^\circ}
+\newcommand{\ii}{\item}
+
+% From Math 55 and Math 145 at Harvard
+\newenvironment{subproof}[1][Proof]{%
+	\begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
+	{\end{proof}}
+
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\lthen}{\rightarrow}
+\newcommand{\opname}{\operatorname}
+\newcommand{\surjto}{\twoheadrightarrow}
+\newcommand{\injto}{\hookrightarrow}
+\newcommand{\On}{\mathrm{On}} % ordinals
+\DeclareMathOperator{\img}{im} % Image
+\DeclareMathOperator{\Img}{Im} % Image
+\DeclareMathOperator{\coker}{coker} % Cokernel
+\DeclareMathOperator{\Coker}{Coker} % Cokernel
+\DeclareMathOperator{\Ker}{Ker} % Kernel
+\DeclareMathOperator{\im}{im} % image
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Spec}{Spec} % spectrum
+\DeclareMathOperator{\Tr}{Tr} % trace
+\DeclareMathOperator{\pr}{pr} % projection
+\DeclareMathOperator{\ext}{ext} % extension
+\DeclareMathOperator{\pred}{pred} % predecessor
+\DeclareMathOperator{\dom}{dom} % domain
+\DeclareMathOperator{\ran}{ran} % range
+\DeclareMathOperator{\Hom}{Hom} % homomorphism
+\DeclareMathOperator{\Mat}{Mat} % homomorphism
+\DeclareMathOperator{\End}{End} % endomorphism
+
+% Things Lie
+\newcommand{\kb}{\mathfrak b}
+\newcommand{\kg}{\mathfrak g}
+\newcommand{\kh}{\mathfrak h}
+\newcommand{\kn}{\mathfrak n}
+\newcommand{\ku}{\mathfrak u}
+\newcommand{\kz}{\mathfrak z}
+\DeclareMathOperator{\Ext}{Ext} % Ext functor
+\DeclareMathOperator{\Tor}{Tor} % Tor functor
+\newcommand{\gl}{\opname{\mathfrak{gl}}} % frak gl group
+\renewcommand{\sl}{\opname{\mathfrak{sl}}} % frak gl group
+
+% More script letters etc.
+\newcommand{\SA}{\mathscr A}
+\newcommand{\SB}{\mathscr B}
+\newcommand{\SC}{\mathscr C}
+\newcommand{\SD}{\mathscr D}
+\newcommand{\SE}{\mathscr E}
+\newcommand{\SF}{\mathscr F}
+\newcommand{\SG}{\mathscr G}
+\newcommand{\SH}{\mathscr H}
+\newcommand{\OO}{\mathcal O}
+
+%% Napkin commands
+\newcommand{\prototype}[1]{
+    \emph{{\color{red} Prototypical example:} #1} \par\medskip
+}
+\newcommand{\prototypes}[1]{
+    \emph{{\color{red} Prototypical examples:} #1} \par\medskip
+}
+\newenvironment{moral}{%
+    \begin{mdframed}[linecolor=green!70!black]%
+        \bfseries\color{green!70!black}}%
+    {\end{mdframed}}
+
+%%fakesection Von import
+\usepackage{import}
+
+\newcommand{\von}[1]{\import{/Users/beeleous/Documents/LaTeX/Problems/}{#1.tex}}
+\newcommand{\vonp}[1]{\import{/Users/beeleous/Documents/LaTeX/Problems/-Statement/}{#1.tex}}
+\newcommand{\diagdirectory}{/Users/beeleous/Documents/LaTeX/Problems/-Diagrams}
+\newcommand{\diag}[1]{\begin{center}\includegraphics{\diagdirectory/#1.pdf}\end{center}}
+
+%%fakesection Palatino
+
+\ifbeelpalatino
+    \usepackage{lmodern}    
+    \usepackage{mathpazo}
+    \renewcommand{\rmdefault}{ppl} %rm
+    \linespread{1.05} %Palatino needs more leading
+    \setlength\parindent{24pt}
+    \setlength\parskip{3pt}
+\fi
+%%fakesection Asymptote setup
+\ifbeelasy
+    \ifbeelpatchasy
+        \usepackage{patch-asy}
+    \else
+        \usepackage{asymptote}
+    \fi
+    \begin{asydef}
+        /* Preamble */
+        import olympiad; import cse5;
+        pointpen = black;
+        pathpen = black;
+        pathfontpen = black;
+        anglepen = black;
+        anglefontpen = black;
+        pointfontsize = 10;
+        defaultpen(fontsize(10pt));
+        size(6cm); // set a reasonable default
+        usepackage("amsmath");
+        usepackage("amssymb");
+
+        /* Pens */
+        pen fillPurple = rgb(0.95,0.91,1), fillBlue = rgb(0.89,1,1), fillDeepPurple = rgb(0.98,0.96,0.98), fillMagenta = rgb(0.995, 0.9, 0.96);
+        pen magenta = rgb(0.95,0,0.6), brightGreen = rgb(0.2,1,0), skyBlue = rgb(0,0.6,1), rightOrange = rgb(1,0.33,0), cyan = rgb(0.2,1,0.8), deepPurple = rgb(0.5,0,0.5), forest = rgb(0,0.4,0), neonMagenta = rgb(1,0,1), deepBlue = rgb(0,0.1,0.6);
+    \end{asydef}
+\fi
+
+%%fakesection BEGIN MAIN SETUP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifbeelsetup
+%%fakesection Set up author and date
+\ifbeelauthor
+    \AtBeginDocument{%
+        \author{Chengxi Bill Li}
+        \date{\today}
+    }
+\fi
+%%fakesection Hyperref
+\ifbeelpkg
+    \PassOptionsToPackage{usenames,svgnames,dvipsnames,table}{xcolor}
+    \usepackage{xcolor}
+    \ifbeelhref
+        \usepackage[colorlinks=true,hypertexnames=false]{hyperref}
+        \hypersetup{urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen}
+    \fi
+    \usepackage[nameinlink]{cleveref}
+\fi
+
+%%fakesection Scibowl
+
+\ifbeelscibowl
+    \usepackage{bold-extra}
+    \usepackage{import}
+
+    \newcommand{\sci}[1]{\import{/Users/beeleous/Documents/LaTeX/Problems/-Statement/-Scibowl/}{#1.tex}}
+
+    \newcommand{\subj}[1]{%
+        {\scshape \bfseries #1}
+    }
+    \newcommand{\mult}{\textit{Multiple Choice}}
+    \newcommand{\short}{\textit{Short Answer}}
+    \newcommand{\ans}[1]{%
+        {\scshape \bfseries ANSWER:}
+        {\scshape #1}
+    }
+
+    \newcounter{pnum}
+
+    \newcommand{\toss}[1]{%
+        \addtocounter{pnum}{1}
+        \begin{center}
+            {\scshape \bfseries TOSS-UP}
+        \end{center}
+        \begin{enumerate}
+            \setcounter{enumi}{\thepnum}
+            \item \sci{#1}
+        \end{enumerate}
+    }
+    \newcommand{\bonus}[1]{%
+        \begin{center}
+            {\scshape \bfseries BONUS}
+        \end{center}
+        \begin{enumerate}
+            \setcounter{enumi}{\thepnum}
+            \item \sci{#1}
+        \end{enumerate}
+        \hrulebar
+    }
+\fi
+
+%%fakesection New Theorem Styles -- mdbluebox, 
+\ifbeelmdthm
+    \usepackage{thmtools}
+    \usepackage[framemethod=TikZ]{mdframed}
+    %%fakesubsection Gray
+
+    \mdfdefinestyle{mdgraybox}{%
+        roundcorner = 5pt,
+        linewidth=1pt,
+        skipabove=2pt,
+        innerbottommargin=9pt,
+        skipbelow=2pt,
+        linecolor=black,
+        nobreak=true,
+        backgroundcolor=gray!5,
+    }
+    \declaretheoremstyle[
+        headfont=\sffamily\bfseries\color{Black},
+        mdframed={style=mdgraybox},
+        headpunct={\\[3pt]},
+        postheadspace={0pt}
+    ]{thmgraybox}
+
+    \mdfdefinestyle{mdexgraybox}{%
+        roundcorner = 0pt,
+        linewidth=0pt,
+        skipabove=12pt,
+        innerbottommargin=9pt,
+        skipbelow=2pt,
+        linecolor=black!0,
+        nobreak=true,
+        backgroundcolor=gray!10,
+    }
+    \declaretheoremstyle[
+        headfont=\sffamily\bfseries\color{Black},
+        mdframed={style=mdexgraybox},
+        headpunct={\\[3pt]},
+        postheadspace={0pt}
+    ]{exgraybox}
+    %%fakesubsection ifgraythm
+    \ifbeelgraythm
+        %%fakesubsection Blue
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{Black},
+            mdframed={style=mdexgraybox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exbluebox}
+        %%fakesubsection Blue
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{Black},
+            mdframed={style=mdexgraybox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exredbox}
+        %%fakesubsection Blue
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{Black},
+            mdframed={style=mdexgraybox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exgreenbox}
+    \else
+        %%fakesubsection Blue
+        \mdfdefinestyle{mdbluebox}{%
+            roundcorner = 5pt,
+            linewidth=1pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=blue,
+            nobreak=true,
+            backgroundcolor=TealBlue!5,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{MidnightBlue},
+            mdframed={style=mdbluebox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{thmbluebox}
+
+        \mdfdefinestyle{mdexbluebox}{%
+            roundcorner=0pt,
+            linewidth=0pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=black!0,
+            nobreak=true,
+            backgroundcolor=ProcessBlue!10,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{NavyBlue!60!ProcessBlue},
+            mdframed={style=mdexbluebox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exbluebox}
+        
+        %%fakesubsection Red
+
+        \mdfdefinestyle{mdredbox}{%
+            roundcorner = 5pt,
+            linewidth=1pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=red,
+            nobreak=true,
+            backgroundcolor=Red!5,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{purple},
+            mdframed={style=mdredbox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{thmredbox}
+
+        \mdfdefinestyle{mdexredbox}{%
+            roundcorner=0pt,
+            linewidth=0pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=black!0,
+            nobreak=true,
+            backgroundcolor=Red!08,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{purple},
+            mdframed={style=mdexredbox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exredbox}
+
+        %%fakesubsection Green
+
+        \mdfdefinestyle{mdgreenbox}{%
+            roundcorner = 5pt,
+            linewidth=1pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=green,
+            nobreak=true,
+            backgroundcolor=JungleGreen!5,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{OliveGreen},
+            mdframed={style=mdgreenbox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{thmgreenbox}
+
+        \mdfdefinestyle{mdexgreenbox}{%
+            roundcorner=0pt,
+            linewidth=0pt,
+            skipabove=12pt,
+            innerbottommargin=9pt,
+            skipbelow=2pt,
+            linecolor=black!0,
+            nobreak=true,
+            backgroundcolor=Emerald!10,
+        }
+        \declaretheoremstyle[
+            headfont=\sffamily\bfseries\color{OliveGreen!40!JungleGreen},
+            mdframed={style=mdexgreenbox},
+            headpunct={\\[3pt]},
+            postheadspace={0pt}
+        ]{exgreenbox}
+    \fi
+
+    \newcommand{\listhack}{$\empty$\vspace{-2em}}
+\fi
+
+%%fakesection Theorem setup
+\ifbeelthm
+    \theoremstyle{plain}
+    %Branching here: the option secthm changes theorems to be labelled by section
+    \ifbeelmdthm
+        %%%
+        \ifbeelsimplethm
+            %%%
+            \ifbeelsecthm
+                \declaretheorem[%
+                    style=exbluebox,name=Theorem,
+                    numberwithin=section
+                ]{theorem}
+            \else
+                \declaretheorem[%
+                    style=exbluebox,name=Theorem
+                ]{theorem}
+            \fi
+            %%%
+            \declaretheorem[%
+                style=exbluebox,name=Theorem,numbered=no
+            ]{theorem*}
+            \declaretheorem[%
+                style=exgreenbox,name=Lemma,sibling=theorem
+            ]{lemma}
+            \declaretheorem[%
+                style=exgreenbox,name=Lemma,numbered=no
+            ]{lemma*}
+            \declaretheorem[%
+                style=exgreenbox,name=Proposition,sibling=theorem
+            ]{proposition}
+            \declaretheorem[%
+                style=exgreenbox,name=Proposition,numbered=no
+            ]{proposition*}
+            \declaretheorem[%
+                style=exgreenbox,name=Corollary,sibling=theorem
+            ]{corollary}
+            \declaretheorem[%
+                style=exgreenbox,name=Corollary,numbered=no
+            ]{corollary*}
+        \else
+            %%%
+            \ifbeelsecthm
+                \declaretheorem[%
+                    style=thmbluebox,name=Theorem,
+                    numberwithin=section
+                ]{theorem}
+            \else
+                \declaretheorem[%
+                    style=thmbluebox,name=Theorem
+                ]{theorem}
+            \fi
+            %%%
+            \declaretheorem[%
+                style=thmbluebox,name=Theorem,numbered=no
+            ]{theorem*}
+            \declaretheorem[%
+                style=thmgreenbox,name=Lemma,sibling=theorem
+            ]{lemma}
+            \declaretheorem[%
+                style=thmgreenbox,name=Lemma,numbered=no
+            ]{lemma*}
+            \declaretheorem[%
+                style=thmgreenbox,name=Proposition,sibling=theorem
+            ]{proposition}
+            \declaretheorem[%
+                style=thmgreenbox,name=Proposition,numbered=no
+            ]{proposition*}
+            \declaretheorem[%
+                style=thmgreenbox,name=Corollary,sibling=theorem
+            ]{corollary}
+            \declaretheorem[%
+                style=thmgreenbox,name=Corollary,numbered=no
+            ]{corollary*}
+        \fi
+        %%%
+        \declaretheorem[%
+            style=exgraybox,name=Question,sibling=theorem
+        ]{question}
+        \declaretheorem[%
+            style=exgraybox,name=Question,numbered=no
+        ]{question*}
+        \declaretheorem[%
+            style=exgreenbox,name=Fact,sibling=theorem
+        ]{fact}
+        \declaretheorem[%
+            style=exgreenbox,name=Fact,numbered=no
+        ]{fact*}
+        \declaretheorem[%
+            style=exgraybox,name=Fact,sibling=theorem
+        ]{grayfact}
+        \declaretheorem[%
+            style=exgraybox,name=Fact,numbered=no
+        ]{grayfact*}
+        \declaretheorem[%
+            style=exbluebox,name=Fact,sibling=theorem
+        ]{bluefact}
+        \declaretheorem[%
+            style=exbluebox,name=Fact,numbered=no
+        ]{bluefact*}
+        \declaretheorem[%
+            style=exgraybox,name=Definition,sibling=theorem
+        ]{definition}
+        \declaretheorem[%
+            style=exgraybox,name=Definition,numbered=no
+        ]{definition*}
+        \declaretheorem[%
+            style=exgreenbox,name=Exercise,sibling=theorem
+        ]{exercise}
+        \declaretheorem[%
+            style=exgreenbox,name=,numbered=no
+        ]{exercise*}
+        \declaretheorem[%
+            style=exgraybox,name=Remark,sibling=theorem
+        ]{remark}
+        \declaretheorem[%
+            style=exgraybox,name=Remark,numbered=no
+        ]{remark*}
+        \declaretheorem[%
+            style=exgraybox,name=Claim,sibling=theorem
+        ]{claim}
+        \declaretheorem[%
+            style=exgraybox,name=Claim,numbered=no
+        ]{claim*}
+    \else
+        %%%
+        \ifbeelsecthm
+            \newtheorem{theorem}{Theorem}[section]
+        \else
+            \newtheorem{theorem}{Theorem}
+        \fi
+        %%%
+        \newtheorem*{theorem*}{Theorem}
+
+        \newtheorem{lemma}[theorem]{Lemma}
+        \newtheorem*{lemma*}{Lemma}
+
+        \newtheorem{proposition}[theorem]{Proposition}
+        \newtheorem*{proposition*}{Proposition}
+
+        \newtheorem{corollary}[theorem]{Corollary}
+        \newtheorem*{corollary*}{Corollary}
+
+        \newtheorem{fact}[theorem]{Fact}
+        \newtheorem*{fact*}{Fact}
+
+        \newtheorem{definition}[theorem]{Definition}
+        \newtheorem*{definition*}{Definition}
+
+    \fi
+
+    %Def-style theorems
+    \theoremstyle{definition}
+        %%%
+        \ifbeelmdthm
+            \declaretheorem[%
+                style=exbluebox,name=Algorithm,sibling=theorem
+                ]{algorithm}
+            \declaretheorem[%
+                style=exbluebox,name=Problem,sibling=theorem
+                ]{problem}
+            \declaretheorem[%
+                style=exbluebox,name=Problem,numbered=no
+                ]{problem*}
+            \declaretheorem[%
+                style=exredbox,name=Problem,sibling=theorem
+                ]{redproblem}
+            \declaretheorem[%
+                style=exredbox,name=Problem,numbered=no
+                ]{redproblem*}
+        \else
+            \newtheorem{algorithm}[theorem]{Algorithm}
+            \newtheorem*{algorithm*}{Algorithm}
+            \ifbeelsecthm
+                \newtheorem{problem}{Problem}[section]
+                \newtheorem*{problem*}{Problem}
+            \else
+                \newtheorem{problem}{Problem}
+                \newtheorem*{problem*}{Problem}
+            \fi
+                
+        \fi
+        %%%
+    \newtheorem{cla}[theorem]{Claim}
+    \newtheorem*{cla*}{Claim}
+
+    \newtheorem{conjecture}[theorem]{Conjecture}
+    \newtheorem*{conjecture*}{Conjecture}
+
+    \newtheorem{answer}[theorem]{Answer}
+    \newtheorem*{answer*}{Answer}
+
+    \newtheorem{case}[theorem]{Case}
+    \newtheorem*{case*}{Case}
+
+    \newtheorem{ques}[theorem]{Question}
+    \newtheorem*{ques*}{Question}
+
+    \newtheorem{exer}[theorem]{Exercise}
+    \newtheorem*{exer*}{Exercise}
+
+    \newtheorem*{joke*}{Joke}
+        %%%
+        \ifbeelmdthm
+            \declaretheorem[style=exredbox,name=Example,sibling=theorem]{example}
+            \declaretheorem[style=exredbox,name=Example,numbered=no]{example*}
+        \else
+            \newtheorem{example}[theorem]{Example}
+            \newtheorem*{example*}{Example}
+        \fi
+        %%%
+    % Remark-style theorems
+    %\theoremstyle{remark}
+    \newtheorem{note}[theorem]{Note}
+    \newtheorem*{note*}{Note}
+    \newtheorem{abuse}[theorem]{Abuse of Notation}
+    \newtheorem*{abuse*}{Abuse of Notation}
+\fi
+
+%%fakesection Fancy section and chapter heads
+\ifbeelcolorsec
+\@ifundefined{KOMAClassName}{}{
+    \@ifundefined{chapter}{}{
+        \addtokomafont{partprefix}{\rmfamily}
+        \renewcommand*{\partformat}{\color{purple}
+            \scalebox{2.5}{\thepart}\enlargethispage{2em}}
+        \addtokomafont{chapterprefix}{\raggedleft}
+        \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+        \renewcommand*{\chapterformat}{\mbox{%
+            \scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+            \scalebox{2.718}{\color{purple}\thechapter}\enskip}}
+    }
+    \renewcommand*{\sectionformat}%
+    {\color{purple}\S\thesection\enskip}
+    \renewcommand*{\subsectionformat}%
+    {\color{purple}\S\thesubsection\enskip}
+    \KOMAoptions{numbers=noenddot}
+    \usepackage[tocindentauto]{tocstyle}
+    \usetocstyle{KOMAlike}
+}
+\fi
+
+%%fakesection Loads a bunch of useful packages (but allow disabling)
+\ifbeelpkg
+    \usepackage{listings}
+    \usepackage{mathrsfs}
+    \usepackage{textcomp}
+    \lstset{basicstyle=\footnotesize\ttfamily,
+        numbers=left,
+        numbersep=5pt,
+        numberstyle=\tiny,
+        keywordstyle=\bfseries,
+        % title=\lstname,
+        showstringspaces=false,
+        tabsize=4,
+        frame=single,
+        keywordstyle=\bfseries\color{blue},
+        commentstyle=\color{green!70!black},
+        identifierstyle=\color{green!20!black},
+        stringstyle=\color{orange},
+        breaklines=true,
+    }
+    \usepackage{enumerate}
+    \usepackage{enumitem}
+    \usepackage[obeyFinal,textsize=scriptsize,shadow]{todonotes}
+    % Tiny tiny optimizations:
+    \usepackage{mathtools}
+    \usepackage{microtype}
+\fi
+
+%%fakesection \maketitle configuration
+\ifbeeltitling
+    %If we have titling...
+    \usepackage{titling}
+    \@ifundefined{KOMAClassName}{}{
+        \newcommand{\thesubtitle}{}
+        \renewcommand{\subtitle}[1]{%
+            \renewcommand{\thesubtitle}{#1}
+            \posttitle{\\ {\normalsize \thesubtitle} \end{center}\vspace{\posttitledrop}}
+        }
+    }
+    \newlength{\posttitledrop}
+    \setlength{\posttitledrop}{-0.7em}
+    \newlength{\postauthordrop}
+    \setlength{\postauthordrop}{-1.2em}
+    \pretitle{\begin{center}\bfseries \sffamily \Large}
+    \posttitle{\end{center}\vspace{\posttitledrop}}
+    \preauthor{\begin{center} \scshape}
+    \postauthor{\end{center}\vspace{\postauthordrop}}
+    \predate{\begin{center}\small}
+    \postdate{\end{center}}
+\fi
+
+%%fakesection Commutative diagrams support
+\ifbeeldiagrams
+\usepackage{diagrams}
+\newarrow{Inj}C--->
+\newarrow{Surj}----{>>}
+\newarrow{Proj}----{>>}
+\newarrow{Embed}>--->
+\newarrow{Incl}C--->
+\newarrow{Mapsto}|--->
+\newarrow{Isom}<--->
+\newarrow{Dotted}....>
+\newarrow{Dashed}{}{dash}{}{dash}>
+\newarrow{Line}-----
+\usepackage{tikz-cd}
+\usetikzlibrary{decorations.pathmorphing}
+\tikzcdset{row sep/normal=3.14em,column sep/normal=3.14em}
+\fi
+
+%%fakesection Page Setup
+\ifbeelfancy
+    \@ifundefined{KOMAClassName}
+        {
+        \usepackage{fancyhdr}
+        \setlength{\headheight}{0.75in}
+        \setlength{\oddsidemargin}{0in}
+        \setlength{\evensidemargin}{0in}
+        \setlength{\voffset}{-1.0in}
+        \setlength{\headsep}{10pt}
+        \setlength{\textwidth}{6.5in}
+        \setlength{\headwidth}{6.5in}
+        \setlength{\textheight}{8.75in}
+        \setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+        \setlength{\footskip}{0.3in}
+        \ifbeeltitling
+            \addtolength{\posttitledrop}{0.4em}
+            \addtolength{\postauthordrop}{0.2em}
+        \fi
+        \ifbeelhdr
+            \renewcommand{\headrulewidth}{0.5pt}
+            \renewcommand{\footrulewidth}{0.0pt}
+            \pagestyle{fancy}
+                \ifbeeltitling \lhead{\theauthor} \else \lhead{Michael beel} \fi
+            \chead{}
+            \rhead{\nouppercase{\leftmark}}
+            \lfoot{}
+            \cfoot{\thepage}
+            \rfoot{}
+        \fi
+        }
+        {
+        \usepackage[headsepline]{scrlayer-scrpage}
+        \renewcommand{\headfont}{}
+        \addtolength{\textheight}{3.14cm}
+        \setlength{\footskip}{0.5in}
+        \setlength{\headsep}{10pt}
+            \ifbeeltitling
+                \ihead{\theauthor} 
+            \else
+                \ihead{Chengxi Li} 
+            \fi
+        \automark{section}
+        \chead{}
+        \ohead{Math 110 - Linear Algebra}
+        \cfoot{\pagemark}
+        }
+\fi
+
+%%fakesection Chinese support
+\ifbeelchinese
+    \usepackage[encapsulated]{CJK}
+    \usepackage{ucs}
+    \usepackage[utf8x]{inputenc}
+    \newenvironment{bsmi}{\begin{CJK}{UTF8}{bsmi}}{\end{CJK}}
+    \newcommand{\cn}[1]{\begin{bsmi}#1\end{bsmi}}
+    \AtBeginDocument{\begin{CJK}{UTF8}{bsmi}}
+    \AtEndDocument{\end{CJK}}
+\fi
+
+%%fakesection Hints
+%\ifbeelhints
+%\usepackage{answers}
+%\Newassociation{hint}{hintitem}{hints}
+%\renewcommand{\solutionextension}{out}
+%\Opensolutionfile{hints}
+%\newcommand{\makehints}{\Closesolutionfile{hints}\input{hints.out}}
+%\fi
+%%fakesection END MAIN SETUP
+\fi
