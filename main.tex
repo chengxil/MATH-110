@@ -1,48 +1,6 @@
 \documentclass[11pt,letterpaper]{scrartcl}
 \usepackage[secthm,mdthm,simplethm]{beel}
-\usepackage{graphicx}
-\usepackage{tcolorbox}
-\usepackage[margin=1in,top=0.8in,bottom=0.8in]{geometry}
-%%%%%%Packages%%%%%%%%%%%%%
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{array}
-\usepackage{comment}
-\usepackage{enumitem}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage{mathtools}
-\usepackage{multicol}
-\usepackage{tabto}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{setspace}
-\usepackage[all]{xy}
-\usepackage{thmtools}
-\usepackage{MnSymbol,wasysym}
-%%%%Theorem Enviorment Setup%%%%%%%
-\begin{comment}
-\theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{claim}[theorem]{Claim}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{example}{Example}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\end{comment}
-\pgfplotsset{compat = 1.15}
-%%%%%%%%%HyperLink Setup%%%%%%%%%%%
-\hypersetup{
-    colorlinks=true,
-    urlcolor=blue,
-}
-%%%%%%%%%%%%%%%Commands%%%%%%%%%%%%%%%%
-\include{commands}
+\include{preamble}
 %%%%%%%%%%%% main doc%%%%%%%%%%%%
 \begin{document}
 \centerline{\huge \textbf{Math 110, Spring 2019}} 
@@ -52,7 +10,7 @@
 \newpage
 \include{chap1} \vfill
 \include{chap2} \vfill
-%\include{chap3} \vfill
+\include{chap3} \vfill
 %\include{chap4} \vfill
 %\include{chap5} \vfill
 %\include{chap6} \vfill
@@ -64,4 +22,3 @@
     Last updated: \today \\ Typeset in \LaTeX
 \end{center}
 \end{document}
-
