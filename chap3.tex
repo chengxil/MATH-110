@@ -7,7 +7,7 @@
         \draw (0,1)  node[anchor = north] {$T$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$\bar v_1$};
+        \draw (-2.2,0) node {$\bar v$};
         \draw (2.2,0) node {$\bar w$};
     \end{tikzpicture}
 \end{center}
@@ -44,6 +44,47 @@ $\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda
 \end{proof}
 \begin{example}
     Let $T: f \to f', V:= \c P(x), W:= \c P(x)$. $\nul(T) = \c P_0(x)$, $\range(T) = \c P_2(x)$. \\
-    Let $T: f \to f'', V:= \c P(x), W:= \c P(x)$. $\nul(T) = \c P_0(x)$, $\range(T) = \c P_1(x)$.
+    Let $T: f \to f'', V:= \c P(x), W:= \c P(x)$. $\nul(T) = \c P_1(x)$, $\range(T) = \c P_1(x)$.
+\end{example}
+\begin{example}
+    Find a basis of $\c L (V,W)$ given bases $\lb \li {\bar v}m \rb$ and $\lb \li{\bar w}n \rb$ of $V$ and $W$. \\
+    The basis consists of $m \times n$ vectors as follows: 
+    \[T_{11} = T(\bar v_1) = \bar w_1, T(\bar v_2) = \bar 0, T(\bar v_3) = \bar 0, \ldots ,T(\bar v_m) = \bar 0\]
+    \[T_{12} = T(\bar v_1) = \bar w_2, T(\bar v_2) = \bar 0, T(\bar v_3) = \bar 0, \ldots ,T(\bar v_m) = \bar 0\]
+    \[ \cdots \]
+    \[T_{mn} = T(\bar v_1) = \bar 0, T(\bar v_2) = \bar 0, T(\bar v_3) = \bar 0, \ldots ,T(\bar v_m) = \bar w_n\]
+\end{example}
+\begin{example}
+    Let $\c U = \lb f : \b R \to \b R : f(x) = f(1-x) \ \forall x \rb$.
+    \begin{enumerate}
+        \item Show that $\c U$ is a subspace of $f: \b R \to \b R$. 
+        \begin{proof}
+            We can see that the zero function $f(x) = 0$ satisfies the requirement since $0 = 0$ for all  values of $x$. 
+            
+            Suppose $f(x), g(x) \in \c U$, then we compute \begin{align*}
+                (f + g)(x) &= f(x) + g(x) \\
+                           &= f(1 - x) + g(1 - x) \\
+                           &= (f + g)(1 - x)
+            \end{align*}
+            Therefore we can see that $\c U$ is closed under addition.
+            
+            Suppose $f(x) \in \c U, \lambda \in \b R$, then we compute \begin{align*}
+                (\lambda \cdot f)(x) &= \lambda \cdot f(x) \\
+                                     &= \lambda \cdot f(1 - x) \\
+                                     &= (\lambda \cdot f)(1 - x)
+            \end{align*}
+            Therefore we can see that $\c U$ is closed addition. 
+            
+            Hence $\c U$ is a vector space.
+        \end{proof}
+        \item Find a complement.
+        \[ \c W  = \lb g : \b R \to \b R : g(x) = -g(1 - x) \ \forall x \rb\]
+        \begin{proof}
+            The proof for subspace is similar to part (i) and is omitted here. \\
+            We now want to show that $\c U + \c W  = \mathbb{R}^{\mathbb{R}}$. We can see that for $f(x) \in \mathbb{R}^{\mathbb{R}}$, we can rewrite $f(x)$ as
+            \[ f(x) = \frac{f(x) + f(1 - x)}{2} + \frac{f(x) - f(1 - x)}{2}\]
+            Clearly $\displaystyle \frac{f(x) + f(1 -x)}{2} \in \c U$ and $\displaystyle \frac{f(x) - f(1 - x)}{2} \in \c W$. For uniqueness, suppose that a nonzero $h(x) \in \c U \cap \c W$, therefore $h(x) = h(1 - x) = -h(1 - x)$, and the only solution is $f(x) = 0$, a contradiction, therefore $\c U \cap \c W = \lb 0 \rb$. Hence $\boxed{{\b R^{\b{R}}} = \c U \oplus \c W}$
+        \end{proof}
+    \end{enumerate}
 \end{example}
 
