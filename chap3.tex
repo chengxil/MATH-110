@@ -295,3 +295,106 @@ We need to take $w \in W$, there is a $v \in V$ such that $Tv = w$ and such $v$ 
 \begin{corollary}
     $\dim$ is invariant under isomorphism.
 \end{corollary}
+\subsubsection{Linear Operators}
+We are dealing with a specific case where $c  L(V,W)$ is replaced by $\c L(V,V)$.
+\begin{center}
+    \begin{tikzpicture}
+        \draw[<-, thick] (0,0.25) arc (20:340: 30pt and 20pt);
+        \draw (0,0) circle(1);
+        \draw (0,0) node{$V$};
+        \draw (-1.7,0) node{$T$};
+    \end{tikzpicture}
+\end{center}
+Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for invertablity if $W  = V$. 
+\begin{theorem}
+    Let $T \in \c L(V,V)$. If $V$ is finite dimensional vector space, then the following are equivalent: 
+    \begin{enumerate}[label = (\alph*)]
+        \item $T$ is injective.
+        \item $T$ is surjective.
+        \item $T$ is invertible.
+    \end{enumerate}
+\end{theorem}
+\begin{proof} $ $ \\
+    (a) $\implies$ (c). Trivial by definition. \\
+    (b) $\implies$ (c). Suppose $T$ is injective $\xRightarrow[T \text{ being linear}]{} \nul T = \lb 0 \rb \iff \dim \nul T = 0$. Therefore 
+    \[ \dim V = \dim \nul T = \dim \range T = 0\] So $\dim V = \dim \range T$, hence $\range T = V$, so $T$ is surjective. \\
+    (c) $\implies$ (a).  \[\dim V = \dim \nul T + \dim \range T = \dim \nul T + \dim V \implies \dim \nul T  = 0 \implies \nul T = \lb0\rb\] So $T$ is injective. $T$ is already known to be surjective, so $T$ is bijective, or $T$ is inveritible.
+\end{proof}
+\begin{example}
+    The theorem does not hold for infinite dimension vector spaces, for example: \\ 
+    The differentiation map $T : f(x) \mapsto f'(x)$ is surjective but not invertible over $\c P(\b R)$.  From calculus we know that for every $f(x) \in \c P(\b R)$, there exists $g(x) \in \c P(\b R)$ such that $g'(x) = f(x)$, however, we can see that $\nul T \neq \lb 0 \rb$ as $1 \in
+    \nul T$. Hence $T$ is not injective. \\
+    The integration map $\displaystyle T: f(x) \mapsto \int_0^x f(t) dt$ is injective but not invertible over $\c P(\b R)$. We can see that $\nul T = \lb 0 \rb$, hence $T$ is injective, however, $1 \not\in \range T$.
+\end{example}
+\subsection{Duality}
+\begin{definition}
+    Given a vector space $V$, we define its dual space as $V' = \c L(V,\b F)$. 
+\end{definition}
+\begin{remark}
+    Objects in $\c L(V,W)$ are also called linear functional.
+\end{remark}
+\begin{example}
+    Linear Functional on $\b R^3$: $(x_1, x_2, x_3) \mapsto \alpha_1 x_1 + \alpha_2 x_2 + \alpha_3 x_3 \ \forall \alpha_1, \alpha_2, \alpha_3 \in \b R$.
+\end{example}
+\begin{definition}
+    Suppose $\li vn$ is a basis of $V$. The list of linear functionals $\li \varphi n \in  V'$ such that \[\varphi_i(v_j) = \left\{ \begin{array}{cc}
+         1 \text{ if } i = j \\
+         0 \text{ if } i \neq j
+    \end{array} \right.\] We claim that $\li\varphi n$ is the dual basis of $V'$.
+\end{definition}
+\begin{lemma}
+    A dual basis is a basis of $V'$.
+\end{lemma}
+\begin{proof}
+    Suppose there exists $\li \alpha n$ such that 
+    \[ \lincomb{\alpha}{\varphi}{n} = 0\]
+    We compute for $v_1$
+    \[ (\lincomb{\alpha}{\varphi}{n})(n) = \alpha_1 \cdot 1 + 0 \implies \alpha_1 = 0\]
+    Similarly, if we plug in an arbitrary $v_j$
+    \[ (\lincomb{\alpha}{\varphi}{n})(v_j) \implies v_j = 0\]
+    This shows that $\li \varphi n$ is linear indepednent, and the count is $n$. So $\li \varphi n$ form a basis for $V$.
+\end{proof}
+\subsubsection{Dual Maps}
+\begin{center}
+    \begin{tikzpicture}
+        \draw (2,0) ellipse (20pt and 40pt);
+        \draw[] (-2,0) ellipse (20pt and 40pt);
+        \draw[<-, thick] (2,0) arc (20:160: 60pt and 20pt);
+        \draw (0,1)  node[anchor = north] {$T$};
+        \draw (2,1)  node[anchor = north] {$W$}; 
+        \draw (-2,1) node[anchor = north] {$V$};
+        \draw (-2.2,0) node {$u$};
+        \draw (2.2,0) node {$w$};
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}
+        \draw (2,0) ellipse (20pt and 40pt);
+        \draw[] (-2,0) ellipse (20pt and 40pt);
+        \draw[<-, thick] (-2,0) arc (200:340: 60pt and 20pt);
+        \draw (0,1)  node[anchor = north] {$T'$};
+        \draw (2,1)  node[anchor = north] {$W'$}; 
+        \draw (-2,1) node[anchor = north] {$V'$};
+        \draw (-2.2,0) node {$u$};
+        \draw (2.2,0) node {$w$};
+        \draw (0, -2) node {``upside down"};
+    \end{tikzpicture}
+\end{center}
+\begin{definition}
+    Given $T \in \c L(V,W)$, we define $T' : \varphi \mapsto \varphi \circ T$. $ \phi \in W'$ i.e. $\varphi \in \c L(W, \b F)$. Notice that $\varphi \circ T \in \c L(V, \b F)$.
+\end{definition}
+\begin{example}
+    Define $V, W, \varphi, T$ as $\varphi : f \mapsto \int_0^1 f(t) dt, V = \c P_3(\b R), W = \c P_2(\b R), T : f \mapsto f'$. What is $\varphi \circ T$? 
+    \[ (\varphi \circ T)(f) = \varphi(T(f)) = \varphi (f') = \int_0^1 f'(t)dt = f(1) - f(0)\]
+\end{example}
+\begin{remark}[Algebraic Property of dual maps]
+    \begin{enumerate}
+        \item $(S + T)'  = S' + T'$
+        \item $(\lambda S)' = \lambda S'$
+        \item $(ST)'  = T' S'$
+    \end{enumerate}
+\end{remark}
+\begin{proof}
+    \[ (ST)' : \varphi \mapsto \varphi 
+    \circ (ST) = (\varphi \circ S) \circ T = T'(\varphi \circ S) = T'(S'(\varphi)) = T' \circ S'\]
+\end{proof}
