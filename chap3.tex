@@ -296,7 +296,7 @@ We need to take $w \in W$, there is a $v \in V$ such that $Tv = w$ and such $v$ 
     $\dim$ is invariant under isomorphism.
 \end{corollary}
 \subsubsection{Linear Operators}
-We are dealing with a specific case where $c  L(V,W)$ is replaced by $\c L(V,V)$.
+We are dealing with a specific case where $\c L(V,W)$ is replaced by $\c L(V,V)$.
 \begin{center}
     \begin{tikzpicture}
         \draw[<-, thick] (0,0.25) arc (20:340: 30pt and 20pt);
@@ -318,7 +318,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     (a) $\implies$ (c). Trivial by definition. \\
     (b) $\implies$ (c). Suppose $T$ is injective $\xRightarrow[T \text{ being linear}]{} \nul T = \lb 0 \rb \iff \dim \nul T = 0$. Therefore 
     \[ \dim V = \dim \nul T = \dim \range T = 0\] So $\dim V = \dim \range T$, hence $\range T = V$, so $T$ is surjective. \\
-    (c) $\implies$ (a).  \[\dim V = \dim \nul T + \dim \range T = \dim \nul T + \dim V \implies \dim \nul T  = 0 \implies \nul T = \lb0\rb\] So $T$ is injective. $T$ is already known to be surjective, so $T$ is bijective, or $T$ is inveritible.
+    (c) $\implies$ (a).  \[\dim V = \dim \nul T + \dim \range T = \dim \nul T + \dim V \implies \dim \nul T  = 0 \implies \nul T = \lb0\rb\] So $T$ is injective. $T$ is already known to be surjective, so $T$ is bijective, or $T$ is invertable.
 \end{proof}
 \begin{example}
     The theorem does not hold for infinite dimension vector spaces, for example: \\ 
@@ -331,7 +331,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     Given a vector space $V$, we define its dual space as $V' = \c L(V,\b F)$. 
 \end{definition}
 \begin{remark}
-    Objects in $\c L(V,W)$ are also called linear functional.
+    Objects in $\c L(V,\b F)$ are also called linear functional.
 \end{remark}
 \begin{example}
     Linear Functional on $\b R^3$: $(x_1, x_2, x_3) \mapsto \alpha_1 x_1 + \alpha_2 x_2 + \alpha_3 x_3 \ \forall \alpha_1, \alpha_2, \alpha_3 \in \b R$.
@@ -387,14 +387,81 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     Define $V, W, \varphi, T$ as $\varphi : f \mapsto \int_0^1 f(t) dt, V = \c P_3(\b R), W = \c P_2(\b R), T : f \mapsto f'$. What is $\varphi \circ T$? 
     \[ (\varphi \circ T)(f) = \varphi(T(f)) = \varphi (f') = \int_0^1 f'(t)dt = f(1) - f(0)\]
 \end{example}
-\begin{remark}[Algebraic Property of dual maps]
+\begin{remark}[Algebraic Property of dual maps] $ $
+    \vspace{-0.5cm}
     \begin{enumerate}
         \item $(S + T)'  = S' + T'$
+        \begin{proof}
+            For any $S,T \in \c L(V,W), S', T' \in \c L(W',V')$ , we compute 
+            \[(S + T)'(\varphi) = \varphi \circ (S + T) = \varphi \circ S + \varphi \circ T = S'(\varphi) + T'(\varphi)\]
+        \end{proof}
         \item $(\lambda S)' = \lambda S'$
+        \begin{proof}
+            \[ (\lambda S)'(\varphi) = \varphi \circ (\lambda S) = \lambda (\varphi \circ S) = \lambda \cdot S'(\varphi)\]
+        \end{proof}
         \item $(ST)'  = T' S'$
+        \begin{proof}
+            Sanity check: $S \in \c L(V,W), T \in \c L(U,V)$
+            \[ (ST)' : \varphi \mapsto \varphi 
+            \circ (ST) = (\varphi \circ S) \circ T = T'(\varphi \circ S) = T'(S'(\varphi)) = T' \circ S'\]
+        \end{proof}
     \end{enumerate}
 \end{remark}
+\begin{definition}[Annihilators]
+    Let a set $S$ to be a subset of a vector space $V$. We can define $S^0$ as 
+    \[ S^0 := \lb \varphi \in V' : \varphi (v) = 0 \ \forall v \in S \rb\]
+\end{definition}
+\begin{example}
+    Consider $\b R^3$, let $S := \lb (1,0,0), (1,1,0) \rb$. We know that any $\varphi \in \b R^3$ will have the form of $(x_1,x_2,x_3) \mapsto a_1x_1 + a_2x_2 + a_3x_3$ for some constant $a_1,a_2,a_3$. Plug in $(1,0,0)$ and $(1,1,0)$ and we get 
+    \[ a_1 \cdot 1 + a_2 \cdot 0 + a_3 \cdot 0 = 0 \implies a_1 = 0\]
+    \[ a_1 \cdot 1 + a_2 \cdot 1 + a_3 \cdot 0 = 0 \implies a_2 = 0\]
+    We can see that $S^{0} = \lb \varphi(x_1, x_2, x_3) = a_3 x_3 \text{ for some } a_3 \in \b R \rb$ and forms a subspace for $\b R^{3}$'.
+\end{example}
+\begin{lemma}
+    Regardless of the nature of $S$, $S^0$ is always a subspace.
+\end{lemma}
 \begin{proof}
-    \[ (ST)' : \varphi \mapsto \varphi 
-    \circ (ST) = (\varphi \circ S) \circ T = T'(\varphi \circ S) = T'(S'(\varphi)) = T' \circ S'\]
+    \begin{enumerate}
+        \item The zero functional is clearly in $S^0$.
+        \item Suppose $\varphi \in S^0$, take $\lambda \in \b F$, then $(\lambda \varphi)(v) = \lambda \cdot \varphi(v) = 0$ for all $v \in S$. So $\lambda \varphi \in S$.
+        \item Suppose $\varphi, \psi \in S^0$, then $(\varphi + \psi)(v) = \varphi(v) + \psi(v) = 0$ for all $v \in S$. Therefore $\varphi + \psi \in S^0$.
+    \end{enumerate}
+\end{proof}
+\begin{theorem}
+    Suppose $S = U$, where $U$ is a subspace of $V$, then 
+    \[ \dim U + \dim U^0 = \dim V\]
+\end{theorem}
+\begin{proof}
+    Consider the inclusion map: \[i : U \to V : u \to u \ \forall u \in U\] 
+    Take  a look at the dual of $U$: $i' \in \c L(V', U')$. Apply Rank-Nullity to the dual map and we can see that $\dim V' = \dim \nul i' + \dim \range i'$. We also know that \[\nul i' = \lb \varphi \in V' : \varphi \circ i = 0 \rb\] Notice that $\varphi \circ i = 0$ as a functional implies \[(\varphi \circ i) (u) = 0 \implies \varphi(i(u)) = 0 \implies \varphi(u) = 0 \ \forall u \in U \]
+    Therefore we can see that $\range i' = \lb \varphi \circ i : \varphi \in V' \rb = U'$ since any linear functional on $U$ extends to $V$. I have a clever proof for this but it does not fit in the margin of the page and is left as an exercise for the reader. 
+\end{proof}
+\begin{theorem}
+    Let $V,W$ be finite dimensional vector space and let $T \in \c L(V,W)$. Then 
+    \begin{enumerate}[label = (\alph*)]
+        \item $\nul T' = (\range T)^0$
+        \item $\dim \nul T' = \dim \nul T + \dim W - \dim V$
+    \end{enumerate}
+\end{theorem}
+\begin{proof} $ $
+    \begin{enumerate}[label = (\alph*)]
+        \item $\varphi \in \nul T' \iff \varphi \circ T = 0 \iff (\varphi \circ T)(v) = 0 \ \forall v \in V \iff \varphi(Tv) = 0 \ \forall v \in V \\ \iff \varphi \in (\range T)^0$
+        \item $\dim \nul T' = \dim (\range T)^0 = \dim W - \dim \range T = \dim W - (\dim V - \dim \nul T) = \dim W - \dim V + \dim \nul T$
+    \end{enumerate}
+\end{proof}
+\begin{corollary}
+    $T'$ is injective if and only if $T$ is surjective.
+\end{corollary}
+\begin{theorem}
+    Suppose $V$ and $W$ are finite dimensional and $T \in \c L(V,W)$, then 
+    \begin{enumerate}[label = (\alph*)]
+        \item $\dim \range T' = \dim \range T$
+        \item $\range T' = (\nul T)^0$
+    \end{enumerate}
+\end{theorem}
+\begin{proof} $ $
+    \begin{enumerate}[label = (\alph*)]
+        \item $\dim \range T' = \dim W' - \dim \nul T' = \dim W - (\dim W - \dim V + \dim \nul T) = \dim V - \dim \nul T = \dim \range T$
+        \item $\psi \in \range T' \iff \exists \varphi : \varphi \circ T = \psi \iff \varphi \circ T(v) = \psi(V) \ \forall v \in V \iff \varphi(Tv) = \psi(v) \forall v$. \\ So $Tv = 0 \implies \psi(v) = 0$. This shows $\range T' \subseteq (\nul T)^0$. But $\dim \range T' = \dim \range T = \dim V - \dim \nul T = \dim (\nul T)^0$. Hence $\range T = \nul T$.
+    \end{enumerate}
 \end{proof}
