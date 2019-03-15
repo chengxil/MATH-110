@@ -1,0 +1,95 @@
+\section{Polynomials}
+Recall we call consider polynomials over $\b C$ or $\b R$.
+\begin{theorem}
+    For any $z_1, z_2 \in \b C$, we define $|z|  = \sqrt{a^2 + b^2}$, we know that 
+    \begin{enumerate}
+        \item $|z_1 \cdot z_2| = |z_1| \cdot |z_2|$
+        \item $|z_1 \cdot z_2| \leq |z_1| + |z_2|$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+Left as an execise.
+\end{proof}
+\subsection{Axler's Recap on Polynomial}
+\begin{theorem}
+    Suppose $p(x) \in \c P(\b F)$, is identically zero. Then all of its coefficient must be $0$. 
+\end{theorem}
+\begin{proof}
+    If $p(x) = a_0 + a_1x + \cdots + a_nx^n$, then $a_j = \frac{p^{(j0}(0)}{j!}$, If $p(x) \equiv 0$, then $p^{(j)}(x) = 0$, so $a_j = \frac{0}{j!} = 0 \forall j$
+\end{proof}
+\begin{corollary}
+    Suppose $p(x) \equiv q(x)$ for $p,q \in \c P(\b F)$, then all coefficients of $p$ are the same as all coefficients of $q$.
+\end{corollary}
+\subsection{Zero of polynomials and their algebraic manifestations}
+\begin{algorithm}[Euclidean Algorithm for polynomials]
+ Given $p(x), s(x)$, without the loss of generality, $\deg p(x) > \deg s(x)$, otherwise it's boring; we can always find $q(x), r(x)$ such that $p(x) = s(x)q(x) + r(x)$, where $\deg r(x) < \deg s(x)$.
+\end{algorithm}
+\begin{corollary}
+    $p(a) \iff p(x) = (x - a)q(x)$ for some $a \in \b F$.
+\end{corollary}
+\begin{proof}
+    If $p(a) = (x-a)q(x)$, then $p(a) = 0 \cdot q(a) = 0$. \\
+    Conversely, suppose $p(a) = 0$, by division algorithm we have $p(x) = (x - a)q(x) + r(x)$, where $\deg r \leq \deg (x-a)$, therefore $r(x) = c$ for some $c \in \b F$. Plug in $a$ and we get $(a - a)q(a) + c = 0 \implies 0 + c = 0 \implies c = 0$. Therefore $p(x) = (r-a)q(x)$.
+\end{proof}
+\begin{theorem}
+    Let $p(x)$ be a nonzero polynomial with coefficients in $\b F$ have degree $n$. Then $p$ has at most $n$ zeros in $\b F$.
+\end{theorem}
+
+\begin{proof} $ $ \\
+    \textit{Base case:} $\deg p = 1$, i.e. $p(x) = a_1x + a_0$ for some $a_1 \in \b F^\times, a_0 \in \b F$. Then $p\left(\frac{-b}{a}\right) = 0$, so $p$ has exactly one zero. \\
+    \textit{Inductive Hypothesis:} Suppose the statement is true for all polynomials for all polynomials of degree less than $m$. \\
+    \textit{Inductive Step:} Take $p(x)$ to be a degree $m$ polynomial. If $p$ has no zeros in $\b F$, we are done. If $p$ has a zero, by corollary we have $p(x) = (x - a)q(x)$, where $\deg q = m - 1$. So the inductive hypothesis applies and $q$ at most $n-1$ distinct zeros in $\b F$.
+\end{proof}
+\begin{theorem}[Fundamental Theorem of Algebra]
+    Every nonconstant polynomial with complex coefficients has a zero.
+\end{theorem}
+\begin{proof}[Proof with ``Black Box" from Complex Analysis] $ $ \\
+    Assume $\deg p \geq 1$. Assume that $p(a) \neq 0 \ \forall a \in \b C$. Consider the function $\frac{1}{p(x)}$ is well-defined $\forall x \in \b C$ and is analytic in $\b C$, more over $\lim_{|z| \to \infty} \frac{1}{p(z)} = 0$. We know that 
+    \begin{align*}
+        p(x) &= a_0 + a_1 x + \cdots + a_n x^n \\
+        &= x^n \left( \frac{a_0}{x^n} + \frac{a_1}{x^{n-1}} + \cdots + a_n\right) \\
+        \frac{1}{p(x)} &= \frac{1}{x^n \left( \frac{a_0}{x^n} + \frac{a_1}{x^{n-1}} + \cdots + a_n\right)} 
+    \end{align*}
+    As $\displaystyle |x| \to \infty, \displaystyle \frac{1}{x^n} \to 0$. Since $\displaystyle \left|\frac{1}{x^n}\right| = \frac{1}{|x|^n} \to 0$. But $\displaystyle \frac{a_0}{x^n} + \frac{a_1}{x^{n-1}} + \cdots + a_n \to a_n \neq 0$. Hence $\displaystyle \frac{1}{p(x)} \to 0$ as $|x| \to -\infty$. \\
+    By Louisville's theorem, any analytic function with this property has to be constant. But $\frac{1}{p(x)}$ is non-constant, so $p$ must have at least $1$ zero in $\b C$.
+\end{proof}
+\begin{corollary}
+    Any polynomial $p(x)$ with coefficients in $\b C$ factors as follows 
+    \[ p(x) = c(x - a_1)(x - a_2) \cdots (x - a_m), c \neq 0\]
+\end{corollary}
+\begin{proof}
+    By Induction it's clear for degree $1$ and if $\deg p = m$ then factor $p(x) = (x - a)q(x)$ and repeat the process for $q$.
+\end{proof}
+\begin{question}
+    What happens over $\b R$?
+\end{question}
+\begin{theorem}
+    If $p(x)$ has coefficient in $\b R$, and $c \in \b C$ is a zero of $p$, then $\bar c$ is also a zero of $p$.
+\end{theorem}
+\begin{proof}
+    $p(c) = 0$ means \[a_0 + a_1 c + a_2 c^2 + \cdots + a_nc^n = 0\] We then can see \begin{align*}
+        \bar{a_0} + \bar{a_1 c} + \bar{a_2 c^2} + \cdots + \bar{a_n c^n} &= \bar 0 = 0 \\
+        \bar{a_0} + \bar{a_1} \bar{c} + \bar{a_2} \bar{c^2} + \cdots + \bar{a_n} \bar{c^n} & = 0 \\
+        a_0 + a_1 \bar c + a_2 \bar{c^2} + \cdots + a_n \bar{c^n} &= 0
+    \end{align*}
+    Hence $p(\bar c) = 0$ as well.
+\end{proof}
+So over $\b C$, a polynomial with real coefficient factors as follows
+\[ p(x) = (x - a_1)(x - a_2)\cdots(x - a_n)(x - \lambda_1)(x - \bar{\lambda_1})(x - \lambda_2)(x - \bar{\lambda_2}) \cdots (x - \lambda_m)(x - \bar{\lambda_m})\]
+For some $c \in \b R, \li an \in \b R, \li \lambda m \in \b C$. \\
+To translate this into a factorization over $\b R$, we can see that $x^2 - (\lambda + \bar \lambda) + |\lambda|^2$. These are quadratic with $\Delta < 0$. Indeed, 
+\[ (\lambda + \bar \lambda)^2 - 4 |\lambda|^2 = \lambda ^2 - 2 |\lambda |^2 + {\bar \lambda}^2 = 2 \text{Re} \lambda^2 - 2 |\lambda|^2 \]
+Notice that $\text{Re} \lambda^2 \leq |\lambda|^2$ and $\text{Re} \lambda^2 = |\lambda|^2$ iff $\lambda \in \b R$, therefore $\Delta < 0$.
+\begin{question}
+    Why do we study polynomials?
+\end{question}
+\begin{answer} $ $
+\begin{enumerate}
+    \item We will form polynomials in linear operators
+    \item We will associate special polynomials with linear operators.
+\end{enumerate}
+\end{answer}
+\begin{remark}
+An operator has he same co-domain as its domain.
+\end{remark}
+

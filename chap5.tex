@@ -1,0 +1,34 @@
+\section{Eigenvalues, Eigenvectors, and
+Invariant Subspaces}
+\subsection{Invariant Subspaces}
+\begin{definition}
+    Let $T \in \c L(V,V)$ on a vector space $V \neq \lb 0 \rb$. A subspace $U \subseteq V$ is called an invariant subspace is invariant under $T$ if $Tu \in U \ \forall u \in U$.
+\end{definition}
+\begin{example}
+    For any $T \in \c L(V,V)$, the following subspaces are invariant:
+    \begin{enumerate}
+        \item $\lb 0 \rb$
+        \item $V$
+        \item $\nul T = \lb v \in V : Tv = 0 \rb$ \\
+        If $Tv \in \nul T$, then $Tv = 0 \in \nul T$.
+        \item $\range T = \lb w \in W : w = Tv \text{ for some } v \in V \rb$ \\
+        So $Tw \in \range T$.
+    \end{enumerate}
+\end{example}
+\begin{question}
+    What are $1$-dimensional invariant subspaces. Then $U = \spa(u)$ for some $u \neq 0$. Invariant means $Tu = \lambda u$ for some $\lambda \in  \b F$, where $u$ is the eigenvector of $T$ and $\lambda$ is the eigenvalues. 
+\end{question}
+\begin{remark}
+    $u \neq 0$ if $u$ is a eigenvector is $T$. $\lambda = 0$ is possible.
+\end{remark}
+\begin{question}
+    How do we find eigenvalues and eigenvalues.
+\end{question}
+\begin{proposition} Let $T$ be a linear operator, then the following are equivalent
+\begin{enumerate}
+    \item $\lambda$ is a eigenvalue of $T$.
+    \item $T - \lambda\b I$ is not invertible.
+    \item $T - \lambda \b I$ is not injective.
+    \item $T - \lambda \b I$ is not surjective.
+\end{enumerate}
+\end{proposition}

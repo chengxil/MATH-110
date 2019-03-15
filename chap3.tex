@@ -352,7 +352,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     \[ (\lincomb{\alpha}{\varphi}{n})(n) = \alpha_1 \cdot 1 + 0 \implies \alpha_1 = 0\]
     Similarly, if we plug in an arbitrary $v_j$
     \[ (\lincomb{\alpha}{\varphi}{n})(v_j) \implies v_j = 0\]
-    This shows that $\li \varphi n$ is linear indepednent, and the count is $n$. So $\li \varphi n$ form a basis for $V$.
+    This shows that $\li \varphi n$ is linear independent, and the count is $n$. So $\li \varphi n$ form a basis for $V$.
 \end{proof}
 \subsubsection{Dual Maps}
 \begin{center}
@@ -465,3 +465,59 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
         \item $\psi \in \range T' \iff \exists \varphi : \varphi \circ T = \psi \iff \varphi \circ T(v) = \psi(V) \ \forall v \in V \iff \varphi(Tv) = \psi(v) \forall v$. \\ So $Tv = 0 \implies \psi(v) = 0$. This shows $\range T' \subseteq (\nul T)^0$. But $\dim \range T' = \dim \range T = \dim V - \dim \nul T = \dim (\nul T)^0$. Hence $\range T = \nul T$.
     \end{enumerate}
 \end{proof}
+\subsubsection{Matrix Representation of the dual map}
+Recall that
+\begin{center}
+    \begin{tikzpicture}
+        \draw (2,0) ellipse (20pt and 40pt);
+        \draw[] (-2,0) ellipse (20pt and 40pt);
+        \draw[<-, thick] (2,0) arc (20:160: 60pt and 20pt);
+        \draw (0,1)  node[anchor = north] {$T$};
+        \draw (2,1)  node[anchor = north] {$W$}; 
+        \draw (-2,1) node[anchor = north] {$V$};
+        \draw (-2.2,0) node {$u$};
+        \draw (2.2,0) node {$w$};
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}
+        \draw (2,0) ellipse (20pt and 40pt);
+        \draw[] (-2,0) ellipse (20pt and 40pt);
+        \draw[<-, thick] (-2,0) arc (200:340: 60pt and 20pt);
+        \draw (0,1)  node[anchor = north] {$T'$};
+        \draw (2,1)  node[anchor = north] {$W'$}; 
+        \draw (-2,1) node[anchor = north] {$V'$};
+        \draw (-2.2,0) node {$u$};
+        \draw (2.2,0) node {$w$};
+        \draw (0, -2) node {``upside down"};
+    \end{tikzpicture}
+\end{center}
+We also recall that $T' : \varphi \mapsto \varphi \circ T$.
+\newpage
+\begin{question}
+    How do we get $\c M(T')$ given $\c M(T)$?
+\end{question}
+\begin{answer}
+For $\c M(T)$, we need $2$ bases $\li vn$ for $V$ and $\li wm$ for $W$. \\
+    Take $\li \varphi n$, a dual basis to $\li vn$, it is a basis for $V'$. \\
+    Tale $\li \psi m$, a dual basis to $\li wm$, it is a basis for $W'$. \\
+    Given $\c M(T)$, we want to construct / understand $\c M(T')$with regard to the basis $\li \psi m$ of $W'$ and $\li \varphi n$ of $V'$. \\
+    We know $\c M(T)$ has $m$ rows $n$ columns, and $\c M(T')$ has $n$ rows and $m$ columns. \\Suppose $\c M(T) = A, \c M(T') = C$, we then know 
+    \[ Tv_j = \sum_{i = 1}^m A_{i,j} w_i \ \forall j = 1,2, \ldots, n, T'\psi_l = \sum_{l = 1}^n C_{l,k} \varphi_{l} \ \forall l =  1,2,\ldots, m\]
+    \[ T' \psi_k = \psi_k \circ T \implies (\psi_k \circ T )(v_j) = \psi_k(Tv_j) = \psi_k \left( \sum_{i=1}^m A_{i,j} w_j \right) = \sum_{i = 1}^m A_{i,j} \psi_k(w_i) = \sum_{i = 1}^m A_{i,j} \delta_{ki} = A_{k,j}\]
+    \[(T'\psi_k)(v_j) = \left( \sum_{l = 1}^{n} C_{l,k} \varphi_l \right) (v_j) = \sum_{l = 1}^{n} C_{l,k} \varphi(v_j) = \sum_{l = 1}^{n} C_{l,k} \delta_{l,j} = C_{j,k} \]
+    Notice that $A_{k,j} = C_{j,k} \ \forall j,k$.
+\end{answer}
+\begin{conjecture}
+    So we obtained that 
+    \[ M(T') = M(T)^{T}\]
+    provided that the basis of $V'$ and $W'$ are chosen to be the dual to the bases of $V$ and $W$, respectively.
+\end{conjecture}
+\begin{example}
+    Let $T: p \mapsto p'$ for $V = \c P_3(\b R)$ with basis $1,x,x^2, X^3$, and $W = \c P_2(\b R)$ with $1,x,x^2$. \\
+    We can see that the dual basis for $1,x,x^2, x^3$ is \[\varphi_0 : p \mapsto p(0), \varphi_1 : p \mapsto p'(0), \varphi_2: p \mapsto \frac{p''(0)}{2}, \varphi_3 : p \mapsto \frac{p'''(0)}{3!}\]
+    Dual basis for $1,x,x^2$ is 
+    \[\psi_0 : p \mapsto p(0), \psi_1 : p \mapsto p'(0), \psi_2: p \mapsto \frac{p''(0)}{2}, 
+    \]
+    Notice that \[\c M(T) = \bml 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 3\ \bmr \text{ and } \c M(T') = \bml 0 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 2 & 0 \\ 0 & 0 & 3 \bmr\]
+\end{example}
