@@ -69,7 +69,7 @@ Matrices}
     Let $V := \c P(\b R), S: p \mapsto 3p'' +  2p' + p, D: p \mapsto p'$. We can see that $S$ can be expressed as $S = D^0 + 2D + 3D^2$. Therefore \[\c M(S) = 3\c M^2(D) + 2\c M(D) + M(\b I)\] we need to have to take the same basis for inputs and output when forming $\c M(\cdot)$.  
     
     \noindent Let's use our favorite basis $1,x,x^2, x^3$. We then can see
-    \[ \c M(D) = \bml 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 0 \bmr, \c M(S) = \bml 1 & 2 & 6 & 0\\ 0 & 1 & 4 & 18\\ 0 & 0 & 1 & 6 \\ 0 & 0 & 0 & 1 \bmr\]
+    \[ \c M(D) = \bml 0 & 1 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 3 \\ 0 & 0 & 0 & 0 \bmr, \c M(S) = \bml 1 & 2 & 6 & 0\\ 0 & 1 & 4 & 18\\ 0 & 0 & 1 & 6 \\ 0 & 0 & 0 & 1 \bmr\]
 \end{example}
 \begin{question}
     What is the best matrix representation for an operator?
@@ -106,8 +106,82 @@ Over $\b C$, every linear operator has at least one eigenvalue.
     \[ p(T)v = c(T - \lambda_1 \b I)(T - \lambda_2  \b I) \cdots (T - \lambda_m \b I)\]
     Therefore at least one of these factors is not injective. This shows that $T$ has at least $1$ eigenvalue.
 \end{proof}
+\begin{theorem}
+    For any $T \in \c L(V)$, $V$ is finite dimensional vector space over $\b C$, there exists its matrix representation $\c M(T)$ which is upper-triangular.
+\end{theorem}
+\begin{proof} 
+    \textit{Base Step.} $n = 1$ is trivially true. \\
+    \textit{Inductive Hypothesis.} Suppose Theorem holds for all vector spaces of dimension less than $\dim V$. \\
+    \textit{Inductive Step.} Consider $\lambda \in \b C$ an eigenvalue of $T$ by lemma. We can define \[U := \range (T  -\lambda \b I)\] $U$ is a subspace of $V$. By the characterization of eigenvalues, $T - \lambda \b I$ is not surjective, hence $\range T - \lambda \b I \not\subseteq V$, hence $\dim \range (T - \lambda \b I) < \dim V$. Suppose $v \in \range (T - \lambda \b I)$, then $Tv = \underbrace{(T - \lambda \b I)v}_{\in U} + \underbrace{\lambda v}_{\in U}$ therefore we know that $U$ is invariant under $T$. Consider \[T/U \in L(U) : (T/U)v := Tv \forall v \in U\] If $U \neq \lb 0 \rb$, then there is a basis $\li um$ of $U$ ($m < n$) such that the matrix representation of $T/U$ with respect to $\li um$ is upper triangular by the inductive hypothesis. Extend $\li um$ to a basis of $V$, $\li um, \li vk$. We compute
+    \[Tv_j = \underbrace{(T - \lambda \b I)v_j}_{\in U = \spa (\li um)} + \lambda v_j\] We also know that $Tu_l \in \spa (\li u{l-1})$. We can see the matrix representation and hence we are done
+    \[ \begin{array}{cc}
+         \\ \\ \\ \\ m \\ \\ \\ 
+    \end{array}\left[\begin{array}{cccc|ccccccc}
+         * & * & \cdots & * & * & * & * \\
+         0 & * & \cdots & * & * & * & * \\
+         \vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \vdots \\
+         0 & 0 & \cdots & 0 & * & * & * \\
+         \hline
+         0 & 0 & \cdots & 0 & \lambda & 0 & 0 \\
+         0 & 0 & \cdots & 0 & 0 & \lambda & 0 \\
+         0 & 0 & \cdots & 0 & 0 & 0 & \lambda \\
+    \end{array}\right]\]
+\end{proof}
+\begin{question}
+    What about eigenvalues of a upper-triangular matrix?
+\end{question}
+\begin{theorem}
+    An upper triangular matrix is invertible if and only if all its diagonal entries are nonzero.
+\end{theorem}
+\begin{proof}
+    Suppose all diagonal entries are nonzero. Prove surjectivity. 
+    \begin{align*}
+        Tv_1  &=A_{1,1} v_1, A_{1,1} \neq 0 \implies v_1 \in \range T\\
+     Tv_2  &=A_{1,2} v_1 + A_{2,2} v_2 , A_{2,2} \neq 0 \implies v_2 \in \range T \\
+     \vdots \\
+     Tv_n &= A_{1,n} v_1 + A_{2,n} v_2 + \cdots + A_{n,n} v_n, A_{n,n} \neq 0 \implies v_n \in \range T
+    \end{align*} 
+    Therefore $\range T = V$, so $T$ is surjective, hence $T$ is invertible. 
+    Suppose at least one one diagonal entry is $0$ we want to show that $T$ is not invertible. Say $A_{j,j} = 0$ for some $j$ and upper triangular matrix $A$. If $j = 1$, then $v_1 \in \null T$, hence $T$ is not invertible, and we are done. If $j > 1$, consider $U := \spa (\li vj)$. $T$ maps $U$ to $\spa (\li v{j-1})$. This shows $T/U$ us not surjective, then we know that $T/U$ is not injective and there exists $u \in U$ such that $u \in \null T/U \implies u \in \null T$. Therefore $T$ is not injective. Hence $T$ is not invertible.
+\end{proof}
+\begin{corollary}
+    An upper triangular matrix / operator in upper triangular form has the diagonal elements / entries as its eigenvalues.
+\end{corollary}
+\begin{example}The matrix
+    \[ A = \bml 
+5 & * & * & * & * & \\
+0 & 9 & * & * & * & \\
+0 & 0 & 1 & * & * & \\
+0 & 0 & 0 & 8 & * & \\
+0 & 0 & 0 & 0 & 10 & \\
+\bmr\]
+has eigenvalue $1,5,9,8,10$.
+\end{example}
+\begin{example}
+    $T: \c P_n(\b R) \to \c P_n(\b R) : p \mapsto 3p'' - 5'p' + 7p$ has eigenvalues $3,-5,7$.
+\end{example}
+\begin{theorem}
+    For $T \in \c L(V)$, where $V$ is a finite dimensional vector space, then the following are equivalent
+    \begin{enumerate}
+        \item $\c M(T)$ is diagonal.
+        \item the corresponding basis for $V$ consists of eigenvalue of $T$.
+        \item $V = U_1 \oplus U_2 \oplus \cdots \oplus U_n$ where $\dim U_j = 1$ and $U_j$ is invariant under $T$ for all $j$.
+        \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_k$, where $V/W_l = \lambda_l \b I$ for all $l$ and $W_l$ is invariant under $T$.
+        \item $\dim V = \dim W_1 + \dim W_2 + \cdots + W_k$, where $W_e = \null (T - \lambda_e \b I)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Trivial by matrix
+    \[ \bml \lambda_1 & 0 & \cdots & 0 & \\
+0 & \lambda_2 & \cdots & 0 & \\
+\vdots & \vdots & \ddots & \vdots & \\
+0 & 0 & \cdots & \lambda_k & \\ \bmr\]
+\end{proof}
 
 
+
+\subsection{Eigenspaces and Diagonal Matrices}
 
 
 
