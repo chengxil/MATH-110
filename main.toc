@@ -23,8 +23,9 @@
 \contentsline {subsection}{\numberline {4.2}Zero of polynomials and their algebraic manifestations}{30}{subsection.263}% 
 \contentsline {section}{\numberline {5}Eigenvalues, Eigenvectors, and Invariant Subspaces}{33}{section.286}% 
 \contentsline {subsection}{\numberline {5.1}Invariant Subspaces}{33}{subsection.287}% 
-\contentsline {subsection}{\numberline {5.2}Eigenvectors and Upper-Triangular Matrices}{34}{subsection.315}% 
-\contentsline {subsubsection}{\numberline {5.2.1}Polynomials in T}{34}{subsubsection.316}% 
-\contentsline {subsection}{\numberline {5.3}Eigenspaces and Diagonal Matrices}{38}{subsection.357}% 
-\contentsline {section}{\numberline {6}Inner Product Spaces}{39}{section.358}% 
-\contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{39}{subsection.362}% 
+\contentsline {subsubsection}{\numberline {5.1.1}Restriction Operators}{34}{subsubsection.315}% 
+\contentsline {subsection}{\numberline {5.2}Eigenvectors and Upper-Triangular Matrices}{34}{subsection.318}% 
+\contentsline {subsubsection}{\numberline {5.2.1}Polynomials in T}{34}{subsubsection.319}% 
+\contentsline {subsection}{\numberline {5.3}Eigenspaces and Diagonal Matrices}{38}{subsection.351}% 
+\contentsline {section}{\numberline {6}Inner Product Spaces}{40}{section.363}% 
+\contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{40}{subsection.367}% 

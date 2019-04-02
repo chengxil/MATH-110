@@ -1,6 +1,5 @@
 \section{Inner Product Spaces}
 \subsubsection*{Motivation}
-Recall that 
 \begin{definition}
     In $\b R^n$, the dot product of $\vec x$ and $\vec y$ is defined by  
 \[ \vec x \cdot \vec y := x_1y_1 + x_2y_2 + \cdots + x_ny_n\]
@@ -12,11 +11,11 @@ $V$ is a vector space over $\b F$, we can define the following mapping $ \la \cd
 \begin{definition}
 $\la \cdot, \cdot \ra$ is called an inner product if it satisfying the following rules:
 \begin{enumerate}
-    \item $\la \vec v + \vec u, \vec w \ra = \la \vec v + \vec w \ra + \la \vec u, \vec w \ra, \ \forall \vec v, \vec u, \vec w \in V$
-    \item $\la \lambda \vec v, \vec w \ra = \lambda \la \vec v + \vec w \ra, \ \forall \vec v \vec u, \vec w \in V, \lambda \in \b F$
-    \item $\la \vec v, \vec w \ra = \overline{\la \vec w, \vec v \ra}, \ \forall \vec v,\vec w \in V$
-    \item $\la \vec v, \vec v \ra \geq 0, \ \forall \vec v \in V$
-    \item $\la \vec v, \vec v \ra = 0$ iff $\vec v = \vec 0$.
+    \item(additivity in the first slot) $\la \vec v + \vec u, \vec w \ra = \la \vec v + \vec w \ra + \la \vec u, \vec w \ra, \ \forall \vec v, \vec u, \vec w \in V$
+    \item(homogeneity in the first slot) $\la \lambda \vec v, \vec w \ra = \lambda \la \vec v + \vec w \ra, \ \forall \vec v \vec u, \vec w \in V, \lambda \in \b F$
+    \item(conjugate symmetry) $\la \vec v, \vec w \ra = \overline{\la \vec w, \vec v \ra}, \ \forall \vec v,\vec w \in V$
+    \item(positivity) $\la \vec v, \vec v \ra \geq 0, \ \forall \vec v \in V$
+    \item(definiteness) $\la \vec v, \vec v \ra = 0$ iff $\vec v = \vec 0$.
 \end{enumerate}
 \end{definition}
 \begin{question}
@@ -55,19 +54,53 @@ Not quite. \frownie{}
         \item $||v|| = 0$ if and only if $v = 0$ 
     \end{enumerate}
 \end{theorem}
-
+\begin{definition}
+    An inner product space is a vector space $V$ along with and inner product on $V$.
+\end{definition}
 \begin{definition}
     For $u,v \in V$, we say $u$ and $v$ is orthogonal if $\la u, v\ra = 0$
 \end{definition}
-\begin{theorem}[Pythagorean Theorem]
+\begin{theorem}[Pythagorean Theorem] $ $
 \begin{center}
     \begin{tikzpicture}
-        \draw[->] (0,0) -- (2,0);
-        \draw[->] (0,0) -- (2,1);
-        \draw[->] (2,0) -- (2,1);
+        \draw[->, very thick] (4,0) -- (4,3);
+        \draw[->, very thick] (0,0) -- (4,0);
+        \draw[->, very thick] (0,0) -- (4,3);
+        \draw (2,0) node[anchor = north] {$u$};
+        \draw (4,1.5) node[anchor = east] {$v$};
     \end{tikzpicture}
 \end{center}
 \[ ||u + v||^2 = ||u||^2 + ||v||^2 \iff \la u + v, u + v\ra = \la u,u \ra + \la v,v \ra \]
-\end{theroem}
+\end{theorem}
+\begin{proof} We compute
+    \[ \la u + v, u + v\ra = \la u,u \ra + \la u , v \ra + \la v, u \ra + \la v,v \ra = \la u,u \ra + 0 + 0 + \la v,v \ra = ||u|| + ||v|| \]
+\end{proof}
+\subsubsection*{Obeservation}
+Given $u,v \in V$ such that $v \neq 0$, we want to modify $u$ such that $u + cv$ is orthogonal to $v$. We know that $\la v + cv, v \ra = 0$, solve for $c$ gives $c = \displaystyle\frac{-\la u, v\ra}{\la v, v \ra}$.
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->, very thick, color = magenta] (0,0) -- (1, 5.5);
+        \draw[->, very thick, color = green] (0,0) -- (3, 4);
+        \draw[->, very thick] (0,0) -- (2,2.66666666);
+        \draw[->, very thick, color = blue] (1, 5.5) -- (3,4);
+        \draw (2,2) node {$v$};
+        \draw (0.2,4) node {$u$};
+        \draw (3,3.2) node {$cv$};
+        \draw (2.3, 5.2) node {$u + cv$};
+    \end{tikzpicture} 
+
+    An orthogonal decompostion
+\end{center}
+\begin{theorem}[Cauchy-Schwarz Inequality]
+    For any $u,v \in V$ where $V$ is a inner product space, the following holds
+    \[ |\la u,v \ra| \leq ||u|| \cdot ||v||\]
+\end{theorem}
+\begin{proof}
+    Given $u,v \in V$, we can assume without the loss of generality that $v \neq 0$. So we can consider vectors $u + cv$ and $v$ that are orthogonal for the choice that 
+    \[ c: = \frac{ - \la u,v \ra}{\la v,v\ra}\]
+    By Pathgrathrean theorem, $||u + cv||^2 + ||cv||^2 = ||u||^2$. But $||cv||^2 = |c|^2||v||^2$ and recall \[ c= \frac{- \la u,v\ra}{\la v,v\ra}, \text{ so } c^2= \frac{|\la u,v\ra|^2}{\la v,v\ra^2} = \frac{|\la u, v \ra|^2}{||v||^4}, \text{ therefore } ||cv||^2 = \frac{|\la u, v \ra|^2}{||v||^4} ||v||^2 = \frac{|\la u, v \ra|^2}{||v||^2}\]
+    So by dropping $|| u + cv||^2 > 0$, we obtain $||cv||^2 \leq ||u||$, i.e, 
+    \[ \frac{|\la u, v \ra|^2}{||v||^2} \leq ||u||^2 \implies |\la u,v\ra|^2 \leq ||u|^2 \cdot ||v||^2 \implies |\la u,v \ra|^2 \leq ||u|| \cdot ||v||\]
+\end{proof}
 
 

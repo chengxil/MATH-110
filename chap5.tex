@@ -54,8 +54,13 @@ A contradiction since $k$ is not the minimum index with the property chosen abov
 \begin{corollary}
 An operator $T \in \c L(V)$ has at most $\boxed{\dim V}$ distinct eigenvalues.
 \end{corollary}
+\subsubsection{Restriction Operators}
+\begin{definition}
+    Suppose $T \in \c L(V)$ and $U$ is a subspace of $V$ invariant under $T$. Then the restriction operator $T|_U \in \c L(U)$ is deifned by $T|_U(u) = Tu$ for all $u \in U$.
+\end{definition}
 \subsection{Eigenvectors and Upper-Triangular
 Matrices}
+
 \subsubsection{Polynomials in T}
 \begin{definition}
     Suppose $T \in \c L(V)$, then $T^k$ is defined as
@@ -85,6 +90,7 @@ Matrices}
         \item $\spa (\li vj)$ is invariant under $T$ $\forall j = 1,2,\ldots, n$.
     \end{enumerate}
 \end{theorem}
+\newpage
 \begin{proof}
     $1) \implies 2) $ \[\bml * & * & * & * & \cdots & * \\  & * & * & * & \cdots & * \\  &  & * & * & \cdots & * \\ & & & * & \cdots & * \\  & & & & \ddots & \vdots \\  & & & & & * \bmr\] We can see that $2)$ holds true by inspection. \\
     $2) \implies 3)$ Consider $Tv_h$ for $h \leq j$, by $2)$ we have $Tv_k \in \spa(\li vh) \subseteq \spa (\li vj)$. So $\spa (\li vj)$ is invariant under $T$. \\
@@ -93,9 +99,6 @@ Matrices}
 \begin{question}
     What about conditions for lower-triangular matrices?
 \end{question}
-\begin{theorem}
-    Over $\b C$ every linear operator has an upper-triangular matrix representation.
-\end{theorem}
 \begin{lemma}
 Over $\b C$, every linear operator has at least one eigenvalue.
 \end{lemma}
@@ -109,10 +112,18 @@ Over $\b C$, every linear operator has at least one eigenvalue.
 \begin{theorem}
     For any $T \in \c L(V)$, $V$ is finite dimensional vector space over $\b C$, there exists its matrix representation $\c M(T)$ which is upper-triangular.
 \end{theorem}
+\newpage
 \begin{proof} 
+    We can induct on the dimension of $V$. 
     \textit{Base Step.} $n = 1$ is trivially true. \\
     \textit{Inductive Hypothesis.} Suppose Theorem holds for all vector spaces of dimension less than $\dim V$. \\
-    \textit{Inductive Step.} Consider $\lambda \in \b C$ an eigenvalue of $T$ by lemma. We can define \[U := \range (T  -\lambda \b I)\] $U$ is a subspace of $V$. By the characterization of eigenvalues, $T - \lambda \b I$ is not surjective, hence $\range T - \lambda \b I \not\subseteq V$, hence $\dim \range (T - \lambda \b I) < \dim V$. Suppose $v \in \range (T - \lambda \b I)$, then $Tv = \underbrace{(T - \lambda \b I)v}_{\in U} + \underbrace{\lambda v}_{\in U}$ therefore we know that $U$ is invariant under $T$. Consider \[T/U \in L(U) : (T/U)v := Tv \forall v \in U\] If $U \neq \lb 0 \rb$, then there is a basis $\li um$ of $U$ ($m < n$) such that the matrix representation of $T/U$ with respect to $\li um$ is upper triangular by the inductive hypothesis. Extend $\li um$ to a basis of $V$, $\li um, \li vk$. We compute
+    \textit{Inductive Step.} Consider $\lambda \in \b C$ an eigenvalue of $T$ by lemma. We can define 
+    \[U := \range (T  -\lambda \b I)\] 
+    $U$ is a subspace of $V$. By the characterization of eigenvalues, $T - \lambda \b I$ is not surjective, hence $\range T - \lambda \b I \not\subseteq V$, hence $\dim \range (T - \lambda \b I) < \dim V$.
+    We want to show that $U$ is invariant under $T$. Suppose $v \in U$, then \[Tv = \underbrace{(T - \lambda \b I)v}_{\in U} + \underbrace{\lambda v}_{\in U}\] therefore we know that $U$ is invariant under $T$. 
+    Consider \[T|_U \in \c L(U) : (T|_U)(v) := Tv \forall v \in U\] 
+    If $U \neq \lb 0 \rb$, then there is a basis $\li um$ of $U$ ($m < n$) such that the matrix representation of $T/U$ with respect to $\li um$ is upper triangular by the inductive hypothesis. Extend $\li um$ to a basis of $V$, $\li um, \li vk$. We compute
+
     \[Tv_j = \underbrace{(T - \lambda \b I)v_j}_{\in U = \spa (\li um)} + \lambda v_j\] We also know that $Tu_l \in \spa (\li u{l-1})$. We can see the matrix representation and hence we are done
     \[ \begin{array}{cc}
          \\ \\ \\ \\ m \\ \\ \\ 
@@ -138,7 +149,7 @@ Over $\b C$, every linear operator has at least one eigenvalue.
     \begin{align*}
         Tv_1  &=A_{1,1} v_1, A_{1,1} \neq 0 \implies v_1 \in \range T\\
      Tv_2  &=A_{1,2} v_1 + A_{2,2} v_2 , A_{2,2} \neq 0 \implies v_2 \in \range T \\
-     \vdots \\
+     \vdots & \hspace{5cm} \implies \\
      Tv_n &= A_{1,n} v_1 + A_{2,n} v_2 + \cdots + A_{n,n} v_n, A_{n,n} \neq 0 \implies v_n \in \range T
     \end{align*} 
     Therefore $\range T = V$, so $T$ is surjective, hence $T$ is invertible. 
@@ -160,26 +171,27 @@ has eigenvalue $1,5,9,8,10$.
 \begin{example}
     $T: \c P_n(\b R) \to \c P_n(\b R) : p \mapsto 3p'' - 5'p' + 7p$ has eigenvalues $3,-5,7$.
 \end{example}
+\subsection{Eigenspaces and Diagonal Matrices}
+\begin{definition}
+    Suppose $T \in \c L(V)$ and $\lambda \in \b F$. The eigenspace of $T$ correspoding to $\lambda$, denoted as $E(\lambda, T)$ is defined as 
+    \[ E(\lambda, T) := \lb v \in V : Tv = \lambda v \rb = \nul (T - \lambda I)\]
+\end{definition}
+\begin{definition}
+    An operator $T \in \c L(T)$ is called diagonalizable if the operator has a diagonal matrix with repsect to some basis of $V$.
+\end{definition}
 \begin{theorem}
     For $T \in \c L(V)$, where $V$ is a finite dimensional vector space, then the following are equivalent
     \begin{enumerate}
-        \item $\c M(T)$ is diagonal.
+        \item $\c M(T)$ is a diagonal matrix.
         \item the corresponding basis for $V$ consists of eigenvalue of $T$.
         \item $V = U_1 \oplus U_2 \oplus \cdots \oplus U_n$ where $\dim U_j = 1$ and $U_j$ is invariant under $T$ for all $j$.
         \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_k$, where $V/W_l = \lambda_l \b I$ for all $l$ and $W_l$ is invariant under $T$.
         \item $\dim V = \dim W_1 + \dim W_2 + \cdots + W_k$, where $W_e = \null (T - \lambda_e \b I)$.
     \end{enumerate}
 \end{theorem}
-
 \begin{proof}
-Trivial by matrix
-    \[ \bml \lambda_1 & 0 & \cdots & 0 & \\
-0 & \lambda_2 & \cdots & 0 & \\
-\vdots & \vdots & \ddots & \vdots & \\
-0 & 0 & \cdots & \lambda_k & \\ \bmr\]
+Refer to Axler Page 157.
 \end{proof}
-\subsection{Eigenspaces and Diagonal Matrices}
-{\huge TODO}
 
 
 
