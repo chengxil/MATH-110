@@ -1,0 +1,40 @@
+\section{Inner Product Spaces}
+\subsubsection*{Motivation}
+Recall that 
+\begin{definition}
+    In $\b R^n$, the dot product of $\vec x$ and $\vec y$ is defined by  
+\[ \vec x \cdot \vec y := x_1y_1 + x_2y_2 + \cdots + x_ny_n\]
+for $\vec x = (\li xn), \vec y = (\li yn)$.
+\end{definition}
+\subsection{Inner Product and Norms}
+\subsubsection*{Settings}
+$V$ is a vector space over $\b F$, we can define the following mapping $ \la \cdot, \cdot \ra : V \times V \to \b F$.
+\begin{definition}
+$\la \cdot, \cdot \ra$ is called an inner product if it satisfying the following rules:
+\begin{enumerate}
+    \item $\la \vec v + \vec u, \vec w \ra = \la \vec v + \vec w \ra + \la \vec u, \vec w \ra, \ \forall \vec v, \vec u, \vec w \in V$
+    \item $\la \lambda \vec v, \vec w \ra = \lambda \la \vec v + \vec w \ra, \ \forall \vec v \vec u, \vec w \in V, \lambda \in \b F$
+    \item $\la \vec v, \vec w \ra = \overline{\la \vec w, \vec v \ra}, \ \forall \vec v,\vec w \in V$
+    \item $\la \vec v, \vec v \ra \geq 0, \ \forall \vec v \in V$
+    \item $\la \vec v, \vec v \ra = 0$ iff $\vec v = \vec 0$.
+\end{enumerate}
+\end{definition}
+\begin{question}
+What about linearity in the second slot?
+\end{question}
+\begin{answer} We can compute
+\[ \la \vec v, \vec u + \vec w \ra = \overline{\la \vec u + \vec w, \vec v\ra} = \overline{\la \vec u, \vec v \ra + \ra \vec w, \vec v} = \overline{\la \vec u, \vec v \ra} + \overline{\la \vec w, \vec v\ra } = \la \vec v, \vec u\ra + \la \vec v, \vec w\ra\]
+\[ \la \vec v, \lambda \vec u\ra = \overline{\la \lambda u, \vec v\ra} = \overline{\lambda \la \vec u,\vec v\ra} = \bar \lambda \ \overline{\la \vec u, \vec v\ra} = \bar \lambda \la \vec v, \vec u \ra\]
+Not quite. \frownie{}
+\end{answer}
+\begin{remark}
+    If $\vec v \in V$ is fixed then the function $\la \cdot, \vec v \ra : \vec u \mapsto \la \vec u, \vec v \ra$ is a function functional. 
+\end{remark}
+\begin{example}
+    On $\b R^n$, we could use any function of the type
+    \[ c_1x_1y_1 + c_2x_2y_2 + \cdots + c_nx_ny_n\] where all $c_j \in \b R^+$.
+\end{example}
+\begin{remark}[Generalization to $\b C^n$]
+    The inner product of this form of the standard product to $\b C^n$ can be defined as
+    \[ \la \vec x, \vec y \ra = x_1\bar y_1 + x_2\bar y_2 + \cdots + x_n\bar y_n\]
+\end{remark}
