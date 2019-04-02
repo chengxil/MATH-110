@@ -1,0 +1,30 @@
+\contentsline {section}{\numberline {1}Vector Space}{2}{section.2}% 
+\contentsline {subsection}{\numberline {1.1}Vector Space over a field and subspace}{2}{subsection.3}% 
+\contentsline {subsubsection}{\numberline {1.1.1}Lists (and vector spaces of lists)}{2}{subsubsection.6}% 
+\contentsline {subsection}{\numberline {1.2}Subspaces}{3}{subsection.9}% 
+\contentsline {subsection}{\numberline {1.3}Direct Sum}{7}{subsection.52}% 
+\contentsline {section}{\numberline {2}Finite Dimensional Vector Spaces}{9}{section.68}% 
+\contentsline {subsection}{\numberline {2.1}Linear Dependence and Independence}{9}{subsection.69}% 
+\contentsline {subsection}{\numberline {2.2}Bases and Dimension}{12}{subsection.105}% 
+\contentsline {subsubsection}{\numberline {2.2.1}Dimension}{13}{subsubsection.114}% 
+\contentsline {subsubsection}{\numberline {2.2.2}Dimension of a Sum}{14}{subsubsection.131}% 
+\contentsline {section}{\numberline {3}Linear Maps}{16}{section.132}% 
+\contentsline {subsection}{\numberline {3.1}Linear Maps as Vector Space}{16}{subsection.133}% 
+\contentsline {subsection}{\numberline {3.2}Null Space and Range}{17}{subsection.144}% 
+\contentsline {subsection}{\numberline {3.3}Matrix Notation}{19}{subsection.165}% 
+\contentsline {subsection}{\numberline {3.4}Matrix Representation}{20}{subsection.168}% 
+\contentsline {subsection}{\numberline {3.5}Invertibility and Isomorphism}{21}{subsection.175}% 
+\contentsline {subsubsection}{\numberline {3.5.1}Linear Operators}{23}{subsubsection.190}% 
+\contentsline {subsection}{\numberline {3.6}Duality}{24}{subsection.198}% 
+\contentsline {subsubsection}{\numberline {3.6.1}Dual Maps}{25}{subsubsection.209}% 
+\contentsline {subsubsection}{\numberline {3.6.2}Matrix Representation of the dual map}{28}{subsubsection.244}% 
+\contentsline {section}{\numberline {4}Polynomials}{30}{section.253}% 
+\contentsline {subsection}{\numberline {4.1}Axler's Recap on Polynomial}{30}{subsection.258}% 
+\contentsline {subsection}{\numberline {4.2}Zero of polynomials and their algebraic manifestations}{30}{subsection.263}% 
+\contentsline {section}{\numberline {5}Eigenvalues, Eigenvectors, and Invariant Subspaces}{33}{section.286}% 
+\contentsline {subsection}{\numberline {5.1}Invariant Subspaces}{33}{subsection.287}% 
+\contentsline {subsection}{\numberline {5.2}Eigenvectors and Upper-Triangular Matrices}{34}{subsection.315}% 
+\contentsline {subsubsection}{\numberline {5.2.1}Polynomials in T}{34}{subsubsection.316}% 
+\contentsline {subsection}{\numberline {5.3}Eigenspaces and Diagonal Matrices}{38}{subsection.357}% 
+\contentsline {section}{\numberline {6}Inner Product Spaces}{39}{section.358}% 
+\contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{39}{subsection.362}% 

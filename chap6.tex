@@ -38,3 +38,36 @@ Not quite. \frownie{}
     The inner product of this form of the standard product to $\b C^n$ can be defined as
     \[ \la \vec x, \vec y \ra = x_1\bar y_1 + x_2\bar y_2 + \cdots + x_n\bar y_n\]
 \end{remark}
+\begin{remark}[Generalization to any function space]
+    \[ \la f, g \ra : = \int_D f(t)\overline{g(t)} dt\]
+    or generally \[ \la f, g \ra : = \int_D f(t)\overline{g(t)}w(t) dt\]
+    where $w(t)$ is the positive weight function. e.g. if $V = \c P(\b R)$, or $V = \c P(\b C)$, then 
+    \[ \la f, g \ra : = \int_0^\infty f(t)\overline{g(t)}e^{-t} dt\]
+\end{remark}
+\begin{definition}
+    For $v \in V$, the (Euclidean) Norm is defined as
+    \[ ||v|| : = \sqrt{\la v,v \ra}\] 
+\end{definition}
+\begin{theorem}(Properties of Norms)
+    \begin{enumerate}
+        \item $||\lambda v || = |\lambda| \ ||v|| \ \forall v \in V, \forall \lambda \in \b F $
+        \item $||v|| > 0$ for all $v \in V$
+        \item $||v|| = 0$ if and only if $v = 0$ 
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}
+    For $u,v \in V$, we say $u$ and $v$ is orthogonal if $\la u, v\ra = 0$
+\end{definition}
+\begin{theorem}[Pythagorean Theorem]
+\begin{center}
+    \begin{tikzpicture}
+        \draw[->] (0,0) -- (2,0);
+        \draw[->] (0,0) -- (2,1);
+        \draw[->] (2,0) -- (2,1);
+    \end{tikzpicture}
+\end{center}
+\[ ||u + v||^2 = ||u||^2 + ||v||^2 \iff \la u + v, u + v\ra = \la u,u \ra + \la v,v \ra \]
+\end{theroem}
+
+
