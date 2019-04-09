@@ -1,3 +1,4 @@
+%!TEX root = ./main.tex
 \section{Linear Maps}
 \begin{center}
     \begin{tikzpicture}
@@ -14,10 +15,10 @@
 \subsection{Linear Maps as Vector Space}
 Suppose $V$ and $W$ are two linear spaces over $\b F$. $T$ is a function with domain $V$ and codomain $W$. $T$ is called linear iff 
 \begin{enumerate}
-    \item $T(u_1 + u_2) = T(u_1) + T(u_2)$
-    \item $T(\lambda u) = \lambda \cdot T(u)$
+    \item $T(\vec u_1 + \vec u_2) = T(\vec u_1) + T(\vec u_2)$
+    \item $T(\lambda \vec u) = \lambda \cdot T(\vec u)$
 \end{enumerate}
-$\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda v \in \b F$.
+$\forall \vec{v}_1, \vec{v}_2 \in V$ and $\forall \vec v_1 \vec v_2 \in V, \forall \lambda\in \b F$.
 \begin{example}
     Let $V = \b R^3, W = \b R^4$. Define $T$ as $(x_1, x_2, x_3) \mapsto (x_1,0,0,0)$
 \end{example}
@@ -25,23 +26,23 @@ $\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda
     $T: \c P(x) \to \c P(x)$, where $\displaystyle f(x) \mapsto \int_{10}^x f(x) \ dx$ is a linear map.
 \end{example}
 \begin{definition}
-    $\c L\{V, W\}$ denotes the set of all linear maps from $V$ to $W$. Note that $\c L\{V, W\}$ with $+$ and $\cdot$ becomes a vector space over $\b F$. This requires the additions of functions and multiplications of linear maps by scalars (from $\b F$). Given $T_1, T_2 \in \c L(V,W)$ we define addition as $(T_1 + T_2)(u) := T_1(u) + T_2(u)$, multiplication as $(\lambda T)(u) : = \lambda \cdot T(u)$. 
+    $\c L\{V, W\}$ denotes the set of all linear maps from $V$ to $W$. Note that $\c L\{V, W\}$ with $+$ and $\cdot$ becomes a vector space over $\b F$. This requires the additions of functions and multiplications of linear maps by scalars (from $\b F$). Given $T_1, T_2 \in \c L(V,W)$ we define addition as $(T_1 + T_2)(\vec u) := T_1(\vec u) + T_2(\vec u)$, multiplication as $(\lambda T)(\vec u) : = \lambda \cdot T(\vec u)$. 
 \end{definition}
 \begin{theorem}
-    In finite vector space $V,W$, let $\li{u}n$ be a basis for $V$, let $\li{w}m$ be any vectors in $W$. Then there exist a unique linear map $T \in \c L \lb V, W \rb$ such that $T(u_j) = w_j \forall j$.
+    In finite vector space $V,W$, let $\li{\vec u}n$ be a basis for $V$, let $\li{\vec w}m$ be any vectors in $W$. Then there exist a unique linear map $T \in \c L \lb V, W \rb$ such that $T(u_j) = w_j \forall j$.
 \end{theorem}
 \begin{proof}
-    Any vector in $V$ has a unique representation $\alpha_1 u_1 + \alpha_2u_2 + \cdots + \alpha_n u_n = u$.  \\ Define $T(u):= \underbrace{\lincomb \alpha {T(u)}n}_{\in W}$ This makes $T$ a linear map from $V$ to $W$. Indeed if $\lambda \in \b F$, then $T(\lambda u) = T(\sum_{j = 1}^n \lambda \alpha_j u_j) = \lambda \sum_{j = 1}^n \alpha_j wj$. Suppose $\tilde T(u_j) = w_j$ for all $j$, then $T = \tilde T$ as a map function by linearity and basis.
+    Any vector in $V$ has a unique representation $\alpha_1 u_1 + \alpha_2u_2 + \cdots + \alpha_n u_n = u$.  \\ Define $T(u):= \underbrace{\lincomb \alpha {T(u)}n}_{\in W}$ This makes $T$ a linear map from $V$ to $W$. Indeed if $\lambda \in \b F$, then $T(\lambda u) = T(\sum_{j = 1}^n \lambda \alpha_j \vec u_j) = \lambda \sum_{j = 1}^n \alpha_j \vec wj$. Suppose $\tilde T(\vec u_j) = \vec w_j$ for all $j$, then $T = \tilde T$ as a map function by linearity and basis.
 \end{proof}
 \subsection{Null Space and Range}
 \begin{theorem}
-    Let $\nul (T):= \lb u \in  v : T(u) = 0 \rb$. $\nul (T)$ is a subspace of $V$.
+    Let $\nul (T):= \lb \vec u \in  v : T(\vec u) = 0 \rb$. $\nul (T)$ is a subspace of $V$.
 \end{theorem}
 \begin{theorem}
-    Let $\range (T):= \lb w \in W : T(u) = w \rb$. $\range(T)$ is a subspace of $W$.
+    Let $\range (T):= \lb \vec w \in W : T(\vec u) = w \rb$. $\range(T)$ is a subspace of $W$.
 \end{theorem}
 \begin{proof}
-    The proof is trivial and is left as an exercise for the reader .
+    The proof is trivial and is left as an exercise for the reader.
 \end{proof}
 \begin{example}
     Let $T: f \to f', V:= \c P(x), W:= \c P(x)$. $\nul(T) = \c P_0(x)$, $\range(T) = \c P_2(x)$. \\
@@ -50,10 +51,10 @@ $\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda
 \begin{example}
     Find a basis of $\c L (V,W)$ given bases $\lb \li {u}m \rb$ and $\lb \li{w}n \rb$ of $V$ and $W$. \\
     The basis consists of $m \times n$ vectors as follows: 
-    \[T_{11} = T(u_1) = w_1, T(u_2) = 0, T(u_3) = 0, \ldots ,T(u_m) = 0\]
-    \[T_{12} = T(u_1) = w_2, T(u_2) = 0, T(u_3) = 0, \ldots ,T(u_m) = 0\]
+    \[T_{11} = T(\vec u_1) = \vec w_1, T(\vec u_2) = 0, T(\vec u_3) = 0, \ldots ,T(\vec u_m) = 0\]
+    \[T_{12} = T(\vec u_1) = \vec w_2, T(\vec u_2) = 0, T(\vec u_3) = 0, \ldots ,T(\vec u_m) = 0\]
     \[ \cdots \]
-    \[T_{mn} = T(u_1) = 0, T(u_2) = 0, T(u_3) = 0, \ldots ,T(u_m) = w_n\]
+    \[T_{mn} = T(\vec u_1) = 0, T(\vec u_2) = 0, T(\vec u_3) = 0, \ldots ,T(\vec u_m) = \vec w_n\]
 \end{example}
 \begin{example}
     Let $\c U = \lb f : \b R \to \b R : f(x) = f(1-x) \ \forall x \rb$.
@@ -94,12 +95,12 @@ $\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda
     \[ \dim V = \dim \nul T + \dim \range T\]
 \end{theorem}
 \begin{proof}
-    Let $\li{u}k$ to be the the basis for the basis for $\nul T$. By the linear independent list extension theory, this list can be extended to a basis of $V$. Say $\li{  u}k, \li{  v}l$ is asujc an extension to a basis of $V$. We can see that $\dim = k + l$. We want to show that $\range T = l$. Consider $\li{T  v}l$. We want to show that $\li{T  v}l$ is basis for $\range T$. Notice that $  v \in V$ can be written as a linear combination of $\lincomb{\alpha}{  u}{k} + \lincomb{\beta}{  v}{l}$. Then we compute \begin{align*}T  v &= \lincomb{\alpha}{T  u}{k} + \lincomb{\beta}{T  v}{l} \\ &= \lincomb{\beta}{T  v}{l} \end{align*} hence $T  u \in \spa (\li{T  v}{l})$. \\
-    Suppose $\lincomb{\beta}{T  v}{l} = 0$. Then $\lincomb{\beta}{T  v}{l} \in \nul T$. So \[\lincomb{\beta}{v}{l} = \lincomb{\alpha}{u}{k}\] for some $\li{\alpha}{k}$ since $\li uk$ form a basis for $\nul T$. \\
-    But $\li vl, \li vk$ form a basis for $V$, all of the coefficient has to be $0$. Therefore $\li{Tv}k$ is indeed a basis for $\range T$.
+    Let $\li{\vec u}k$ to be the the basis for the basis for $\nul T$. By the linear independent list extension theory, this list can be extended to a basis of $V$. Say $\li{\vec u}k, \li{\vec v}l$ is asujc an extension to a basis of $V$. We can see that $\dim = k + l$. We want to show that $\range T = l$. Consider $\li{T \vec v}l$. We want to show that $\li{T \vec v}l$ is basis for $\range T$. Notice that $\vec v \in V$ can be written as a linear combination of $\lincomb{\alpha}{\vec u}{k} + \lincomb{\beta}{\vec v}{l}$. Then we compute \begin{align*}T\vec v &= \lincomb{\alpha}{T\vec u}{k} + \lincomb{\beta}{T\vec v}{l} \\ &= \lincomb{\beta}{T\vec v}{l} \end{align*} hence $T\vec u \in \spa (\li{T\vec v}{l})$. \\
+    Suppose $\lincomb{\beta}{T\vec v}{l} = 0$. Then $\lincomb{\beta}{T\vec v}{l} \in \nul T$. So \[\lincomb{\beta}{\vec v}{l} = \lincomb{\alpha}{\vec u}{k}\] for some $\li{\alpha}{k}$ since $\li{\vec u}k$ form a basis for $\nul T$. \\
+    But $\li {\vec v}l, \li{\vec v}k$ form a basis for $V$, all of the coefficient has to be $0$. Therefore $\li{T\vec v}k$ is indeed a basis for $\range T$.
 \end{proof}
 \begin{example}[Direct consequences of the Theorem]
-    Suppose $\dim W < \dim V$ (both finite), and $T \in \c L(V,W)$. Then $T$  cannot be injective.
+    Suppose $\dim W < \dim V$ (both finite), and $T \in \c L(V,W)$. Then $T$ cannot be injective.
 \end{example}
 \begin{proof}
     $T$ is injective implies that $\nul T = \lb 0 \rb$. So $\dim V = 0 + \dim \range T \leq \dim W < \dim V$, a contradiction. 
@@ -126,18 +127,18 @@ $\forall \bar{v}_1, \bar{v}_2 \in V$ and $\forall \bar{v} \in V, \forall \lambda
         \draw (0,1)  node[anchor = north] {$T$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
     \end{tikzpicture}
 \end{center}
-Recall this diagram, we want to understand $T$ ``correctly". Pick a basis $\li vn$ for $V$ and $\li wm$ for $W$. We can see that $\dim V = n$ and $\dim W = m$. We can define $T$ as
-\[Tv_j = A_{1,j} w_1 + A_{2,j} w_2 + \cdots + A_{m,j} w_m \]
+Recall this diagram, we want to understand $T$ ``correctly". Pick a basis $\li{\vec v}n$ for $V$ and $\li{\vec w}m$ for $W$. We can see that $\dim V = n$ and $\dim W = m$. We can define $T$ as
+\[Tv_j = A_{1,j} \vec w_1 + A_{2,j} \vec w_2 + \cdots + A_{m,j} \vec w_m \]
 Notice that $A$ has the following form
 \[ \begin{array}{cc}
-     w_1 \to \\
-     w_2 \to \\
+     \vec w_1 \to \\
+     \vec w_2 \to \\
      \vdots \\
-     w_m \to
+     \vec w_m \to
 \end{array}\bml A_{1,1} & A_{1,2} & \cdots & A_{1,n} \\ 
 A_{2,1} & A_{2,2} & \cdots & A_{2,n} \\
 \vdots & \vdots & \ddots & \vdots \\ 
@@ -163,21 +164,21 @@ Recall that if $T$ is a linear transformation
         \draw (0,1)  node[anchor = north] {$T$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
-        \draw (-2, -2) node {$\li vn$};
-        \draw (2, -2) node {$\li wm$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
+        \draw (-2, -2) node {$\li{\vec v}n$};
+        \draw (2, -2) node {$\li{\vec w}m$};
     \end{tikzpicture}
 \end{center}
-\[ Tv_u = \sum_{k = 1}^{m} A_{i,k} w_k \]
+\[ T\vec v_u = \sum_{k = 1}^{m} A_{i,k} \vec w_k \]
 Note that Matrix $A = \left[ A_{i,k} \right]$ has $m$ rows $n$ columns.
 \[\left[ \begin{array}{cccc} A_{1,1} & A_{1,2} & \cdots & A_{1,n} \\
         A_{2,1} & A_{2,2} & \cdots & A_{2,n} \\
         \vdots & \vdots & \ddots & \vdots  \\
         A_{m,1} & A_{m,2} & \cdots & A_{m,n} \\
         \end{array} \right]\]
-Suppose $v = \lincomb{c}{v}{n}, Tv = \lincomb{c}{Tv}{n}$.
-\[Tv =  c_1 \sum_{i=1}^m A_{i,1} w_i  +  c_2 \sum_{i=1}^m A_{i,2} w_i + \cdots + c_n \sum_{i=1}^m A_{i,n} w_n = \sum_{i = 1}^m \left( \sum_{i = 1}^n A_{i,j} c_j \right) w_j \]
+Suppose $v = \lincomb{c}{\vec v}{n}, T\vec v = \lincomb{c}{T\vec v}{n}$.
+\[T\vec v =  c_1 \sum_{i=1}^m A_{i,1} \vec w_1  +  c_2 \sum_{i=1}^m A_{i,2} \vec w_2 + \cdots + c_n \sum_{i=1}^m A_{i,n} \vec w_n = \sum_{i = 1}^m \left( \sum_{i = 1}^n A_{i,j} c_j \right) \vec w_j \]
 Notice that the operation is the equivalent as the matrix-vector multiplication.
 \begin{center}
     \begin{tikzpicture}
@@ -203,20 +204,20 @@ Notice that the operation is the equivalent as the matrix-vector multiplication.
         \draw (0,-0.5) node[anchor = north] {$A$};
         \draw (4,-0.5) node[anchor = north] {$B$};
 
-        \draw (-2,-0.2) node {$u$};
-        \draw (2, -0.2) node {$v$};
-        \draw (6, -0.2) node {$w$};
-        \draw (-2, -2) node {$\li up$};
-        \draw (2, -2) node {$\li vn$};
-        \draw (6, -2) node {$\li wm$};
+        \draw (-2,-0.2) node {$\vec u$};
+        \draw (2, -0.2) node {$\vec v$};
+        \draw (6, -0.2) node {$\vec w$};
+        \draw (-2, -2) node {$\li{\vec u}p$};
+        \draw (2, -2) node {$\li{\vec v}n$};
+        \draw (6, -2) node {$\li{\vec w}m$};
     \end{tikzpicture}
 \end{center}
-\[ STu_k = S(Tu_k) = S \left( \sum_{j=1}^n A_{j,k} v_j \right) = \sum_{j = 1}^{n} A_{j,k} \left(Sv_j\right) = \sum_{j = 1}^n A_{j,k} \sum_{i = 1}^{m} B_{i,j} w_i = \sum_{i = 1}^m \left( \sum_{j = 1}^n B_{i,j}A_{j,k} \right) w_i\]
+\[ ST\vec u_k = S(T\vec u_k) = S \left( \sum_{j=1}^n A_{j,k}\vec v_j \right) = \sum_{j = 1}^{n} A_{j,k} \left(S\vec v_j\right) = \sum_{j = 1}^n A_{j,k} \sum_{i = 1}^{m} B_{i,j} \vec w_i = \sum_{i = 1}^m \left( \sum_{j = 1}^n B_{i,j}A_{j,k} \right) \vec w_i\]
 Use name $\c M(S) := B$, $\c M(T) := A$, $\c M(ST) = BA = \c M(S) \cdot \c M(T)$.
 So matrix representation multiply as matrices to produce a composition map or product.
 \begin{remark}[Book Keeping]
-    $A_{*, j}$ denotes the $j$th column of $A$. \\
-    $A_{i, *}$ denotes the $i$th row of $A$.
+    $A_{\ast, j}$ denotes the $j$th column of $A$. \\
+    $A_{i, \ast}$ denotes the $i$th row of $A$.
 \end{remark}
 Notice that $\c M$ is a linear map, $\c L (V,W) \xrightarrow{\c M} \b F^{m,n}$. 
 \begin{proposition}
@@ -241,10 +242,10 @@ Notice that $\c M$ is a linear map, $\c L (V,W) \xrightarrow{\c M} \b F^{m,n}$.
         \draw (0,0.15)  node[anchor = north] {$T^{-1}$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
-        \draw (-2, -2) node {$\li vn$};
-        \draw (2, -2) node {$\li wm$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
+        \draw (-2, -2) node {$\li{\vec v}n$};
+        \draw (2, -2) node {$\li{\vec w}m$};
     \end{tikzpicture}
 \end{center}
 \begin{definition}
@@ -256,7 +257,7 @@ Notice that $\c M$ is a linear map, $\c L (V,W) \xrightarrow{\c M} \b F^{m,n}$.
     $T$ is invertible if and only if $T$ is both injective and surjective.
 \end{theorem}
 \begin{proof}
-    Suppose $T$ is invertible, then $T(T^{-1} w) = w \ \forall w \in W$, so $\range T = W$. Also we know that $T^{-1}(T v) = v$. Suppose $Tv_1 =Tv_2$, apply the left inverse and we have $T^{-1} (Tv_1) = T^{-1} (Tv_2) \implies v_1 = v_2$. Hence $T$ is injective. Therefore $T$ is bijective. \\
+    Suppose $T$ is invertible, then $T(T^{-1} \vec w) = \vec w \ \forall \vec w \in W$, so $\range T = W$. Also we know that $T^{-1}(T \vec v) = \vec v$. Suppose $T\vec v_1 =T\vec v_2$, apply the left inverse and we have $T^{-1} (T\vec v_1) = T^{-1} (T\vec v_2) \implies \vec v_1 = \vec v_2$. Hence $T$ is injective. Therefore $T$ is bijective. \\
     Now suppose $T$ is bijective. We want to construct $T^{-1}$
     \begin{center}
     \begin{tikzpicture}
@@ -270,7 +271,7 @@ Notice that $\c M$ is a linear map, $\c L (V,W) \xrightarrow{\c M} \b F^{m,n}$.
         \draw (-2,1) node[anchor = north] {$V$};
     \end{tikzpicture}
 \end{center}
-We need to take $w \in W$, there is a $v \in V$ such that $Tv = w$ and such $v$ is unique since $T$ is injective. We declare $T^{-1}w$ to be $v$. So $T^{-1} \circ T = \b I_{V}$. We compute \[ (T \circ T^{-1}) w = T(T^{-1} w) = Tv = w \ \forall  w \in W\] So $T \circ T^{-1} = \b I_W$ 
+We need to take $\vec w \in W$, there is a $\vec v \in V$ such that $T\vec v = \vec w$ and such $\vec v$ is unique since $T$ is injective. We declare $T^{-1}\vec w$ to be $\vec v$. So $T^{-1} \circ T = \b I_{V}$. We compute \[ (T \circ T^{-1}) \vec w = T(T^{-1} \vec w) = T\vec v = \vec w \ \forall  \vec w \in W\] So $T \circ T^{-1} = \b I_W$ 
 \end{proof}
 \begin{definition}
     If $V,W$ are vector spaces, such that there exists a invertible linear map $T \in \c L(V,W)$ then $V, W$ are isomorphic.
@@ -279,18 +280,18 @@ We need to take $w \in W$, there is a $v \in V$ such that $Tv = w$ and such $v$ 
     Before we proceed, we want to check that $T^{-1}$ is a linear map when $T \in \c L(V,W)$ and $T^{-1}$ exists.
 \end{remark}
 \begin{proof}
-    Take $w_1,w_2 \in W, \lambda \in \b F$. We compute
-    $T^{-1} (\lambda w_1 + w_2)$. We know that $w_1 = Tv_1$ and $w_2 = Tv_2$. Then we know that $T(\lambda v_1  + \lambda v_2) = \lambda Tv_1 + Tv_2 = \lambda w_1 + w_2$. Subsitute this into $T^{-1}$ and we get
-    \[ T^{-1} (\lambda w_1 + w_2) = T^{-1} \circ T (\lambda v_1 + v_2) = \b I (\lambda v_1 + v_2) = \lambda v_1 + v_2 = \lambda T^{-1} w_1 + T^{-1} w_2\] Hence $T^{-1}$ is linear.
+    Take $\vec w_1,\vec w_2 \in W, \lambda \in \b F$. We compute
+    $T^{-1} (\lambda \vec w_1 + \vec w_2)$. We know that $\vec w_1 = T\vec v_1$ and $\vec w_2 = T\vec v_2$. Then we know that $T(\lambda \vec v_1  + \lambda \vec v_2) = \lambda T\vec v_1 + T\vec v_2 = \lambda\vec  w_1 +\vec  w_2$. Subsitute this into $T^{-1}$ and we get
+    \[ T^{-1} (\lambda \vec w_1 + \vec w_2) = T^{-1} \circ T (\lambda \vec v_1 + \vec v_2) = \b I (\lambda \vec v_1 + \vec v_2) = \lambda \vec v_1 + \vec v_2 = \lambda T^{-1} \vec w_1 + T^{-1} \vec w_2\] Hence $T^{-1}$ is linear.
 \end{proof}
 \begin{corollary}
     $\c M$ is actually a bijection between $\c L(V,W)$ and $\b F^{m,n}$, therefore $\c L(V,W)$ is isomorphic to $\b F^{m,n}$.
 \end{corollary}
 \begin{theorem}
-    Suppose $T \in \c L(V,W)$ is linear and invertible, and let $\li vm$ be a basis for $V$. Then $\li{Tv}n$ is a basis for $W$.
+    Suppose $T \in \c L(V,W)$ is linear and invertible, and let $\li {\vec v}m$ be a basis for $V$. Then $\li{T\vec v}n$ is a basis for $W$.
 \end{theorem}
 \begin{proof}
-    Suppose $\lincomb{\alpha}{Tv}{n} = 0$. Then $T(\lincomb{\alpha}{v}{n}) = 0$. Since $T$ is injective, this implies $\lincomb{\alpha}{v}{n} = 0$. Therefore $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ since $\li vn$ is a basis. Take $w \in W$, then there exists a unique $v \in V$ such that $Tv = w$, and $v  =\lincomb{\alpha}{v}{n}$ for some $\li \alpha n$, so $Tv = w = \lincomb{\alpha}{Tv}{n}$, hence span. 
+    Suppose $\lincomb{\alpha}{T\vec v}{n} = 0$. Then $T(\lincomb{\alpha}{\vec v}{n}) = 0$. Since $T$ is injective, this implies $\lincomb{\alpha}{\vec v}{n} = 0$. Therefore $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ since $\li{\vec v}n$ is a basis. Take $\vec w \in W$, then there exists a unique $\vec v \in V$ such that $T\vec v = \vec w$, and $\vec v = \lincomb{\alpha}{\vec v}{n}$ for some $\li \alpha n$, so $T\vec v = \vec w = \lincomb{\alpha}{T\vec v}{n}$, hence span. 
 \end{proof}
 \begin{corollary}
     $\dim$ is invariant under isomorphism.
@@ -318,7 +319,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     (a) $\implies$ (c). Trivial by definition. \\
     (b) $\implies$ (c). Suppose $T$ is injective $\xRightarrow[T \text{ being linear}]{} \nul T = \lb 0 \rb \iff \dim \nul T = 0$. Therefore 
     \[ \dim V = \dim \nul T = \dim \range T = 0\] So $\dim V = \dim \range T$, hence $\range T = V$, so $T$ is surjective. \\
-    (c) $\implies$ (a).  \[\dim V = \dim \nul T + \dim \range T = \dim \nul T + \dim V \implies \dim \nul T  = 0 \implies \nul T = \lb0\rb\] So $T$ is injective. $T$ is already known to be surjective, so $T$ is bijective, or $T$ is invertable.
+    (c) $\implies$ (a).  \[\dim V = \dim \nul T + \dim \range T = \dim \nul T + \dim V \implies \dim \nul T  = 0 \implies \nul T = \lb 0\rb\] So $T$ is injective. $T$ is already known to be surjective, so $T$ is bijective, or $T$ is invertable.
 \end{proof}
 \begin{example}
     The theorem does not hold for infinite dimension vector spaces, for example: \\ 
@@ -337,7 +338,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     Linear Functional on $\b R^3$: $(x_1, x_2, x_3) \mapsto \alpha_1 x_1 + \alpha_2 x_2 + \alpha_3 x_3 \ \forall \alpha_1, \alpha_2, \alpha_3 \in \b R$.
 \end{example}
 \begin{definition}
-    Suppose $\li vn$ is a basis of $V$. The list of linear functionals $\li \varphi n \in  V'$ such that \[\varphi_i(v_j) = \left\{ \begin{array}{cc}
+    Suppose $\li{\vec v}n$ is a basis of $V$. The list of linear functionals $\li \varphi n \in  V'$ such that \[\varphi_i(v_j) = \left\{ \begin{array}{cc}
          1 \text{ if } i = j \\
          0 \text{ if } i \neq j
     \end{array} \right.\] We claim that $\li\varphi n$ is the dual basis of $V'$.
@@ -363,8 +364,8 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
         \draw (0,1)  node[anchor = north] {$T$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
     \end{tikzpicture}
 \end{center}
 \begin{center}
@@ -375,8 +376,8 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
         \draw (0,1)  node[anchor = north] {$T'$};
         \draw (2,1)  node[anchor = north] {$W'$}; 
         \draw (-2,1) node[anchor = north] {$V'$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
+        \draw (-2.2,0) node {$\varphi$};
+        \draw (2.2,0) node {$\psi$};
         \draw (0, -2) node {``upside down"};
     \end{tikzpicture}
 \end{center}
@@ -420,11 +421,12 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
 \begin{lemma}
     Regardless of the nature of $S$, $S^0$ is always a subspace.
 \end{lemma}
+\newpage
 \begin{proof}
     \begin{enumerate}
         \item The zero functional is clearly in $S^0$.
-        \item Suppose $\varphi \in S^0$, take $\lambda \in \b F$, then $(\lambda \varphi)(v) = \lambda \cdot \varphi(v) = 0$ for all $v \in S$. So $\lambda \varphi \in S$.
-        \item Suppose $\varphi, \psi \in S^0$, then $(\varphi + \psi)(v) = \varphi(v) + \psi(v) = 0$ for all $v \in S$. Therefore $\varphi + \psi \in S^0$.
+        \item Suppose $\varphi \in S^0$, take $\lambda \in \b F$, then $(\lambda \varphi)(\vec v) = \lambda \cdot \varphi(\vec v) = 0$ for all $\vec v \in S$. So $\lambda \varphi \in S$.
+        \item Suppose $\varphi, \psi \in S^0$, then $(\varphi + \psi)(\vec v) = \varphi(\vec v) + \psi(\vec v) = 0$ for all $\vec v \in S$. Therefore $\varphi + \psi \in S^0$.
     \end{enumerate}
 \end{proof}
 \begin{theorem}
@@ -432,7 +434,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
     \[ \dim U + \dim U^0 = \dim V\]
 \end{theorem}
 \begin{proof}
-    Consider the inclusion map: \[i : U \to V : u \to u \ \forall u \in U\] 
+    Consider the inclusion map: \[i : U \to V : \vec u \to \vec u \ \forall \vec u \in U\] 
     Take  a look at the dual of $U$: $i' \in \c L(V', U')$. Apply Rank-Nullity to the dual map and we can see that $\dim V' = \dim \nul i' + \dim \range i'$. We also know that \[\nul i' = \lb \varphi \in V' : \varphi \circ i = 0 \rb\] Notice that $\varphi \circ i = 0$ as a functional implies \[(\varphi \circ i) (u) = 0 \implies \varphi(i(u)) = 0 \implies \varphi(u) = 0 \ \forall u \in U \]
     Therefore we can see that $\range i' = \lb \varphi \circ i : \varphi \in V' \rb = U'$ since any linear functional on $U$ extends to $V$. I have a clever proof for this but it does not fit in the margin of the page and is left as an exercise for the reader. 
 \end{proof}
@@ -462,7 +464,7 @@ Recall that $\dim V = \dim \nul T + \dim \range T$. This gives a better test for
 \begin{proof} $ $
     \begin{enumerate}[label = (\alph*)]
         \item $\dim \range T' = \dim W' - \dim \nul T' = \dim W - (\dim W - \dim V + \dim \nul T) = \dim V - \dim \nul T = \dim \range T$
-        \item $\psi \in \range T' \iff \exists \varphi : \varphi \circ T = \psi \iff \varphi \circ T(v) = \psi(V) \ \forall v \in V \iff \varphi(Tv) = \psi(v) \forall v$. \\ So $Tv = 0 \implies \psi(v) = 0$. This shows $\range T' \subseteq (\nul T)^0$. But $\dim \range T' = \dim \range T = \dim V - \dim \nul T = \dim (\nul T)^0$. Hence $\range T = \nul T$.
+        \item $\psi \in \range T' \iff \exists \varphi : \varphi \circ T = \psi \iff \varphi \circ T(\vec v) = \psi(\vec v) \ \forall \vec v \in V \iff \varphi(T\vec v) = \psi(\vec v) \forall \vec v \in V$. \\ So $T\vec v = 0 \implies \psi(\vec v) = 0$. This shows $\range T' \subseteq (\nul T)^0$. But $\dim \range T' = \dim \range T = \dim V - \dim \nul T = \dim (\nul T)^0$. Hence $\range T = \nul T$.
     \end{enumerate}
 \end{proof}
 \subsubsection{Matrix Representation of the dual map}
@@ -475,8 +477,8 @@ Recall that
         \draw (0,1)  node[anchor = north] {$T$};
         \draw (2,1)  node[anchor = north] {$W$}; 
         \draw (-2,1) node[anchor = north] {$V$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
     \end{tikzpicture}
 \end{center}
 \begin{center}
@@ -487,8 +489,8 @@ Recall that
         \draw (0,1)  node[anchor = north] {$T'$};
         \draw (2,1)  node[anchor = north] {$W'$}; 
         \draw (-2,1) node[anchor = north] {$V'$};
-        \draw (-2.2,0) node {$u$};
-        \draw (2.2,0) node {$w$};
+        \draw (-2.2,0) node {$\vec u$};
+        \draw (2.2,0) node {$\vec w$};
         \draw (0, -2) node {``upside down"};
     \end{tikzpicture}
 \end{center}
@@ -498,14 +500,14 @@ We also recall that $T' : \varphi \mapsto \varphi \circ T$.
     How do we get $\c M(T')$ given $\c M(T)$?
 \end{question}
 \begin{answer}
-For $\c M(T)$, we need $2$ bases $\li vn$ for $V$ and $\li wm$ for $W$. \\
-    Take $\li \varphi n$, a dual basis to $\li vn$, it is a basis for $V'$. \\
-    Tale $\li \psi m$, a dual basis to $\li wm$, it is a basis for $W'$. \\
+For $\c M(T)$, we need $2$ bases $\li {\vec v}n$ for $V$ and $\li {\vec w}m$ for $W$. \\
+    Take $\li \varphi n$, a dual basis to $\li {\vec v}n$, it is a basis for $V'$. \\
+    Tale $\li \psi m$, a dual basis to $\li {\vec w}m$, it is a basis for $W'$. \\
     Given $\c M(T)$, we want to construct / understand $\c M(T')$with regard to the basis $\li \psi m$ of $W'$ and $\li \varphi n$ of $V'$. \\
     We know $\c M(T)$ has $m$ rows $n$ columns, and $\c M(T')$ has $n$ rows and $m$ columns. \\Suppose $\c M(T) = A, \c M(T') = C$, we then know 
-    \[ Tv_j = \sum_{i = 1}^m A_{i,j} w_i \ \forall j = 1,2, \ldots, n, T'\psi_l = \sum_{l = 1}^n C_{l,k} \varphi_{l} \ \forall l =  1,2,\ldots, m\]
-    \[ T' \psi_k = \psi_k \circ T \implies (\psi_k \circ T )(v_j) = \psi_k(Tv_j) = \psi_k \left( \sum_{i=1}^m A_{i,j} w_j \right) = \sum_{i = 1}^m A_{i,j} \psi_k(w_i) = \sum_{i = 1}^m A_{i,j} \delta_{ki} = A_{k,j}\]
-    \[(T'\psi_k)(v_j) = \left( \sum_{l = 1}^{n} C_{l,k} \varphi_l \right) (v_j) = \sum_{l = 1}^{n} C_{l,k} \varphi(v_j) = \sum_{l = 1}^{n} C_{l,k} \delta_{l,j} = C_{j,k} \]
+    \[ T\vec v_j = \sum_{i = 1}^m A_{i,j} \vec w_i \ \forall j = 1,2, \ldots, n, T'\psi_l = \sum_{l = 1}^n C_{l,k} \varphi_{l} \ \forall l =  1,2,\ldots, m\]
+    \[ T' \psi_k = \psi_k \circ T \implies (\psi_k \circ T )(\vec v_j) = \psi_k(T\vec v_j) = \psi_k \left( \sum_{i=1}^m A_{i,j} \vec w_j \right) = \sum_{i = 1}^m A_{i,j} \psi_k(\vec w_i) = \sum_{i = 1}^m A_{i,j} \delta_{ki} = A_{k,j}\]
+    \[(T'\psi_k)(\vec v_j) = \left( \sum_{l = 1}^{n} C_{l,k} \varphi_l \right) (\vec v_j) = \sum_{l = 1}^{n} C_{l,k} \varphi(\vec v_j) = \sum_{l = 1}^{n} C_{l,k} \delta_{l,j} = C_{j,k} \]
     Notice that $A_{k,j} = C_{j,k} \ \forall j,k$.
 \end{answer}
 \begin{conjecture}

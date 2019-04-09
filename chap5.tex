@@ -1,17 +1,18 @@
+%!TEX root = ./main.tex
 \section{Eigenvalues, Eigenvectors, and
 Invariant Subspaces}
 \subsection{Invariant Subspaces}
 \begin{definition}
-    Let $T \in \c L(V,V)$ on a vector space $V \neq \lb 0 \rb$. A subspace $U \subseteq V$ is called an invariant subspace is invariant under $T$ if $Tu \in U \ \forall u \in U$.
+    Let $T \in \c L(V,V)$ on a vector space $V \neq \lb 0 \rb$. A subspace $U \subseteq V$ is called an invariant subspace is invariant under $T$ if $T\vec u \in U \ \forall \vec u \in U$.
 \end{definition}
 \begin{example}
     For any $T \in \c L(V,V)$, the following subspaces are invariant:
     \begin{enumerate}
         \item $\lb 0 \rb$
         \item $V$
-        \item $\nul T = \lb v \in V : Tv = 0 \rb$ \\
-        If $Tv \in \nul T$, then $Tv = 0 \in \nul T$.
-        \item $\range T = \lb w \in W : w = Tv \text{ for some } v \in V \rb$ \\
+        \item $\nul T = \lb \vec v \in V : T\vec v = 0 \rb$ \\
+        If $T\vec v \in \nul T$, then $T\vec v = 0 \in \nul T$.
+        \item $\range T = \lb \vec w \in W : \vec w = T\vec v \text{ for some } \vec v \in V \rb$ \\
         So $Tw \in \range T$.
     \end{enumerate}
 \end{example}
@@ -19,10 +20,10 @@ Invariant Subspaces}
     What are $1$-dimensional invariant subspaces?  
 \end{question}
 \begin{answer}
-Then $U = \spa(u)$ for some $u \neq 0$. Invariant means $Tu = \lambda u$ for some $\lambda \in  \b F$, where $u$ is the eigenvector of $T$ and $\lambda$ is the eigenvalues.
+Then $U = \spa(\vec u)$ for some $\vec u \neq 0$. Invariant means $T\vec u = \lambda \vec u$ for some $\lambda \in  \b F$, where $\vec u$ is the eigenvector of $T$ and $\lambda$ is the eigenvalues.
 \end{answer}
 \begin{remark}
-    $u \neq 0$ if $u$ is a eigenvector is $T$. $\lambda = 0$ is possible.
+    $\vec u \neq 0$ if $\vec u$ is a eigenvector is $T$. $\lambda = 0$ is possible.
 \end{remark}
 \begin{proposition} Let $T$ be a linear operator in $V$, then the following are equivalent
 \begin{enumerate}
@@ -37,26 +38,26 @@ We have already proven that statement $2,3,4$ are logically equivalent.
     Suppose $\li vm$ are eigenvectors of $T \in \c L(V)$ corresponding to distinct eigenvalues $\li \lambda m$ will be linearly independent.
 \end{theorem}
 \begin{proof}
-Suppose $\li vm$ are linearly independent. By linear dependence lemma, we find a the minimum index $k \leq m$ such that $v_k \in \spa (\li v{k-1})$. i.e.
+Suppose $\li{\vec v}m$ are linearly independent. By linear dependence lemma, we find a the minimum index $k \leq m$ such that $\vec v_k \in \spa (\li{\vec v}{k-1})$. i.e.
 \begin{equation} \label{eqn1}
-     v_k = \lincomb{\alpha}{v}{k-1} 
+     \vec v_k = \lincomb{\alpha}{\vec v}{k-1} 
 \end{equation}
 Apply linear transformation on both sides 
 \begin{equation} \label{eqn2}
-    Tv_k = T\lincomb{\alpha}{v}{k-1} 
+    T\vec v_k = T\lincomb{\alpha}{\vec v}{k-1} 
 \end{equation}
 \begin{equation} \label{eqn3}
-    \lambda v_k = \alpha_1 \lambda_1 v_1 + \alpha_2 \lambda_2 v_2 + \cdots + \alpha_n \lambda_n v_n 
+    \lambda \vec v_k = \alpha_1 \lambda_1 \vec v_1 + \alpha_2 \lambda_2 \vec v_2 + \cdots + \alpha_n \lambda_n \vec v_n 
 \end{equation} 
-We multiply by equation \ref{eqn1} by $\lambda_m$ and subtract by from \ref{eqn3} and we get \[ 0 = \alpha_1 (\lambda_1 - \lambda_k)v_1 + \alpha_2(\lambda_2 - \lambda_k)v_2 + \cdots + \alpha_{k-1} (\lambda_{k-1} - \lambda_k)v_{k-1}\]
-A contradiction since $k$ is not the minimum index with the property chosen above. Therefore the list $\li vm$ must be linearly independent.
+We multiply by equation \ref{eqn1} by $\lambda_m$ and subtract by from \ref{eqn3} and we get \[ 0 = \alpha_1 (\lambda_1 - \lambda_k)\vec v_1 + \alpha_2(\lambda_2 - \lambda_k)\vec v_2 + \cdots + \alpha_{k-1} (\lambda_{k-1} - \lambda_k)\vec v_{k-1}\]
+A contradiction since $k$ is not the minimum index with the property chosen above. Therefore the list $\li{\vec v}m$ must be linearly independent.
 \end{proof}
 \begin{corollary}
 An operator $T \in \c L(V)$ has at most $\boxed{\dim V}$ distinct eigenvalues.
 \end{corollary}
 \subsubsection{Restriction Operators}
 \begin{definition}
-    Suppose $T \in \c L(V)$ and $U$ is a subspace of $V$ invariant under $T$. Then the restriction operator $T|_U \in \c L(U)$ is deifned by $T|_U(u) = Tu$ for all $u \in U$.
+    Suppose $T \in \c L(V)$ and $U$ is a subspace of $V$ invariant under $T$. Then the restriction operator $T|_U \in \c L(U)$ is deifned by $T|_U(\vec u) = T\vec u$ for all $\vec u \in U$.
 \end{definition}
 \subsection{Eigenvectors and Upper-Triangular
 Matrices}
@@ -83,18 +84,18 @@ Matrices}
     What information about eigenvalues/eigenvectors can be read off from a matrix representation?
 \end{question}
 \begin{theorem}
-    Suppose $T \in \c L(V)$ and $\li vn$ is a basis of $V$. Then the following are logically equivalent:
+    Suppose $T \in \c L(V)$ and $\li{\vec v}n$ is a basis of $V$. Then the following are logically equivalent:
     \begin{enumerate}
         \item  $\c M(T)$ is upper triangular.
-        \item $Tv_j \in \spa (\li vj)$ $\forall j = 1,2, \ldots, n$.
-        \item $\spa (\li vj)$ is invariant under $T$ $\forall j = 1,2,\ldots, n$.
+        \item $T\vec v_j \in \spa (\li{\vec v}j)$ $\forall j = 1,2, \ldots, n$.
+        \item $\spa (\li{\vec v}j)$ is invariant under $T$ $\forall j = 1,2,\ldots, n$.
     \end{enumerate}
 \end{theorem}
 \newpage
 \begin{proof}
     $1) \implies 2) $ \[\bml * & * & * & * & \cdots & * \\  & * & * & * & \cdots & * \\  &  & * & * & \cdots & * \\ & & & * & \cdots & * \\  & & & & \ddots & \vdots \\  & & & & & * \bmr\] We can see that $2)$ holds true by inspection. \\
-    $2) \implies 3)$ Consider $Tv_h$ for $h \leq j$, by $2)$ we have $Tv_k \in \spa(\li vh) \subseteq \spa (\li vj)$. So $\spa (\li vj)$ is invariant under $T$. \\
-    $3) \implies 2)$ Consider $Tv_j$, by $3)$ it is a linear combination of $\li vj$ because $Tv_j \in \spa(\li vj)$ so $\c M(T)(i,j) = 0$ if $i > j$.
+    $2) \implies 3)$ Consider $T\vec v_h$ for $h \leq j$, by $2)$ we have $T\vec v_k \in \spa(\li{\vec v}h) \subseteq \spa (\li{\vec v}j)$. So $\spa (\li{\vec v}j)$ is invariant under $T$. \\
+    $3) \implies 2)$ Consider $T\vec v_j$, by $3)$ it is a linear combination of $\li{\vec v}j$ because $T\vec v_j \in \spa(\li{\vec v}j)$ so $\c M(T)(i,j) = 0$ if $i > j$.
 \end{proof}
 \begin{question}
     What about conditions for lower-triangular matrices?
@@ -103,7 +104,7 @@ Matrices}
 Over $\b C$, every linear operator has at least one eigenvalue.
 \end{lemma}
 \begin{proof}
-    Take $v \in V\ \backslash \lb 0 \rb$, and consider the list $v, Tv, T^2v, \ldots, T^nv$ where $n = \dim V$. There is a nontrivial linear combination of these vectors which is $0$. Suppose the equation \[a_0v_1 + a_1Tv + a_2T^2v + \cdots + a_nT^nv = 0\]
+    Take $\vec v \in V\ \backslash \lb 0 \rb$, and consider the list $\vec v, T\vec v, T^2\vec v, \ldots, T^n\vec v$ where $n = \dim V$. There is a nontrivial linear combination of these vectors which is $0$. Suppose the equation \[a_0\vec v_1 + a_1T\vec v + a_2T^2\vec v + \cdots + a_nT^n\vec v = 0\]
     i.e. $p(T)v = 0$ for nonconstant $p(x) : = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$. By the fundamental theorem of algebra $p$ splits into linear factors over $\b C$.
     \[ p(x) = c(x - \lambda_1)(x - \lambda_2) \cdots (x - \lambda_m)\] for some $m \leq n$. Therefore 
     \[ p(T)v = c(T - \lambda_1 \b I)(T - \lambda_2  \b I) \cdots (T - \lambda_m \b I)\]
@@ -120,11 +121,11 @@ Over $\b C$, every linear operator has at least one eigenvalue.
     \textit{Inductive Step.} Consider $\lambda \in \b C$ an eigenvalue of $T$ by lemma. We can define 
     \[U := \range (T  -\lambda \b I)\] 
     $U$ is a subspace of $V$. By the characterization of eigenvalues, $T - \lambda \b I$ is not surjective, hence $\range T - \lambda \b I \not\subseteq V$, hence $\dim \range (T - \lambda \b I) < \dim V$.
-    We want to show that $U$ is invariant under $T$. Suppose $v \in U$, then \[Tv = \underbrace{(T - \lambda \b I)v}_{\in U} + \underbrace{\lambda v}_{\in U}\] therefore we know that $U$ is invariant under $T$. 
-    Consider \[T|_U \in \c L(U) : (T|_U)(v) := Tv \forall v \in U\] 
-    If $U \neq \lb 0 \rb$, then there is a basis $\li um$ of $U$ ($m < n$) such that the matrix representation of $T/U$ with respect to $\li um$ is upper triangular by the inductive hypothesis. Extend $\li um$ to a basis of $V$, $\li um, \li vk$. We compute
+    We want to show that $U$ is invariant under $T$. Suppose $\vec v \in U$, then \[T\vec v = \underbrace{(T - \lambda \b I)\vec v}_{\in U} + \underbrace{\lambda \vec v}_{\in U}\] therefore we know that $U$ is invariant under $T$. 
+    Consider \[T|_U \in \c L(U) : (T|_U)(\vec v) := T\vec  v \forall \vec v \in U\] 
+    If $U \neq \lb 0 \rb$, then there is a basis $\li{\vec u}m$ of $U$ ($m < n$) such that the matrix representation of $T/U$ with respect to $\li{\vec u}m$ is upper triangular by the inductive hypothesis. Extend $\li{\vec u}m$ to a basis of $V$, $\li{\vec u}m, \li{\vec v}k$. We compute
 
-    \[Tv_j = \underbrace{(T - \lambda \b I)v_j}_{\in U = \spa (\li um)} + \lambda v_j\] We also know that $Tu_l \in \spa (\li u{l-1})$. We can see the matrix representation and hence we are done
+    \[T\vec v_j = \underbrace{(T - \lambda \b I)\vec v_j}_{\in U = \spa (\li{\vec u}m)} + \lambda \vec v_j\] We also know that $T\vec u_l \in \spa (\li {\vec u}{l-1})$. We can see the matrix representation and hence we are done
     \[ \begin{array}{cc}
          \\ \\ \\ \\ m \\ \\ \\ 
     \end{array}\left[\begin{array}{cccc|ccccccc}
@@ -147,13 +148,13 @@ Over $\b C$, every linear operator has at least one eigenvalue.
 \begin{proof}
     Suppose all diagonal entries are nonzero. Prove surjectivity. 
     \begin{align*}
-        Tv_1  &=A_{1,1} v_1, A_{1,1} \neq 0 \implies v_1 \in \range T\\
-     Tv_2  &=A_{1,2} v_1 + A_{2,2} v_2 , A_{2,2} \neq 0 \implies v_2 \in \range T \\
+        T\vec v_1  &=A_{1,1} v_1, A_{1,1} \neq 0 \implies \vec v_1 \in \range T\\
+     T\vec v_2  &=A_{1,2} \vec v_1 + A_{2,2} \vec v_2 , A_{2,2} \neq 0 \implies \vec v_2 \in \range T \\
      \vdots & \hspace{5cm} \implies \\
-     Tv_n &= A_{1,n} v_1 + A_{2,n} v_2 + \cdots + A_{n,n} v_n, A_{n,n} \neq 0 \implies v_n \in \range T
+     T\vec v_n &= A_{1,n} \vec v_1 + A_{2,n} \vec v_2 + \cdots + A_{n,n} \vec v_n \neq 0 \implies \vec v_n \in \range T
     \end{align*} 
     Therefore $\range T = V$, so $T$ is surjective, hence $T$ is invertible. 
-    Suppose at least one one diagonal entry is $0$ we want to show that $T$ is not invertible. Say $A_{j,j} = 0$ for some $j$ and upper triangular matrix $A$. If $j = 1$, then $v_1 \in \null T$, hence $T$ is not invertible, and we are done. If $j > 1$, consider $U := \spa (\li vj)$. $T$ maps $U$ to $\spa (\li v{j-1})$. This shows $T/U$ us not surjective, then we know that $T/U$ is not injective and there exists $u \in U$ such that $u \in \null T/U \implies u \in \null T$. Therefore $T$ is not injective. Hence $T$ is not invertible.
+    Suppose at least one one diagonal entry is $0$ we want to show that $T$ is not invertible. Say $A_{j,j} = 0$ for some $j$ and upper triangular matrix $A$. If $j = 1$, then $v_1 \in \null T$, hence $T$ is not invertible, and we are done. If $j > 1$, consider $U := \spa (\li{\vec v}j)$. $T$ maps $U$ to $\spa (\li{\vec v}{j-1})$. This shows $T|_U$ us not surjective, then we know that $T|_U$ is not injective and there exists $\vec u \in U$ such that $\vec u \in \null T|_U \implies \vec u \in \null T$. Therefore $T$ is not injective. Hence $T$ is not invertible.
 \end{proof}
 \begin{corollary}
     An upper triangular matrix / operator in upper triangular form has the diagonal elements / entries as its eigenvalues.
@@ -174,7 +175,7 @@ has eigenvalue $1,5,9,8,10$.
 \subsection{Eigenspaces and Diagonal Matrices}
 \begin{definition}
     Suppose $T \in \c L(V)$ and $\lambda \in \b F$. The eigenspace of $T$ correspoding to $\lambda$, denoted as $E(\lambda, T)$ is defined as 
-    \[ E(\lambda, T) := \lb v \in V : Tv = \lambda v \rb = \nul (T - \lambda I)\]
+    \[ E(\lambda, T) := \lb \vec v \in V : T\vec v = \lambda \vec v \rb = \nul (T - \lambda I)\]
 \end{definition}
 \begin{definition}
     An operator $T \in \c L(T)$ is called diagonalizable if the operator has a diagonal matrix with repsect to some basis of $V$.

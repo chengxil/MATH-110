@@ -29,3 +29,4 @@
 \contentsline {subsection}{\numberline {5.3}Eigenspaces and Diagonal Matrices}{38}{subsection.351}% 
 \contentsline {section}{\numberline {6}Inner Product Spaces}{40}{section.363}% 
 \contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{40}{subsection.367}% 
+\contentsline {subsection}{\numberline {6.2}Orthogonality}{44}{subsection.410}% 

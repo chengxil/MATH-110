@@ -1,3 +1,4 @@
+%!TEX root = ./main.tex
 \section{Inner Product Spaces}
 \subsubsection*{Motivation}
 \begin{definition}
@@ -7,7 +8,7 @@ for $\vec x = (\li xn), \vec y = (\li yn)$.
 \end{definition}
 \subsection{Inner Product and Norms}
 \subsubsection*{Settings}
-$V$ is a vector space over $\b F$, we can define the following mapping $ \la \cdot, \cdot \ra : V \times V \to \b F$.
+$V$ is a vector space over $\b F$, we can define the following mapping $ \la \ast, \ast \ra : V \times V \to \b F$.
 \begin{definition}
 $\la \cdot, \cdot \ra$ is called an inner product if it satisfying the following rules:
 \begin{enumerate}
@@ -22,12 +23,12 @@ $\la \cdot, \cdot \ra$ is called an inner product if it satisfying the following
 What about linearity in the second slot?
 \end{question}
 \begin{answer} We can compute
-\[ \la \vec v, \vec u + \vec w \ra = \overline{\la \vec u + \vec w, \vec v\ra} = \overline{\la \vec u, \vec v \ra + \ra \vec w, \vec v} = \overline{\la \vec u, \vec v \ra} + \overline{\la \vec w, \vec v\ra } = \la \vec v, \vec u\ra + \la \vec v, \vec w\ra\]
-\[ \la \vec v, \lambda \vec u\ra = \overline{\la \lambda u, \vec v\ra} = \overline{\lambda \la \vec u,\vec v\ra} = \bar \lambda \ \overline{\la \vec u, \vec v\ra} = \bar \lambda \la \vec v, \vec u \ra\]
+\[ \la \vec v, \vec u + \vec w \ra = \overline{\la \vec u + \vec w, \vec v\ra} = \overline{\la \vec u, \vec v \ra + \la \vec w, \vec v \ra} = \overline{\la \vec u, \vec v \ra} + \overline{\la \vec w, \vec v\ra } = \la \vec v, \vec u\ra + \la \vec v, \vec w\ra\]
+\[ \la \vec v, \lambda \vec u\ra = \overline{\la \lambda \vec u, \vec v\ra} = \overline{\lambda \la \vec u,\vec v\ra} = \bar \lambda \ \overline{\la \vec u, \vec v\ra} = \bar \lambda \la \vec v, \vec u \ra\]
 Not quite. \frownie{}
 \end{answer}
 \begin{remark}
-    If $\vec v \in V$ is fixed then the function $\la \cdot, \vec v \ra : \vec u \mapsto \la \vec u, \vec v \ra$ is a function functional. 
+    If $\vec v \in V$ is fixed then the function $\la \ast, \vec v \ra : \vec u \mapsto \la \vec u, \vec v \ra$ is a function functional. 
 \end{remark}
 \begin{example}
     On $\b R^n$, we could use any function of the type
@@ -44,21 +45,21 @@ Not quite. \frownie{}
     \[ \la f, g \ra : = \int_0^\infty f(t)\overline{g(t)}e^{-t} dt\]
 \end{remark}
 \begin{definition}
-    For $v \in V$, the (Euclidean) Norm is defined as
-    \[ ||v|| : = \sqrt{\la v,v \ra}\] 
+    For $\vec v \in V$, the (Euclidean) Norm is defined as
+    \[ ||\vec v|| : = \sqrt{\la \vec v,\vec v \ra}\] 
 \end{definition}
 \begin{theorem}(Properties of Norms)
     \begin{enumerate}
-        \item $||\lambda v || = |\lambda| \ ||v|| \ \forall v \in V, \forall \lambda \in \b F $
-        \item $||v|| > 0$ for all $v \in V$
-        \item $||v|| = 0$ if and only if $v = 0$ 
+        \item $||\lambda \vec v || = |\lambda| \ ||v|| \ \forall v \in V, \forall \lambda \in \b F $
+        \item $||\vec v|| > 0$ for all $v \in V$
+        \item $||\vec v|| = 0$ if and only if $v = 0$ 
     \end{enumerate}
 \end{theorem}
 \begin{definition}
     An inner product space is a vector space $V$ along with and inner product on $V$.
 \end{definition}
 \begin{definition}
-    For $u,v \in V$, we say $u$ and $v$ is orthogonal if $\la u, v\ra = 0$
+    For $u,v \in V$, we say $\vec u$ and $\vec v$ is orthogonal if $\la \vec u, \vec v\ra = 0$
 \end{definition}
 \begin{theorem}[Pythagorean Theorem] $ $
 \begin{center}
@@ -66,34 +67,34 @@ Not quite. \frownie{}
         \draw[->, very thick] (4,0) -- (4,3);
         \draw[->, very thick] (0,0) -- (4,0);
         \draw[->, very thick] (0,0) -- (4,3);
-        \draw (2,0) node[anchor = north] {$u$};
-        \draw (4,1.5) node[anchor = east] {$v$};
+        \draw (2,0) node[anchor = north] {$\vec u$};
+        \draw (4,1.5) node[anchor = east] {$\vec v$};
     \end{tikzpicture}
 \end{center}
-\[ ||u + v||^2 = ||u||^2 + ||v||^2 \iff \la u + v, u + v\ra = \la u,u \ra + \la v,v \ra \]
+\[ ||\vec u + \vec v||^2 = ||\vec u||^2 + ||\vec v||^2 \iff \la \vec u + \vec v, \vec u + \vec v\ra = \la \vec u, \vec u \ra + \la \vec v, \vec v \ra \]
 \end{theorem}
 \begin{proof} We compute
-    \[ \la u + v, u + v\ra = \la u,u \ra + \la u , v \ra + \la v, u \ra + \la v,v \ra = \la u,u \ra + 0 + 0 + \la v,v \ra = ||u|| + ||v|| \]
+    \[ \la \vec u + \vec v, \vec u + \vec v\ra = \la \vec u,\vec u \ra + \la \vec u , \vec v \ra + \la \vec v, \vec u \ra + \la \vec v,\vec v \ra = \la \vec u,\vec u \ra + 0 + 0 + \la \vec v,\vec v \ra = ||\vec u|| + ||\vec v|| \]
 \end{proof}
 \subsubsection*{Obeservation}
-Given $u,v \in V$ such that $v \neq 0$, we want to modify $u$ such that $u + cv$ is orthogonal to $v$. We know that $\la v + cv, v \ra = 0$, solve for $c$ gives $c = \displaystyle\frac{-\la u, v\ra}{\la v, v \ra}$.
+Given $\vec u,\vec v \in V$ such that $\vec v \neq 0$, we want to modify $\vec u$ such that $\vec u + c\vec v$ is orthogonal to $\vec v$. We know that $\la \vec v + c\vec v, \vec v \ra = 0$, solve for $c$ gives $c = \displaystyle\frac{-\la \vec u, \vec v\ra}{\la \vec v, \vec v \ra}$.
 \begin{center}
     \begin{tikzpicture}
         \draw[->, very thick, color = magenta] (0,0) -- (1, 5.5);
         \draw[->, very thick, color = green] (0,0) -- (3, 4);
         \draw[->, very thick] (0,0) -- (2,2.66666666);
         \draw[->, very thick, color = blue] (1, 5.5) -- (3,4);
-        \draw (2,2) node {$v$};
-        \draw (0.2,4) node {$u$};
-        \draw (3,3.2) node {$cv$};
-        \draw (2.3, 5.2) node {$u + cv$};
+        \draw (2,2) node {$\vec v$};
+        \draw (0.2,4) node {$\vec u$};
+        \draw (3,3.2) node {$c\vec v$};
+        \draw (2.3, 5.2) node {$\vec u + c\vec v$};
     \end{tikzpicture} 
 
     An orthogonal decompostion
 \end{center}
 \begin{theorem}[Cauchy-Schwarz Inequality]
     For any $u,v \in V$ where $V$ is a inner product space, the following holds
-    \[ |\la u,v \ra| \leq ||u|| \cdot ||v||\]
+    \[ |\la \vec u,\vec v \ra| \leq ||\vec u|| \cdot ||\vec v||\]
 \end{theorem}
 \begin{proof}
     Given $u,v \in V$, we can assume without the loss of generality that $v \neq 0$. So we can consider vectors $u + cv$ and $v$ that are orthogonal for the choice that 
@@ -102,5 +103,87 @@ Given $u,v \in V$ such that $v \neq 0$, we want to modify $u$ such that $u + cv$
     So by dropping $|| u + cv||^2 > 0$, we obtain $||cv||^2 \leq ||u||$, i.e, 
     \[ \frac{|\la u, v \ra|^2}{||v||^2} \leq ||u||^2 \implies |\la u,v\ra|^2 \leq ||u|^2 \cdot ||v||^2 \implies |\la u,v \ra|^2 \leq ||u|| \cdot ||v||\]
 \end{proof}
-
-
+\begin{theorem}[Triangle Inequality]
+\[ ||\mathbf u + \mathbf v|| \leq ||\mathbf u|| + ||\mathbf v||\]
+\end{theorem}
+\begin{proof}
+We want to show
+\[ ||\mathbf u + \mathbf v|| \leq \left( || \mathbf u || + ||\mathbf v||\right)^2\]
+We can factor them out 
+\[ \la \mathbf u, \mathbf u \ra + \la \mathbf u, \mathbf v \ra + \la \mathbf v, \mathbf u \ra + \la \mathbf v, \mathbf v \ra \leq ||\mathbf u||^2 + 2 ||\mathbf u|| \cdot ||\mathbf v|| + ||\mathbf v||^2\]
+\[ 2\Re \la \vec u, \vec v \ra \leq 2||\vec u||\cdot ||\vec v|| \]
+%\begin{center}
+%    \begin{tikzpicture}
+%        \draw[->, thick] (0,0) -- (6,2);
+%        \draw[->, thick] (0,0) -- (6,0);
+%        \draw (3,0) node[anchor = north] {$\Re v$};
+%        \draw (3,1) node[anchor = north] {$v$};
+%    \end{tikzpicture}
+%\end{center}
+\end{proof}
+\begin{theorem}[Alternative Version of Triangle Inequality]
+    \[ \big| ||\vec u|| - ||\vec v|| \big| \leq ||\vec u - \vec v||\]
+\end{theorem}
+\begin{proof}
+    Notice that 
+    \[   ||\vec u|| - ||\vec v|| \leq ||\vec u - \vec v|| \iff ||\vec u|| \leq ||\vec u - \vec v||  + ||\vec v||\]
+    Which is the triangle inequaliy. Swapping out $\vec u$ and $\vec v$ gives us \[   ||\vec v|| - ||\vec u|| \leq ||\vec v - \vec u|| \iff ||\vec u|| \leq ||\vec u - \vec v||  + ||\vec v||\]
+    Combining these equations gives us
+    \[ \big| ||\vec u|| - ||\vec v|| \big| \leq ||\vec u - \vec v||\]
+\end{proof}
+\begin{fact}[Fun inequalities]
+\[ ||\vec u + \vec v||^2 + ||\vec u + \vec v||^2 = 2\left(||\vec u||^2 + ||\vec v||^2\right)\]
+\end{fact}
+\subsection{Orthogonality}
+\begin{definition}
+    A list $\li{\vec v}{k}$ is $V$ is called orthonormal if \[ \la \vec v_i \vec v_j \ra = \delta_{ij} = \left\{\begin{array}{cc}
+        1 & \text{if } i = j \\
+        0 & \text{if } i \neq j \\
+    \end{array} \right.\]
+\end{definition}
+\begin{lemma}
+    Any list of orthonormal vectors is necessarily linearly indepedent.
+\end{lemma}
+\begin{proof}
+    Suppose $\lincomb{\alpha}{\vec v}{k} = \vec 0$. We can compute on the standard inner product
+    \[ \la \lincomb{\alpha}{\vec v}{k} , \vec v_1 \ra = \alpha_1 \la \vec v_1, \vec v_1 \ra + \alpha_2 \la \vec v_2, \vec v_1 \ra + \cdots + \alpha_k \la \vec v_k, \vec v_1 \ra \implies \alpha_1 = 0\]
+    \[ \la \lincomb{\alpha}{\vec v}{k} , \vec v_2 \ra = \alpha_1 \la \vec v_2, \vec v_2 \ra + \alpha_2 \la \vec v_2, \vec v_2 \ra + \cdots + \alpha_k \la \vec v_k, \vec v_2 \ra \implies \alpha_1 = 0\]
+    \[ \vdots \]
+    \[ \la \lincomb{\alpha}{\vec v}{k} , \vec v_k \ra = \alpha_1 \la \vec v_1, \vec v_k \ra + \alpha_2 \la \vec v_2, \vec v_k \ra + \cdots + \alpha_k \la \vec v_k, \vec v_k \ra \implies \alpha_k = 0\]
+    Hence $\li{\vec v}k$ is linearly indepedent.
+\end{proof}
+\begin{question}
+    What is nice about orthonormal basis?
+\end{question}
+\begin{answer}
+    If $(\li{\vec v}n)$ is an orthonormal basis, then an arbitary vector can be written as 
+    \[ \vec v = \la \vec v, \vec v_1 \ra \vec v_1 + \la \vec v, \vec v_2 \ra \vec v_2 + \cdots + \la \vec v, \vec v_n \ra \vec v_n\]
+    Furthermore, we can conclude the following theorem:
+\end{answer}
+\begin{theorem}[Generalized Pythagorean Theorem]
+\[ ||\vec v||^2 = \sum_{j = 1}^{n} \big| \la \vec v, \vec v_j \ra \big|^2\]
+\end{theorem}
+\begin{algorithm}[Gram-Schmidt Algorithm]
+    \texttt{Input}: Any $\li{\vec v}m$ that is linearly independent. \\
+    \texttt{Output}: $\li{\vec e}m$ such that $\vec e_j \in \spa (\li{\vec v}j)$ for all $j \leq n$.
+    \begin{proof}[Process] $ $
+        \begin{align*}\vec e_1 &= \frac{\vec v_1}{||\vec v_1||} \\
+        \vec e_2 &= \frac{\vec v_2 - \la \vec v_2, \vec e_1 \ra \vec e_1}{||\vec v_2 - \la \vec v_2, \vec e_1 \ra \vec e_1||} \\
+        \vec e_3 &= \frac{\vec v_3 - \la \vec v_3, \vec e_1 \ra \vec e_1 - \la \vec v_3, \vec e_2 \ra \vec e_2}{||\vec v_3 - \la \vec v_3, \vec e_1 \ra \vec e_1 - \la \vec v_3, \vec e_2 \ra \vec e_2||} \\
+        \vdots \\
+        \vec e_n &= \frac{\vec v_n - \la \vec v_{n}, \vec e_1 \ra \vec e_1 - \la \vec v_n, \vec e_2 \ra \vec e_n \cdots - \la \vec v_n - \vec e_{n-1} \ra \vec e_{n-1}}{||\vec v_n - \la \vec v_{n}, \vec e_1 \ra \vec e_1 - \la \vec v_n, \vec e_2 \ra \vec e_n \cdots - \la \vec v_n - \vec e_{n-1} \ra \vec e_{n-1}||}
+        \end{align*}
+    \end{proof}
+\end{algorithm}
+\begin{remark}[Projection orthonal with the repect to inner product]
+    Given a subsace $U$ of $V$ for finie dimensioanl vector space $V$, there is a projector $P_V$ that project all vectors in $V$ on $V$ orthogonally.
+\end{remark}
+\begin{remark}[Relations between inner product and linear functionals]
+    Suppose $V$ is finite dimensional vector space. Given any $\vec u \in V$, then function $\la \cdot, \vec u\ra$ is a linear functional (i.e. an element of $V' = \c L(V,\b F)$)
+\end{remark}
+\begin{theorem}[Riesz Representation Theorem]
+    For any $\varphi \in V'$ there exists $\vec v \in V$ such that $\la \vec v, \vec v \ra = \varphi (\vec v)$ for al $\vec v \in V$.
+\end{theorem}
+\begin{proof}
+    Left as an exercise.
+\end{proof}
