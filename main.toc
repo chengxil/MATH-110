@@ -30,3 +30,4 @@
 \contentsline {section}{\numberline {6}Inner Product Spaces}{40}{section.363}% 
 \contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{40}{subsection.367}% 
 \contentsline {subsection}{\numberline {6.2}Orthogonality}{44}{subsection.410}% 
+\contentsline {subsection}{\numberline {6.3}Orthogonality and Orthogonal Projections}{46}{subsection.433}% 

@@ -24,9 +24,9 @@ $\b R^n, \b C^n$, or generally $\b F^n$.
     \item Additive Identity \\
     $\exists \ \vec 0 \in V : \vec v + \vec 0 = \vec v + \vec 0 = \vec v$ 
     \item Additive Inverse
-    $\forall v \in V \ \exists \ \vec w \in V : \vec v + \vec w = \vec 0$.
+    $\forall \vec v \in V \ \exists \ \vec w \in V : \vec v + \vec w = \vec 0$.
     \item (Mixed) Scalar Multiplication Rules \\
-    $1 \cdot v \in v \tab \forall v \in V$
+    $1 \cdot \vec v \in \vec v \tab \forall v \in V$
     \item Distributivity:  \\
     $(\alpha + \beta ) \cdot \vec v = \alpha \cdot \vec v + \beta \cdot \vec v \tab \forall \ a,b, \in \b F \tab \forall \ \vec v \in V$ \\
     $\alpha \cdot (\vec v + \vec w) = \alpha \cdot \vec v + \alpha \cdot \vec w \tab \forall \ a \in \b F \tab \forall \ \vec v ,\vec w \in V$
@@ -113,7 +113,7 @@ Since the operation in inherent from vector space $V$, we do not need to verify 
     The union of two subspace of $V$ are generally not a subspace of $V$
 \end{proposition}
 \begin{proof}
-    We can see that $\text{span} \lb e_1 \rb$ and $\text{span} \lb e_2 \rb$ is not a subspace if $\b R^2$ as $(1,1) \not\in W_1 \cup W_2$ 
+    We can see that $\text{span} \lb \vec e_1 \rb$ and $\text{span} \lb \vec e_2 \rb$ is not a subspace if $\b R^2$ as $(1,1) \not\in W_1 \cup W_2$ 
 \end{proof}
 \begin{theorem}
     Union of two subspaces of $V$ is a subspace of $V$ if and only if one of the subspaces is contained in the other.
@@ -131,10 +131,10 @@ Since the operation in inherent from vector space $V$, we do not need to verify 
 \end{proof}
 \begin{remark}
     $W_1 + W_2 + \cdots + W_n$ if the smallest subspace containing $\li Wn$. \\
-    If $\tilde  v$ is a subspace of $V \supseteq W_j \ \forall j$, since $\tilde  v$ is closed under $+$, $w_1 + w_2 + \cdots + w_n \in W_n$
+    If $\tilde {\vec v}$ is a subspace of $V \supseteq W_j \ \forall j$, since $\tilde {\vec v}$ is closed under $+$, $\vec w_1 + \vec w_2 + \cdots + \vec w_n \in W_n$
 \end{remark}
 \begin{example}
-Suppose $V = \b R^3$. Let $W_1 = \spa \{e_1, e_2\}$, $W_2 = \spa \{(0,1,1)\}$, $W_3 = \spa \lb (x,y,z) : x + y + z = 0 \rb$. 
+Suppose $V = \b R^3$. Let \[W_1 = \spa \{e_1, e_2\}, W_2 = \spa \{(0,1,1)\}, W_3 = \spa \lb (x,y,z) : x + y + z = 0 \rb\] 
 What is $W_1 + W_2 + W_3$?
 \end{example}
 Note that $(0,0,1) = \underbrace{\left(0,\frac12,\frac12\right)}_{\in W_2} +  \underbrace{\left(0,-\frac12,\frac12\right)}_{\in W_3}$. We also know that $(1,0,0) \in W_1$ and $(0,1,0) \in W_2$, therefore $W_1 + W_2 + W_3 = \b R^3$ \\
@@ -178,7 +178,7 @@ Suppose $F  = \lb 0,1,2,3 \rb$. Can $F$ be a field?
 \subsection{Direct Sum}
 \begin{definition}
     Let $(\b F, V, \cdot : \b F \times V \to V)$ be a vector space. Given that $\li Un \subseteq V$ are subspaces of $V$, we can define the sum of the subspaces as 
-    \[ U_1 + U_2 + \cdots + U_n = \lb u_1 + u_2 + \cdots + u_n : u_i \in U_i \rb \]
+    \[ U_1 + U_2 + \cdots + U_n = \lb \vec u_1 + \vec u_2 + \cdots + \vec u_n : \vec u_i \in U_i \rb \]
 \end{definition}
 \begin{proof}
     \begin{enumerate} [label  = \arabic*)]

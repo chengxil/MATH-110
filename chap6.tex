@@ -50,16 +50,16 @@ Not quite. \frownie{}
 \end{definition}
 \begin{theorem}(Properties of Norms)
     \begin{enumerate}
-        \item $||\lambda \vec v || = |\lambda| \ ||v|| \ \forall v \in V, \forall \lambda \in \b F $
-        \item $||\vec v|| > 0$ for all $v \in V$
-        \item $||\vec v|| = 0$ if and only if $v = 0$ 
+        \item $||\lambda \vec v || = |\lambda| \ ||\vec v|| \ \forall \vec v \in V, \forall \lambda \in \b F $
+        \item $||\vec v|| > 0$ for all $\vec v \in V$
+        \item $||\vec v|| = 0$ if and only if $\vec v = \vec 0$ 
     \end{enumerate}
 \end{theorem}
 \begin{definition}
     An inner product space is a vector space $V$ along with and inner product on $V$.
 \end{definition}
 \begin{definition}
-    For $u,v \in V$, we say $\vec u$ and $\vec v$ is orthogonal if $\la \vec u, \vec v\ra = 0$
+    For $\vec u,\vec v \in V$, we say $\vec u$ and $\vec v$ is orthogonal if $\la \vec u, \vec v\ra = 0$
 \end{definition}
 \begin{theorem}[Pythagorean Theorem] $ $
 \begin{center}
@@ -97,29 +97,23 @@ Given $\vec u,\vec v \in V$ such that $\vec v \neq 0$, we want to modify $\vec u
     \[ |\la \vec u,\vec v \ra| \leq ||\vec u|| \cdot ||\vec v||\]
 \end{theorem}
 \begin{proof}
-    Given $u,v \in V$, we can assume without the loss of generality that $v \neq 0$. So we can consider vectors $u + cv$ and $v$ that are orthogonal for the choice that 
-    \[ c: = \frac{ - \la u,v \ra}{\la v,v\ra}\]
-    By Pathgrathrean theorem, $||u + cv||^2 + ||cv||^2 = ||u||^2$. But $||cv||^2 = |c|^2||v||^2$ and recall \[ c= \frac{- \la u,v\ra}{\la v,v\ra}, \text{ so } c^2= \frac{|\la u,v\ra|^2}{\la v,v\ra^2} = \frac{|\la u, v \ra|^2}{||v||^4}, \text{ therefore } ||cv||^2 = \frac{|\la u, v \ra|^2}{||v||^4} ||v||^2 = \frac{|\la u, v \ra|^2}{||v||^2}\]
-    So by dropping $|| u + cv||^2 > 0$, we obtain $||cv||^2 \leq ||u||$, i.e, 
-    \[ \frac{|\la u, v \ra|^2}{||v||^2} \leq ||u||^2 \implies |\la u,v\ra|^2 \leq ||u|^2 \cdot ||v||^2 \implies |\la u,v \ra|^2 \leq ||u|| \cdot ||v||\]
+    Given $\vec u,\vec v \in V$, we can assume without the loss of generality that $\vec v \neq 0$. So we can consider vectors $\vec u + c\vec v$ and $\vec v$ that are orthogonal for the choice that 
+    \[ c: = \frac{ - \la \vec u,\vec v \ra}{\la \vec v,\vec v\ra}\]
+    By Pathgrathrean theorem, $||\vec u + c\vec v||^2 + ||c\vec v||^2 = ||\vec u||^2$. But $||c\vec v||^2 = |c|^2||\vec v||^2$ and recall \[ c= \frac{- \la \vec u,\vec v\ra}{\la \vec v,\vec v\ra}, \text{ so } c^2= \frac{|\la \vec u, \vec v\ra|^2}{\la \vec v,\vec v\ra^2} = \frac{|\la \vec u, \vec v \ra|^2}{||\vec v||^4}, \text{ therefore } ||c\vec v||^2 = \frac{|\la \vec u, \vec v \ra|^2}{||\vec v||^4} ||\vec v||^2 = \frac{|\la \vec u, \vec v \ra|^2}{||\vec v||^2}\]
+    So by dropping $||\vec u + c\vec v||^2 > 0$, we obtain $||c\vec v||^2 \leq ||\vec u||$, i.e, 
+    \[ \frac{|\la \vec u, \vec v \ra|^2}{||\vec v||^2} \leq ||\vec u||^2 \implies |\la \vec  u,\vec v\ra|^2 \leq ||\vec u|^2 \cdot ||\vec v||^2 \implies |\la \vec u,\vec v \ra|^2 \leq ||\vec u|| \cdot ||\vec v||\]
 \end{proof}
 \begin{theorem}[Triangle Inequality]
 \[ ||\mathbf u + \mathbf v|| \leq ||\mathbf u|| + ||\mathbf v||\]
 \end{theorem}
 \begin{proof}
-We want to show
-\[ ||\mathbf u + \mathbf v|| \leq \left( || \mathbf u || + ||\mathbf v||\right)^2\]
-We can factor them out 
-\[ \la \mathbf u, \mathbf u \ra + \la \mathbf u, \mathbf v \ra + \la \mathbf v, \mathbf u \ra + \la \mathbf v, \mathbf v \ra \leq ||\mathbf u||^2 + 2 ||\mathbf u|| \cdot ||\mathbf v|| + ||\mathbf v||^2\]
-\[ 2\Re \la \vec u, \vec v \ra \leq 2||\vec u||\cdot ||\vec v|| \]
-%\begin{center}
-%    \begin{tikzpicture}
-%        \draw[->, thick] (0,0) -- (6,2);
-%        \draw[->, thick] (0,0) -- (6,0);
-%        \draw (3,0) node[anchor = north] {$\Re v$};
-%        \draw (3,1) node[anchor = north] {$v$};
-%    \end{tikzpicture}
-%\end{center}
+ We have 
+ \begin{align*}
+    ||\vec u + \vec v||^2 &= \langle \vec u + \vec v, \vec u + \vec v \rangle = \la \vec u + \vec u \ra + \cg{\vec v, \vec v} + \cg{\vec u, \vec v} + \cg{\vec v, \vec u} \\
+    &= ||\vec u||^2 + ||\vec v||^2 + \cg{\vec u + \vec v} + \bar{\cg{\vec u + \vec v}} = ||\vec u||^2 + ||\vec v||^2 + 2\text{Re}\cg{\vec u, \vec v} \\
+    &\leq ||\vec u||^2 + ||\vec v||^2 + 2|\cg{\vec u, \vec v}| \leq ||\vec u||^2 + ||\vec v||^2 + 2||\vec u||\ ||\vec v|| \\
+    &= \left(||\vec u|| + ||\vec v||\right)^2
+ \end{align*}
 \end{proof}
 \begin{theorem}[Alternative Version of Triangle Inequality]
     \[ \big| ||\vec u|| - ||\vec v|| \big| \leq ||\vec u - \vec v||\]
@@ -175,6 +169,12 @@ We can factor them out
         \end{align*}
     \end{proof}
 \end{algorithm}
+\begin{proposition}
+    Every finite inner product vector space has a orthonormal basis. 
+\end{proposition}
+\begin{proof}
+    Suppose $V$ is a finite dimensional vector space. Let $\li{\vec v}n$ be a basis for $V$. We then apply Gram-Schmidt Algorithm to the basis to obtain a orthonormal basis $\li{\vec e}n$. 
+\end{proof}
 \begin{remark}[Projection orthonal with the repect to inner product]
     Given a subsace $U$ of $V$ for finie dimensioanl vector space $V$, there is a projector $P_V$ that project all vectors in $V$ on $V$ orthogonally.
 \end{remark}
@@ -182,8 +182,57 @@ We can factor them out
     Suppose $V$ is finite dimensional vector space. Given any $\vec u \in V$, then function $\la \cdot, \vec u\ra$ is a linear functional (i.e. an element of $V' = \c L(V,\b F)$)
 \end{remark}
 \begin{theorem}[Riesz Representation Theorem]
-    For any $\varphi \in V'$ there exists $\vec v \in V$ such that $\la \vec v, \vec v \ra = \varphi (\vec v)$ for al $\vec v \in V$.
+    For any $\varphi \in V'$ there exists a \textit{unique} $\vec u \in V$ such that $\la \vec v, \vec u \ra = \varphi (\vec v) = \varphi(\vec v)$ for al $\vec v \in V$.
+\end{theorem}
+\newpage
+\begin{proof} \textbf{Existence} \\
+    Take an orthonormal basis $\li{\vec v}n$. of $V$. Any $\vec v$ can be written as a linear combination the basis (To preserve linearity we want to put $\vec v$ into the first slot)
+    \begin{align*} \vec v &= \la \vec v , \vec e_1 \vec \ra \vec e_1 + \la \vec v, \vec e_2 \ra + \cdots + \la \vec v, \vec e_n \ra \\
+    \varphi(v) &= \la \vec v , \vec e_1 \vec \ra \varphi(\vec e_1) + \la \vec v, \vec e_2 \ra \varphi(\vec e_2)+ \cdots + \la \vec v, \vec e_n \ra \varphi(\vec e_n) \\
+    &= \la \vec v + \bar{\varphi(\vec e_1)}e_1 + \bar{\varphi(\vec e_2)}e_2 + \cdots + \bar{\varphi(\vec e_n)}\vec e_n \ra \\ 
+    &= \vec u 
+    \end{align*}
+    \textbf{Uniqueness} \\
+    Suppose there are $\vec u_1, \vec u_2$ such that $\la \vec v, \vec u_1 \ra = \la \vec v, \vec u_2 \ra$ for all $\vec v \in V$. Take $\vec v = \vec u_1 - \vec u_2$. We can see that 
+    \[ \la \vec v_1, \vec u_1 \ra + \la \vec v, \vec v_2 \ra \iff \la \vec v, \vec u_1 - \vec u_2 \ra\]
+    Plug in $v$ and we get 
+    \[ \la \vec u_1 - \vec u_2, \vec u_1 - \vec u_2 \ra = ||\vec u_1 - \vec u_2||^2 = 0\]
+    This means that $\vec u_1 - \vec u_2 = 0$, or $\vec u_1 = \vec u_2$, hence such $\vec u$ is unique.
+\end{proof}
+\begin{example}
+    Let $V := \c P(\b C)$ and let $\displaystyle \varphi(p) := \int_{-1}^1 p(t) \sin t \cdot dt$. Find a reprsentation in $V$ with with respect to
+    \[ \la f,g \ra = \int_{-1}^1 f(t) \bar{g(t)} dt\] 
+    Suppose $p(t) = a_0 + a_1t + a_2t^2$.
+\end{example}
+\subsection{Orthogonality and Orthogonal Projections}
+\begin{definition}
+    Given an inner produce space $V$ and its subset $U$ of $V$ we can define 
+    \[ U^\perp := \b \vec v \in V : \lb \vec u , \vec v \ra = 0 \ \forall \vec u \in U \rb \]
+\end{definition}
+\begin{theorem}
+Basic facts about orthogonal complement
+\begin{enumerate}[label = (\alph*)]
+    \item If $U$ is a susbet of $V$, then $U^\perp$ is a subspace of $V$.
+    \item $\lb \vec 0 \rb^\perp = V$
+    \item $V^\perp = \lb \vec 0 \rb$
+    \item $U \cap U^\perp \subseteq \lb \vec 0 \rb$ 
+    \item If $U \subseteq W$ then $U^\perp \supseteq W^\perp$
+\end{enumerate}
+\end{theorem}
+\begin{proof} $ $
+\begin{enumerate}[label = (\alph*)] 
+    \item Clearly $\vec 0 \in U^\perp$ as $\la \vec v, \vec 0 \ra = 0 \ \forall \vec v \in V$. Take $\vec v_1, \vec v_2 \in U^\perp$ and $\lambda \in \b F$, then $\la \vec v_1 + \lambda \vec v_2, \vec u \ra = \la \vec v_1, \vec u \ra + \lambda \la \vec v_2, \vec u \ra = 0 \ \forall \vec u \in U$.
+    \item Trivial by part (c).
+    \item Trivial by part (b).
+    \item Suppose $\vec v \in U \cap U^\perp$, then $\la \vec v, \vec v \ra = 0 \implies \vec v = \vec 0$.
+    \item Suppose $\vec v \in W^\perp$, then $\la \vec v, \vec w \ra = 0 \ \forall \vec w \in W$. Since $U \subseteq W$, $\la \vec v, \vec u \ra = 0 \ \forall \vec u \in U$, hence $U^\perp \supseteq W^\perp$.
+\end{enumerate}
+\end{proof}
+\begin{theorem}
+    If $V$ is a finite dimensional inner product space and $U$ is a subspace of $V$, then \[U \oplus U^\perp = V\]
 \end{theorem}
 \begin{proof}
-    Left as an exercise.
+    We already know that the sum is direct by $U \cap U^\perp = \lb 0 \rb$.  By Gram Schmidt we can construct an orthonormal basis of $U$ and extend it to a normal normal basis of $V$ we have $\li{\vec u}k, \li{\vec v}n$. We claim that $\li{\vec v}n$ is a basis of $U^\perp$ as $\la \vec u_i, \vec v_j \ra = 0$ for all $i$ in $1,2, \ldots, k$ and $j$ in $1,2, \ldots, n$. Hence $\li{\vec v}n \in U^\perp$. On the other hand, 
+    \[ U^\perp \in \lincomb{\alpha}{\vec u}k + \lincomb{\beta}{\vec v}{n} \]
+    must satisify $\alpha_j = \la \vec v_i, \vec u_j \ra = \vec 0$ for all $i$ in $1,2, \ldots, k$. Therefore we have $U^\perp = \spa (\li{\vec v}n)$. Hence $U \oplus U^\perp = V$.
 \end{proof}
