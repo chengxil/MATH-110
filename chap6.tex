@@ -236,3 +236,7 @@ Basic facts about orthogonal complement
     \[ U^\perp \in \lincomb{\alpha}{\vec u}k + \lincomb{\beta}{\vec v}{n} \]
     must satisify $\alpha_j = \la \vec v_i, \vec u_j \ra = \vec 0$ for all $i$ in $1,2, \ldots, k$. Therefore we have $U^\perp = \spa (\li{\vec v}n)$. Hence $U \oplus U^\perp = V$.
 \end{proof}
+\begin{definition}
+Suppose $U$ is a finite-dimensional subspace of $V$. The orthogonal projection of $V$ onto $U$ is the operator $P_U \in \c L(V)$ defined as follows: 
+For $\vec v \in V$, write $\vec v = \vec u + \vec w$, where $\vec u \in U$ and $\vec w \in U^\perp$ Then $P_Uv = u$.
+\end{definition}
