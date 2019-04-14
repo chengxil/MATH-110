@@ -2,7 +2,7 @@
 \section{Finite Dimensional Vector Spaces}
 \subsection{Linear Dependence and Independence} 
 \begin{definition}
-    We will works with lists of vectors $\li vk$, then the span of $\li vk$ can be defined as
+    We will works with lists of vectors $\li{\vec v}k$, then the span of $\li{\vec v}k$ can be defined as
     \begin{align*}
          \spa (\li{\vec v}k) &:= \lb \alpha_1\vec v_1 + \alpha_2 \vec v_2 + \cdots  + \alpha_k \vec v_k \rb  \forall \alpha_i \in \b F 
     \end{align*}
@@ -164,7 +164,8 @@ Suppose $W_1 \cap W_2$ forms a basis $\li{\vec w}k$.
 We can extend the basis to \[\vec w_1^{(1)}, \vec w_2^{(1)}, \ldots, \vec w_l^{(1)}, \li{\vec w}k\] is a basis for $W_1$. Similarly, we can extend the basis to \[\vec w_1^{(2)}, \vec w_2^{(2)}, \ldots, \vec w_m^{(2)}, \li{\vec w}k\] is a basis for $W_2$. \\
 We want to establish that \[\dim (W_1 + W_2) = \dim W_1 + \dim W_2 = \dim (W_1 \cap W_2) = l + m + k\] 
 We want to prove that \[\vec w_1^{(1)}, \vec w_2^{(1)}, \ldots, \vec w_l^{(1)}, \vec w_1^{(2)}, \vec w_2^{(2)}, \ldots, \vec w_m^{(2)}, \li{\vec w}k\] is a basis for $W_1 + W_2$. 
-We can see that \[\spa (\li{\vec w^{1}}l, \vec w_1^{(2)}, \vec w_2^{(2)}, \ldots, \vec w_m^{(2)}, \li{\vec w}k) \supseteq U_1, U_2\] Hence $\spa (\ldots) \supseteq U_1 + U_2$. Suppose the equation \[\alpha_1 \vec w_1^{(1)} + \alpha_2 \vec w_2^{(1)} + \cdots + \alpha_l \vec w_l^{(1)} +  \beta_1 \vec w_1^{(2)} + \beta_1 w_2^{(2)} + \cdots + \beta_m \vec w_m^{(2)} + \gamma_1 \vec w_1 + \gamma_2 \vec w_2 + \cdots + \gamma_k \vec wk = \vec 0\]
-Manipulate the equation and we can see \[ \underbrace{ (\alpha_1 \vec w_1^{(1)} + \alpha_2 \vec w_2^{(1)} + \cdots + \alpha_l \vec w_l^{(1)} +  \beta_1 \vec w_1^{(2)} + \beta_1 w_2^{(2)} + \cdots + \beta_m \vec w_m^{(2)})}_{\in W_1} = - \underbrace{(\gamma_1 \vec w_1 + \gamma_2 \vec w_2 + \cdots + \gamma_k \vec wk)}_{\in W_2 \setminus W_1} \]
+We can see that \[\spa (\li{\vec w^{1}}l, \vec w_1^{(2)}, \vec w_2^{(2)}, \ldots, \vec w_m^{(2)}, \li{\vec w}k) \supseteq U_1, U_2\] Hence $\spa (\ldots) \supseteq U_1 + U_2$. 
+Suppose the equation \[\alpha_1 \vec w_1^{(1)} + \alpha_2 \vec w_2^{(1)} + \cdots + \alpha_l \vec w_l^{(1)} +  \beta_1 \vec w_1^{(2)} + \beta_1 \vec w_2^{(2)} + \cdots + \beta_m \vec w_m^{(2)} + \gamma_1 \vec w_1 + \gamma_2 \vec w_2 + \cdots + \gamma_k \vec w_k = \vec 0\]
+Manipulate the equation and we can see \[ \underbrace{ (\alpha_1 \vec w_1^{(1)} + \alpha_2 \vec w_2^{(1)} + \cdots + \alpha_l \vec w_l^{(1)} +  \beta_1 \vec w_1^{(2)} + \beta_1 \vec w_2^{(2)} + \cdots + \beta_m \vec w_m^{(2)})}_{\in W_1} = - \underbrace{(\gamma_1 \vec w_1 + \gamma_2 \vec w_2 + \cdots + \gamma_k \vec w_k)}_{\in W_2 \setminus W_1} \]
 Since they belongs to different sets, clearly they cannot span each other. Therefore \[ \alpha_1 = \alpha_2 = \cdots = \alpha_l = \beta_1 = \beta_2 = \cdots = \beta_m = \gamma_1 = \gamma_2 = \cdots = \gamma_n = 0\]
 Hence the list of vectors is also linearly independent.

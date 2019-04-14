@@ -45,7 +45,7 @@ $\vec 0$ is unique
 \end{proof}
 Additive inverse ate unique, i.e., if $\vec v + \vec w = \vec 0$ and $\vec v + \vec w = 0$, then $\vec u = \vec w$. 
 \begin{proof}
-    Suppose $\vec v + \vec w = \vec 0$ and $\vec v + \vec w = 0$, then
+    Suppose $\vec v + \vec w = \vec 0$ and $\vec v + \vec w = \vec 0$, then
     \[\vec w = \vec w + \vec 0 = \vec w + (\vec v + \vec u) = (\vec w + \vec v) + \vec u = \vec 0 + \vec u = \vec u\]
     A contradiction.
 \end{proof}
@@ -53,7 +53,7 @@ Additive inverse ate unique, i.e., if $\vec v + \vec w = \vec 0$ and $\vec v + \
 \begin{align*}
     (-1) \cdot \vec v + \vec v &= (-1) \cdot \vec v + 1 \cdot \vec v \\
     &= ((-1) + 1) \cdot \vec v \\
-    &= \vec 0 \cdot \vec v \\
+    &= 0 \cdot \vec v \\
     0 \cdot \vec v + 0 \cdot \vec v &= (0 + 0) \cdot \vec v \\ &= 0 \vec v \implies \boxed{ 0 \cdot \vec v = \vec 0}
 \end{align*} 
 Additive inverse $\implies$ $0 \cdot \vec v = \vec 0$ on both sides. 
@@ -105,7 +105,7 @@ Since the operation in inherent from vector space $V$, we do not need to verify 
 \end{theorem}
 \begin{proof}
     We know that $W_1,W_2$ are subspaces of $V$, therefore $\vec 0 \in W_1$ and $\vec 0 \in W_2$, then $0 \in W_1 \cap W_2$. \\
-    Suppose $\vec v,\vec u \in W_1 \cap W_2$, we know that $\vec v,u \in W_1$ and $\vec v,u \in W_2$. Since $W_1,W_2$ is a subspace, therefore $\vec u + \vec v \in W_1 \land \vec u + \vec v \in W_2 \implies \vec u + \vec v \in W_1 \cap W_2$, therefore $W_1 \cap W_2$ is closed under vector addition. \\ 
+    Suppose $\vec v,\vec u \in W_1 \cap W_2$, we know that $\vec v,\vec u \in W_1$ and $\vec v, \vec u \in W_2$. Since $W_1,W_2$ is a subspace, therefore $\vec u + \vec v \in W_1 \land \vec u + \vec v \in W_2 \implies \vec u + \vec v \in W_1 \cap W_2$, therefore $W_1 \cap W_2$ is closed under vector addition. \\ 
     Suppose $\alpha \in \b F$ and $\vec v \in W_1 \cap W_2$. We know that $\alpha \cdot \vec v \in W_1$ and $\alpha \cdot \vec v \in W_2$ since they are both subspaces of $V$. Therefore we conclude $\alpha \cdot \vec v \in W_1 \cap W_2$, therefore $W_1 \cap W_2$ is closed under multiplication. \\
     Therefore $W_1 \cap W_2$ is a subspace of $V$.
 \end{proof}
@@ -126,7 +126,8 @@ Since the operation in inherent from vector space $V$, we do not need to verify 
 \end{theorem}
 \begin{proof}
     (identity) $\vec 0 \in W_1 \land \vec 0 \in W_2 \implies \vec 0 + \vec 0 = \vec 0 \in W_1 + W_2$. \\
-    (closure under addition) Suppose $\vec w_1 + \vec w_2 \in W_1 + W_2$ and $\tilde {w_1} + \tilde  w_2 \in W_1 + W_2$. We compute $(\vec w_1 + \vec w_2) + (\tilde  w_1 + \tilde  w_2) = \underbrace{(\vec w_1 + \tilde  w_1)}_{\in W_1} + \underbrace{(\vec w_2 + \tilde  w_2)}_{\in W_2} \implies (\vec w_1 + \vec w_2) + (\tilde  w_1 + \tilde  w_2) \in W_1 + W_2$. \\
+    (closure under addition) Suppose $\vec w_1 + \vec w_2 \in W_1 + W_2$ and $\tilde{\vec w}_1 + \tilde{\vec w}_2 \in W_1 + W_2$. We compute $(\vec w_1 + \vec w_2) + (\tilde{\vec w}_1 + \tilde {\vec w}_2) = \underbrace{(\vec w_1 + \tilde{\vec w}_1)}_{\in W_1} + \underbrace{(\vec w_2 + \tilde{\vec w}_2)}_{\in W_2} \implies (\vec w_1 + \vec w_2) + (\tilde{\vec w}_1 + \tilde{\vec w}_2) \in W_1 + W_2$. \\
+
     (closure under scalar multiplication) Suppose $\vec w_1 + \vec w_2 \in W_1 + W_2$, and $\lambda \in \b F$, we compute $\lambda \cdot (\vec w_1 + \vec w_2)  = \underbrace{(\lambda \cdot \vec w_1)}_{\in W_1} + \underbrace{(\lambda \cdot \vec w_2)}_{\in W_2} \implies \lambda \cdot (\vec w_1 + \vec w_2) W_1 + W_2$
 \end{proof}
 \begin{remark}
@@ -134,7 +135,7 @@ Since the operation in inherent from vector space $V$, we do not need to verify 
     If $\tilde {\vec v}$ is a subspace of $V \supseteq W_j \ \forall j$, since $\tilde {\vec v}$ is closed under $+$, $\vec w_1 + \vec w_2 + \cdots + \vec w_n \in W_n$
 \end{remark}
 \begin{example}
-Suppose $V = \b R^3$. Let \[W_1 = \spa \{e_1, e_2\}, W_2 = \spa \{(0,1,1)\}, W_3 = \spa \lb (x,y,z) : x + y + z = 0 \rb\] 
+Suppose $V = \b R^3$. Let \[W_1 = \spa \{\vec e_1, \vec e_2\}, W_2 = \spa \{(0,1,1)\}, W_3 = \spa \lb (x,y,z) : x + y + z = 0 \rb\] 
 What is $W_1 + W_2 + W_3$?
 \end{example}
 Note that $(0,0,1) = \underbrace{\left(0,\frac12,\frac12\right)}_{\in W_2} +  \underbrace{\left(0,-\frac12,\frac12\right)}_{\in W_3}$. We also know that $(1,0,0) \in W_1$ and $(0,1,0) \in W_2$, therefore $W_1 + W_2 + W_3 = \b R^3$ \\
@@ -200,12 +201,12 @@ What about $W_1 + W_2 + \cdots W_n$ being a direct sum?
     \[W_1 + W_2 + \cdots + W_n\]
     is a direct sum iff $\vec 0$ can be written in only \textbf{one way} as a sum 
     \[ \vec w_1 + \vec w_2 + \cdots + \vec w_n = 0\]
-    namely $\vec 0 + \vec 0 + \cdots + \vec 0 = 0$.
+    namely $\vec 0 + \vec 0 + \cdots + \vec 0 = \vec 0$.
 \end{theorem}
 \begin{remark}
-    If $W_1 \cap W_2 \neq \lb 0 \rb, W_1 \cap W_3 \neq \lb 0 \rb, W_2 \cap W_3 \neq \lb 0 \rb$, it is not possible for $W_1,W_2,W_3$ to be a direct sum, However, the opposite of the proposition is not sufficient for being a direct sum as demonstrated in Remark 1.25.
+    If $W_1 \cap W_2 \neq \lb \vec 0 \rb, W_1 \cap W_3 \neq \lb \vec 0 \rb, W_2 \cap W_3 \neq \lb \vec 0 \rb$, it is not possible for $W_1,W_2,W_3$ to be a direct sum, However, the opposite of the proposition is not sufficient for being a direct sum as demonstrated in Remark 1.25.
 \end{remark}
 \begin{remark}
-    $W_1 \cap W_2 = \lb 0 \rb$, $W_1 \cap W_2 = \lb 0 \rb$, $W_2 \cap W_3 = \lb 0 \rb$ and $W_1 + W_2 + W_3$ being not a direct sum is possible. For example, consider $\b R_2$, for line $x = y, y = 0$ and $x = 0$, we can see that they only have the trivial intersection but they are not a direct sum. (credit: Catherine)
+    $W_1 \cap W_2 = \lb \vec 0 \rb$, $W_1 \cap W_2 = \lb \vec 0 \rb$, $W_2 \cap W_3 = \lb \vec 0 \rb$ and $W_1 + W_2 + W_3$ being not a direct sum is possible. For example, consider $\b R_2$, for line $x = y, y = 0$ and $x = 0$, we can see that they only have the trivial intersection but they are not a direct sum. (credit: Catherine)
 \end{remark}
 \newpage 
