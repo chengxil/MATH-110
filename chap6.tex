@@ -236,7 +236,39 @@ Basic facts about orthogonal complement
     \[ U^\perp \in \lincomb{\alpha}{\vec u}k + \lincomb{\beta}{\vec v}{n} \]
     must satisify $\alpha_j = \la \vec v_i, \vec u_j \ra = \vec 0$ for all $i$ in $1,2, \ldots, k$. Therefore we have $U^\perp = \spa (\li{\vec v}n)$. Hence $U \oplus U^\perp = V$.
 \end{proof}
+\begin{theorem}
+    Suppose $U$ is a finite dimensional subspace of $V$. Then 
+    \[ U = \left( U^\perp \right)^\perp\]
+\end{theorem}
 \begin{definition}
 Suppose $U$ is a finite-dimensional subspace of $V$. The orthogonal projection of $V$ onto $U$ is the operator $P_U \in \c L(V)$ defined as follows: 
 For $\vec v \in V$, write $\vec v = \vec u + \vec w$, where $\vec u \in U$ and $\vec w \in U^\perp$ Then $P_Uv = u$.
 \end{definition}
+\begin{theorem}[Properties of the orthogonal projection $P_U$]
+    Suppose $U$ is finite dimensional subspace of $V$ and $\vec v \in V$. Then 
+    \begin{enumerate}[label = (\alph*)]
+        \item $P_U \in \c L(V)$
+        \item $\range P_U = U$
+        \item $\nul P_U = U^\perp$
+        \item $P^2_U = P_U$
+        \item $\range (\b I - P_U) = U^\perp$
+        \item $(\b I - P_U)^2 = (\b I - P_U)$
+        \item $||P_U \vec v|| \leq ||\vec v||$
+        \item For every orthonormal basis $\li{\vec v}n$ of $U$, we have \[P_U \vec v = \la \vec v, \vec e_1 \ra \vec e_1 + \la \vec v, \vec e_2 \ra \vec e_2 + \cdots + \la \vec v, \vec e_n \ra \vec e_n\]
+    \end{enumerate}
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[->, thick, color = blue] (0,0) -- (6,2.5);
+        \draw[->, thick, color = red] (0,0) -- (6,0);
+        \draw[->, thick, color = green] (6,0) -- (6,2.5);
+        \draw (3,1.25) node[anchor = south] {$\vec v$};
+        \draw (3,0) node[anchor = north] {$P_U \vec v$};
+        \draw (6,1.25) node[anchor = west] {$\vec v - P_U\vec v \perp U$};
+    \end{tikzpicture}
+
+    The red vector is the projection of the blue vector $\vec v$ onto subspace $U$.
+\end{center}
+\end{theorem}
+
+
+

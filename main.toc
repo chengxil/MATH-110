@@ -31,3 +31,6 @@
 \contentsline {subsection}{\numberline {6.1}Inner Product and Norms}{40}{subsection.367}% 
 \contentsline {subsection}{\numberline {6.2}Orthogonality}{44}{subsection.410}% 
 \contentsline {subsection}{\numberline {6.3}Orthogonality and Orthogonal Projections}{46}{subsection.433}% 
+\contentsline {section}{\numberline {7}Operators on Inner Product Spaces}{49}{section.464}% 
+\contentsline {subsection}{\numberline {7.1}Self-Adjoint and Normal Operators}{49}{subsection.465}% 
+\contentsline {subsubsection}{\numberline {7.1.1}Matrix representation}{51}{subsubsection.487}% 

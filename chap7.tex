@@ -1,0 +1,144 @@
+%!TEX root = ./main.tex
+\section{Operators on Inner Product Spaces}
+\subsection{Self-Adjoint and Normal Operators}
+\begin{definition}
+	Suppose $T \in L(V,W)$, we define $T*$ by this formula 
+	\[ \la T\vec v, \vec w \ra_W = \la \vec v, T^* \vec w \ra_V\]
+\end{definition}
+We can think og $\vec w$ as fixed, we note that $\la T \ast, \vec w \ra$ is a linear functiona;. hence it has a representer by Riesz, so we are entitled to call it $T^*\vec w$ such that 
+\[ \la T\vec v, \vec w \ra = \la \vec v, T^* \vec w \ra \]
+Hence we have $T^* \in \c L(W,V)$. We want to verify this property. Consider $T*(\vec w_1 + \lambda \vec w_2)$. We compute 
+\begin{align*}
+	\la \vec v, T*(\vec w_1 + \lambda \vec w_2) \ra &= \la T\vec v, \vec w_1 + \lambda \vec w_2\ra \\
+	&= \la T\vec v, \vec w_1 \ra + \bar \lambda \la T\vec v + \vec w_2 \ra \\
+	&= \la \vec v, T^*\vec w_1 \ra +  \bar \lambda \la \vec v, T^* \vec w_2 \ra \\
+	&= \la \vec v, T^*\vec w_1 \ra +   \la \vec v, \lambda T^* \vec w_2 \ra \\
+	&= \la \vec v, T^*\vec w_1 +  \lambda T^*w_2 \ \ra \forall \vec v \in V, \vec w_1, \vec w_2 \in W, \lambda \in \b F 
+\end{align*}
+So $T^*(\vec w_1 + \lambda \vec w_2) = T^* \vec w_1 + \lambda T^* \vec w_2$.
+
+\begin{theorem}[Properties of the adjoint]
+Let $T \in \c L(V,W)$, we have
+	\begin{enumerate}
+		\item $(S + T)^* = S^* + T^*$
+		\item $(\lambda T)^* = \bar \lambda T^*$
+		\item $(S \cdot T)^* = T^*S^*$
+		\item $(\lambda T)^* = \bar \lambda T^*$
+		\item $\b I^* = \b I$
+	\end{enumerate}
+\end{theorem}
+\begin{proof} TODO: Refer to book page 206
+\end{proof}
+\begin{theorem}[Null space and range of adjoint]
+Let $T \in \c L(V,W)$, then
+	\begin{enumerate}
+		\item $\nul T^* = (\range T)^\perp$
+		\item $\range T^* = (\nul T)^\perp$
+		\item $\nul T = (\range T*)^\perp$
+		\item $\range T = (\nul T^*)^\perp$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $\vec w \in W$. Then 
+\begin{align*}
+	\vec w \in \nul T^* &\iff T^* \vec w = 0 \\
+	&\iff \la \vec v, T^* \vec w \ra = 0 \ \forall \vec v \in V \\
+	&\iff \la T\vec v, \vec w \ra \ \forall \vec v \in V \\
+	&\iff \vec w \in (\range T)^\perp
+\end{align*}
+(b),(c),(d) follows by a similar logic and is left as an exercise.
+\end{proof}
+
+\begin{definition}
+Let $T \in \c L(V)$. $T$ is called self-adjoint if $T^* = T$.
+\end{definition}
+\begin{definition}
+	$T$ is called normal if $TT^* = T^*T$.
+\end{definition}
+%\begin{example}
+%	Let $V$ be $\b R^3$ with the standard inner product, let $T \in \c L(V)$ such that $T: (x_1,x_2,x_3) \mapsto (x_1,2x_2,3x_3)$.
+%\end{example}
+\begin{example}
+	Suppose $T \in \c L(V)$, we can define $T: \vec v \mapsto \la \vec , \vec x \ra \vec y$ for some fixed $\vec x, \vec y$ in $V$. Compute $T^*$. \\
+	We compute 
+	\begin{align*}
+		\langle \vec v, T^* \vec w \rangle &= \langle T \vec v, \vec w \rangle  \\
+		&= \langle \langle \vec v, \vec x \rangle \vec y, \vec w \rangle  \\
+		&= \langle \vec v, \vec x \rangle \langle \vec y, \vec w \rangle \\
+		 &= \langle \vec v, \overline{\langle \vec y, \vec w \rangle} \vec x \rangle \\
+		 &= \langle \vec v, \langle \vec w, \vec y \rangle \vec x \rangle
+	\end{align*}
+	hence we can concldue $T^* \vec w = \la \vec w, \vec y \ra \vec x$ for all $\vec w \in W$.
+\end{example}
+\newpage
+\subsubsection{Matrix representation}
+Suppose $T \in \c L(V,W)$, where $V,W$ are finite-dimensional vector spaces. Let $\li{\vec e}n$ be an orthonormal basis for $V$ and $\li{\vec f}m$ be a orthonormal basis for $W$. We can see that $\c M(T)$ is obtained through
+\[ T \vec e_j = \la T\vec e_j, \vec f_1 \ra \vec f_1 + \la T\vec e_j, \vec f_2 \ra \vec f_2 + \cdots + \la T\vec e_j, \vec f_m \ra \vec f_m\]
+\[ T^* \vec f_k = \la T^* \vec f_k, \vec e_1 \ra \vec e_1 + \la T^* \vec f_k, \vec e_2 \ra \vec e_2 + \cdots + \la T^* \vec f_k, \vec e_n \ra \vec e_n\]
+Then 
+\[ \c M(T^*)(l,k) = \la T^* \vec f_k, \vec e_l \ra \implies \c M(T^*)(j,i) = \la T^* \vec f_i, \vec e_j \ra \]
+Therefore we have $\c M(T^*) = \bar{\c M(T)}^T$
+\begin{remark}
+	The above statement only holds if the basis for $V$ and $W$ are orthonormal.
+\end{remark}
+\begin{remark}
+	If an operator $T$ is self-adjoint, then $T$ is normal, but not the converse.
+\end{remark}
+
+\begin{proposition}
+	The eigenvalue of any self-adjoint operator is real.
+\end{proposition}
+\begin{proof}
+Suppose self-adjoint $T \in \c L(V)$. and $\lambda$ is an eigenvalue of $T$ and let $\vec v$ be the eignevector corespond to $\lambda$. We compute 
+\[
+	\lambda \la \vec v, \vec v \ra = \la \lambda \vec v, \vec v \ra 
+	= \la T\vec v, \vec v \ra 
+	= \la \vec v, T\vec v \ra 
+	= \la \vec v, \lambda \vec v \ra 
+	= \bar \lambda \la \vec v, \vec v \ra
+\] We can see that $\lambda = \bar \lambda \implies \lambda \in \b R$.
+\end{proof}
+\begin{question}
+	Suppose $\la T\vec v,\vec v \ra = 0 \forall \vec v \in V$. Does the statement implies $T$ is the zero map?
+\end{question}
+\begin{answer}[Surprisingly]
+	Yes over $\b C$ and no over $\b R$.
+\end{answer}
+\begin{proof}
+	Supoose $\b F = \b C$, the following holds.
+	\[ \la T(\vec v + \vec w), \vec v + \vec w \ra = \la T\vec v, \vec v \ra + \la T\vec v, \vec w \ra + \la T\vec w,\vec v \ra + \la T\vec w, \vec w \ra \]
+	\[ \la T(\vec v - \vec w), \vec v + \vec w \ra = \la T\vec v, \vec v \ra - \la T\vec v, \vec w \ra - \la T\vec w,\vec v \ra + \la T\vec w, \vec w \ra \]
+	Subtratc the first equation by the second we have 
+	\[ \la T(\vec v + \vec w), (\vec v + \vec w) \ra - \la T(\vec v - \vec w), (\vec v + \vec w) \ra =\boxed{ 2\la T\vec v, \vec w\ra + 2\la T\vec w, \vec v \ra} \]
+	We also compute 
+	\[ \la T(\vec v + i\vec w) , (\vec v + i\vec w)\ra - \la T(\vec v - i\vec w) , (\vec v - i\vec w)\ra = \boxed{2i\left(\la T\vec w, \vec v\ra - \la T\vec v, \vec w \ra\right)}\]
+	Take the two boxed equation and divide the second one by $i$ then subtract from first gives us 
+	\[ 4\la T \vec v, \vec w \ra = 0\]
+	Suppose $\b F = \b R$. Consider $\b R^2$. Take $T\vec v$ and rotate $\pi / 2$ gives us $T(x_1, x_2) := (-x_2 , x_1)$. We can see that $\la T\vec v, \vec v \ra = 0 \forall \vec v$ but $T \neq 0$. However, if $T$ is self-adjoint then $T$ is $0$.
+\end{proof}
+\begin{remark}
+	Suppose $\b F = \b R$ and $T = T^*$. We have 
+	\[ 4\la T\vec v, w \ra = \la T(\vec v + \vec w), (\vec v + \vec w) \ra - \la T(\vec v - \vec w), (\vec v - \vec w )\ra\]
+	Hence $T = 0$. 
+\end{remark}
+
+\begin{corollary}
+	$\la T \vec v, \vec v \ra \in \b R$ in a complex space is equivalent to $T$ being self adjoint.
+\end{corollary}
+\begin{proof}
+	\[ \la T \vec v, \vec v \ra \in \b R \iff \la T\vec v, \vec v\ra = \la T^*\vec v, \vec v \ra \implies \la (T - T^*)\vec v, \vec v\ra = 0 \implies T - T^* = 0\]
+	We can see that $T = T^*$. Hence $T$ is self-adjoint.
+\end{proof}
+
+\begin{theorem}
+	$T$ is normal if anf only if $||T\vec v|| = ||T^* \vec v|| \ \forall \vec v \in V$.
+\end{theorem}
+\begin{proof}
+	\[ ||T\vec v|| = ||T^* \vec v|| \implies \la T\vec v, T\vec v\ra = \la T^* \vec v, T^* \vec v \ra \implies \la T^* T \vec v, \vec v \ra = \la TT^* \vec v, \vec v \ra\]
+	Hence $T$ is normal sicne $TT^* = T^*T$.
+\end{proof}
+\begin{theorem}
+	Say $\lambda, \vec v$ is an eigenpair of a normal oeprator $T$, then 
+	\[ ||(T - \lambda \b I) \vec v ||=||(T^* - \bar \lambda \b I)\vec v||\]
+\end{theorem}
+
