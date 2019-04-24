@@ -27,7 +27,7 @@ Let $T \in \c L(V,W)$, we have
 		\item $\b I^* = \b I$
 	\end{enumerate}
 \end{theorem}
-\begin{proof} TODO: Refer to book page 206
+\begin{proof} Refer to book page 206
 \end{proof}
 \begin{theorem}[Null space and range of adjoint]
 Let $T \in \c L(V,W)$, then
@@ -141,4 +141,111 @@ Suppose self-adjoint $T \in \c L(V)$. and $\lambda$ is an eigenvalue of $T$ and 
 	Say $\lambda, \vec v$ is an eigenpair of a normal oeprator $T$, then 
 	\[ ||(T - \lambda \b I) \vec v ||=||(T^* - \bar \lambda \b I)\vec v||\]
 \end{theorem}
+\subsection{Spectral Theorem}
+\subsubsection{Over Complex Vector Space}
+\begin{theorem}[Spectral Theorem over Complex Vector Space]
+	Suppose $T \in \c L(V)$ where $V$ is finite dimensioanl vector space and $\b F = \b C$ and $T$ is normal. Then $V$ is a orthonormal basis of eigenvactors of $T$, and vice versa,  if $T$ has a diagonal representation with respect to some orthonormal basis, then $T$ is normal.
+\end{theorem}
+\begin{proof}
+	Suppose $T$ has a diagonal matrix representation with some repsect to some orthonormal basis. i.e. 
+	\[ \c M(T) = \begin{bmatrix}
+		\lambda_1 & & & 0 \\
+		& \lambda_2 \\
+		& & \ddots \\
+		0& & & \lambda_n 
+	\end{bmatrix}\qquad \c M(T^*) = \begin{bmatrix}
+		\bar \lambda_1 & & & 0 \\
+		& \bar \lambda_2 \\
+		& & \ddots \\
+		0& & & \bar \lambda_n 
+	\end{bmatrix}\]
+	Since any two diagonal matrices commute, we can see that 
+	\[ \c M(T) \c M(T^*) = \c M(T^*) \c M(T) =  \begin{bmatrix}
+		|\lambda_1|^2 & & & 0 \\
+		& |\lambda_2|^2 \\
+		& & \ddots \\
+		0& & & |\lambda_n|^2 
+	\end{bmatrix}\]
+	We have $TT^* = T^*T$, hence $T$ is normal.
 
+	\noindent Suppose $T$ is normal. By Schur's Theorem, there exists an orthonormal basis such that
+	\[ \c M(T) = \begin{bmatrix}
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	0 & a_{22} & \cdots & a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots\\
+	0 & 0 & \cdots & a_{nn} 
+	\end{bmatrix} \implies \c M(T^*) = \begin{bmatrix}
+	\bar a_{11} & \bar a_{12} & \cdots & \bar a_{1n} \\
+	0 & \bar a_{22} & \cdots & \bar a_{2n} \\
+	\vdots & \vdots & \ddots & \vdots\\
+	0 & 0 & \cdots & \bar a_{nn} 
+	\end{bmatrix} \]
+	Rall that $||T\vec v|| = ||T^* \vec v|| \qquad \forall \vec v \in V$. Call this this orthornormal basis $\li{\vec v}n$. We have $T\vec e_1 = a_{11}\vec e_1$, so $||T\vec e_1|| = |a_{11}|$, we then compute 
+	\begin{align*}
+		T^* \vec e_1 &= \bar a_{11} \vec e_1 + \bar a_{12} \vec e_2 + \cdots + \bar a_{1n} \vec e_n \\
+		||T^*\vec e_1 || &= \sqrt{|a_{11}|^2 + |a_{12}|^2 + \cdots + |a_{1n}|^2}
+	\end{align*}
+	Since $||T\vec e_1|| = ||T^* \vec e_1||$, we get $|a_{12}| = |a_{13}| = \cdots = |a_{1n}| = 0$. 
+
+	\noindent
+	Using a similar logic, we have $||T\vec e_j|| = ||T^*\vec e_j||$ implies $|a_{jj+1}| = |a_{jj+2}| = \cdots = |a_{jn}| = 0$. Hence $T$ is diagonal
+\end{proof}
+\begin{remark}
+	So actaully the schur form of a normal operator is neccisarily diagonal.
+\end{remark}
+\newpage
+\subsubsection{Over Real Vector Space}
+\begin{lemma}
+	Suppose $T \in \c L(V)$ is self-adjoint and $\beta, \gamma \in \b R$ such that $b\beta^2 - 4 \gamma$ then
+	\[ T^2 + \beta T + \gamma I\] is invertible.
+\end{lemma}
+\begin{proof}
+Consider nonzero $\vec v \in V$. We can factor 
+	\begin{align*}
+		\la (T^2 + \beta T - \gamma I) \ra &= \la T^2 \vec v, \vec v \ra + \la \beta T \vec v, \vec v \ra + \gamma \la \vec v, \vec v\ra \\
+		&= \la T\vec v, T\vec v \ra + \beta \la T\vec v, \vec v\ra + \gamma||\vec v||^2 \\
+		&\geq ||T\vec v||^2 - |\beta| \cdot ||T\vec v|| \cdot ||\vec v|| + \gamma||\vec v||^2  \\
+		&= \left( ||T\vec v|| - \frac{|\beta| \cdot ||\vec v||}{2} \right)^2 + \left( \gamma - \frac{\beta^2}{4} \right)||\vec v||^2 \\
+		&> 0
+	\end{align*}
+	hence we can see that $\nul (T^2 + \beta T - \gamma I) = \lb 0 \rb$. Hence it's injective. Since $T^2 + \beta T + \gamma I \in \c L(V)$, we know $(T^2 + \beta T + \gamma I)$ is invertible. 
+\end{proof}
+\begin{theorem}
+	$T$ has a eigenvalue if $T$ is self-adjoint in any vector space.
+\end{theorem}
+\begin{proof}
+	Assume $\dim V = n$. Consider any $\vec v \in V$. Then $\vec v, T\vec v, T^2 \vec v, \ldots, T^n \vec n$ are linearly dependent ( I.e, there exist $\li an \in \b R$ such that 
+	\[a_0 \vec v + a_1 T \vec v + \cdots + a_n T^\vec v = 0\]
+	Consider $f(x) = a_0x + a_1x + \cdots + a_nx^n$. We know from chapter 4 we can factor $f(x)$ as 
+	\[ f(x) = c(x^2 + \beta_1 x + \gamma_1) \cdots (x^2 + \beta_m x + \gamma_m) (x - \lambda_1) \cdots (x - \lambda_n)\]
+	where all coefficients are real and $\beta_i^2 - 4 \gamma < 0$. By lemma we know that the qaudratice term is invertible, then we can simply factor them out. Therefore we have 
+	\[ 0 = (T - \lambda_1 I) \cdots (T - \lambda_m I)\vec v\]
+	Hence one of the $(T - \lambda_j I)$ is not injective. Hence $T$ has an eigenvalue.
+\end{proof}
+\begin{theorem}
+	Suppose $T \in \c L(V)$, where $V$ is a fininite dimensional vector space and $\b F = \b R$ and $T$ is self-adjoint. Then $T$ has a digona matrix representation with some orthonorma basis for $V$. And conversely, if $T$ has a diagonal matrix representation eith repsetc to some orthonormal basis, then $T = T^*$.
+\end{theorem}
+\begin{proof}
+	Suppose $T$ has a diagonal matrix representation with some repsect to some orthonormal basis. i.e. 
+	\[ \c M(T) = \begin{bmatrix}
+		\lambda_1 & & & 0 \\
+		& \lambda_2 \\
+		& & \ddots \\
+		0& & & \lambda_n 
+	\end{bmatrix}\qquad \c M(T^*) = \begin{bmatrix}
+		\bar \lambda_1 & & & 0 \\
+		& \bar \lambda_2 \\
+		& & \ddots \\
+		0& & & \bar \lambda_n 
+	\end{bmatrix}\]
+	We know $\c M(T) = \c M(T^*)$ since $\lambda = \bar \lambda$ in reals. Hence $T$ is self-adjoint.
+	\noindent
+	Conversely, suppose $T = T^*$. We just found out $T$ has at least one eigenvalue eigenvector pair. Say $T\vec u = \lambda \vec u$. Without the loss of generality $||\vec u|| = 1$. If $\vec w \perp \vec u$, then $\la T\vec u, \vec w \ra = 0 = \la \vec u, T\vec w \ra$. So $T\vec w \perp \vec u$. Notice that $T\vert_{\spa(\vec u)^\perp}$ is still self-adjoint. 
+	\[ \la T_{\spa(\vec u)^\perp} \vec w_1, \vec w_2 \ra = \la T \vec w_1, \vec w_2 \ra = \la \vec w_1, T\vec w_2\ra = \la \vec w_1, T\vert_{\spa(\vec u)^\perp} w_2 \ra \qquad \forall \vec w_1, \vec w_2 \in \spa(\vec u)^\perp\]
+	Hence $\c M(T) = \begin{bmatrix}
+		\lambda & 0 & \cdots & 0 \\
+		0 & \ast & \cdots & \ast \\\
+		0 & \vdots & \ddots & \vdots \\
+		0 & \ast & \cdots & \ast 
+	\end{bmatrix}$ Now the problem is reduce to that for $T\vert_{\spa(\vec u)^\perp}$, which has a dimensional of $\dim V - 1$. By induction we can build a orthonomal basis of $V$ which consists of eigenvectors.
+\end{proof}
