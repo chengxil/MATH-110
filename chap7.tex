@@ -118,7 +118,7 @@ Suppose self-adjoint $T \in \c L(V)$. and $\lambda$ is an eigenvalue of $T$ and 
 \end{proof}
 \begin{remark}
 	Suppose $\b F = \b R$ and $T = T^*$. We have 
-	\[ 4\la T\vec v, w \ra = \la T(\vec v + \vec w), (\vec v + \vec w) \ra - \la T(\vec v - \vec w), (\vec v - \vec w )\ra\]
+	\[ 4\la T\vec v, \vec w \ra = \la T(\vec v + \vec w), (\vec v + \vec w) \ra - \la T(\vec v - \vec w), (\vec v - \vec w )\ra\]
 	Hence $T = 0$. 
 \end{remark}
 
@@ -249,3 +249,101 @@ Consider nonzero $\vec v \in V$. We can factor
 		0 & \ast & \cdots & \ast 
 	\end{bmatrix}$ Now the problem is reduce to that for $T\vert_{\spa(\vec u)^\perp}$, which has a dimensional of $\dim V - 1$. By induction we can build a orthonomal basis of $V$ which consists of eigenvectors.
 \end{proof}
+\subsection{Positive Operators and Isometries}
+\begin{definition}
+	Suppose $T \in \c L(V)$ is self-adjoint and satisfies 
+	\[ \la T\vec v, \vec v \ra \geq 0 \qquad \forall \vec v \in V\]
+	Then $T$ is called \textbf{nonnegative}.
+
+	\noindent If instead $\la T\vec v, \vec v\ra > 0 \qquad \forall \vec v \in V$ then $T$ is called \textbf{positive}.
+\end{definition}
+\begin{theorem}[Characterzation Theorem]
+	The following are equivalent
+	\begin{enumerate}
+		\item $T$ is nonnegative
+		\item $T = T^*$ and all its eigenvalyes are nonnegative.
+		\item $T$ has a nonnegative square root, i.e. there exists $T = R^* \in \c L(V)$ such that $R^2 = T$. 
+		\item $T$ has a self-adjoint square root. i.e. $\exists S = S^*$ such that $S^2 = T$.
+		\item There exists $Q \in \c L(V)$ such that $Q^*Q = T$.
+	\end{enumerate}
+\end{theorem}
+\newpage
+\begin{proof}
+	(e) $\implies$ (a). Suppose $T = Q^*Q$, so i
+	\[ \la T\vec v, \vec v \ra = \la Q^*Q\vec v, \vec v \ra = \la Q\vec v, Q\vec v \ra = ||Q\vec v||^2 \geq 0\]
+	(a) $\implies$ (b) Suppose $T$ is nonnegative. We know that nonnegative already satisfies self-adjoint. TODO
+\end{proof}
+\begin{definition}
+	Suppose $S \in \c L(V)$. $S$ is called an \textbf{isometry} if 
+	\[ ||S\vec v|| = ||\vec v|| \qquad \forall \vec v \in V\]
+\end{definition}
+\begin{remark}
+	Observe that isometry necessarily preserves all inner products.
+	\[ \la S\vec u, S \vec v \ra = \la \vec u, \vec v \ra \qquad \forall \vec u, \vec v \in V\] 
+	This following from polar polarization from 7.11. for $\b F = \b R$ we have 
+	\[ 4\la T\vec u, \vec v \ra = \la T(\vec u + \vec v), (\vec u + \vec v) \ra - \la T(\vec u - \vec v), (\vec u - \vec v )\ra\]
+\end{remark}
+\begin{corollary}
+	An isometry maps an orthonormal to another orthonormal basis.
+\end{corollary}
+\begin{proof}
+	If $\la \vec e_i, \vec e_j \ra = \delta_{ij}$. Then $\la S\vec e_i, S\vec e_j \ra = \la \vec e_i, \vec e_j \ra = \delta_{ij}$ where $\delta_{ij} = \left\{ \begin{array}{cc} 
+	1 & \text{ if } i = j \\ 0 & \text{ if } i \neq j \end{array} \right.$. \\
+	So if $(\li{\vec e}n)$ is an northnormal basis then $\li{S\vec e}n$ is an orthonormal basis.  
+\end{proof}
+\newpage
+\subsection{Polar Decomposition and Singular Value Decomposition}
+\begin{theorem}[Polar Decomposition]
+	Take $T \in \c L(V)$. There exist an isometry $S \in \c L(V)$ such that
+	\[ T = S \sqrt{T^*T}\]
+	where $\sqrt{T^*T}$ is the nonnegative square root of $T^*T$.
+\end{theorem}
+\begin{proof}
+	Observe that $||T\vec v || = \left|\left|\sqrt{T^*T} \vec v\right|\right| \qquad \forall \vec v \in V$. Indeed 
+	\begin{align*}
+		||T\vec v|| &= \la T\vec v, T \vec v \ra \\
+		&= \la T^*T \vec v, \vec v \ra \\
+		&= \la \sqrt{T^*T} \cdot \sqrt{T^*T} \vec v, \vec v \ra \\
+		&= \la \sqrt{T^*T} \vec v, \sqrt{T^*T} \vec v \ra \\
+		&= \left|\left| \sqrt{T^*T} \vec v \right|\right|
+	\end{align*}
+	It's clearly that there exists an isometry between $T$ and $\sqrt{T^*T}$.
+\end{proof}
+\begin{remark}[Construction of $S$]
+	For any $\vec v \in V$, define
+	\[ S_1\left( \sqrt{T^*T} \vec v\right) := T \vec v\]
+	We first need to check this is well-defined. That is  if 
+	\[ \sqrt{T^*T} \vec v_1 = \sqrt{T^*T} \vec v_2 \implies \vec v_1 = \vec v_1\]
+	This is true because 
+	\[ \sqrt{T^*T}(\vec v_1 - \vec v_2) = \vec 0 \implies 0 = \left|\left| \sqrt{T^*T} (\vec v_1 - \vec v_2)\right|\right| = ||T(\vec v_1 - \vec v_2)||\]
+	hence $T\vec v_1 = T\vec v_2$. \\
+	So $S_1$ is now defined as an element of $\c L\left(\range \sqrt{T^*T}, \range T\right)$ and $S_1$ is actually invertiable and an isometry. \\
+	So $\dim \range \sqrt{T^*T} = \dim \range T$. Now we need to extend $S_1$ to an operator on $V$. \\ 
+	Take $\left(\range \sqrt{T^*T}\right)^\perp$ and $(\range T)^\perp$. Send any orthonormal basis of $\left(\range \sqrt{T^*T}\right)^\perp$ to any orthonormal basis of $(\range T)^\perp$. This defines another isometry $S_2$.
+	Finally define  
+	\[ S\vec v = S_1 \vec u + S_2 \vec w\] where $\vec v = \vec u + \vec w , \vec u \in \range (\sqrt(T^*T)), \vec w \in \range (\sqrt(T^*T))^\perp$. This creates $S$ which is now an isometry on entire $V$. Hence $T = S \sqrt{T^*T}$.
+\end{remark}
+\begin{theorem}
+	Let $T \in \c L(V)$, for finite dimensional $V$. Then there exists orthonormal basis $\li {\vec e}n$ and $\li {\vec f}n$ and values $\li sn$, all nonnegative such that 
+	\[ T\vec v = s_1 \la \vec v, \vec e_1 \ra \vec f_1 + s_2 \la \vec v, \vec e_2 \ra \vec f_2 + \cdots + s_n \la \vec v, \vec e_n \ra \vec f_n\]
+	The $s_j$ are called singular values of $T$.
+\end{theorem}
+
+\begin{proof}[Proof. (derivation for polar decomposition)]
+	Say $T = S\sqrt{T^*T}$. By the charaterization theorem w eknow that $V$ has an orthonormal eigenbasis $\li{\vec e}n$ consisiting of eigenvectors of $\sqrt{T^*T}$ corresponding to (nonnegative) eigenvalues $\li sn$ 
+	\begin{align*}
+	\vec v &= \la \vec v, \vec e_1 \ra + \la \vec v, \vec e_2 \ra + \cdots + \la \vec v, \vec e_n \ra \\ 
+	\sqrt{T^*T} \vec v &= s_1\la \vec v, \vec e_1 \ra + s_2\la \vec v, \vec e_2 \ra + \cdots + s_n\la \vec v, \vec e_n \ra \\
+	S\sqrt{T^*T}\vec v &= s_1\la \vec v, \vec e_1 \ra\vec f_1 + s_2\la \vec v, \vec e_2 \ra\vec f_2 + \cdots + s_n\la \vec v, \vec e_n \ra\vec f_n \\
+	T\vec v &= s_1\la \vec v, \vec e_1 \ra\vec f_1 + s_2\la \vec v, \vec e_2 \ra\vec f_2 + \cdots + s_n\la \vec v, \vec e_n \ra\vec f_n
+	\end{align*}
+	and $\li{\vec f}n$ is also orthonormal.
+\end{proof}
+\begin{example}
+	Take $T(x_1, x_2) = (2x_1 + x_2, -x_1 + 2x_2)$.
+	Find its polar decomposition.
+\end{example}
+\begin{answer}
+	\[T = \bml 2 & -1 \\ 1 & 2 \bmr \qquad T^* = \bml 2 & 1 \\ -1 & 2 \bmr \implies T^*T = \bml 5 & 0 \\ 0 & 5 \bmr\]
+	Therefore we have $s_1 = s_2 = \sqrt 5$ and $f_1 = \left(2 / \sqrt 5, -1 / \sqrt 5\right),f_2 = \left(1 / \sqrt 5, 2 / \sqrt 5\right)$.
+\end{answer}
