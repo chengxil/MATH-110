@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.2.13)  24 APR 2019 18:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.2.13)  24 APR 2019 18:35
 entering extended mode
 **"C:/Users/Bill Li/Desktop/MATH-110/main.tex"
 ("C:/Users/Bill Li/Desktop/MATH-110/main.tex"
@@ -2237,7 +2237,12 @@ LaTeX Font Info:    Try loading font information for U+wasy on input line 6.
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
 Package xypdf Info: Line width: 0.5397pt on input line 6.
- [1
+
+Overfull \hbox (138.55675pt too wide) in paragraph at lines 7--10
+[]\OT1/cmr/m/n/12 (-20) <<<<<<< HEAD ======= [] 
+ []
+
+[1
 
 
 
@@ -2246,7 +2251,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package tocbasic Info: character protrusion at toc deactivated on input line 16
+Package tocbasic Info: character protrusion at toc deactivated on input line 21
 .
 
 (main.toc)
@@ -3014,22 +3019,22 @@ Package mdframed Info: mdframed detected package amsthm
 [61
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 34.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 34.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
  (main.aux (chap1.aux) (chap2.aux) (chap3.aux) (chap4.aux) (chap5.aux)
 (chap6.aux) (chap7.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 34.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 34.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 39.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 39.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 34.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
  ) 
 Here is how much of TeX's memory you used:
- 58614 strings out of 492946
- 1295019 string characters out of 3125376
+ 58622 strings out of 492946
+ 1295135 string characters out of 3125376
  1667531 words of memory out of 3000000
- 60924 multiletter control sequences out of 15000+200000
- 549906 words of font info for 120 fonts, out of 3000000 for 9000
+ 60928 multiletter control sequences out of 15000+200000
+ 550609 words of font info for 124 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  87i,20n,121p,9160b,995s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Bill Li/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/mnsymbol/
@@ -3061,9 +3066,9 @@ msfonts/cm/cmss12.pfb><C:/Users/Bill Li/AppData/Local/Programs/MiKTeX 2.9/fonts
 Bill Li/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb><C:/Users/Bill Li/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/wasy/wasy10.pfb>
-Output written on main.pdf (61 pages, 547170 bytes).
+Output written on main.pdf (61 pages, 547725 bytes).
 PDF statistics:
  1226 PDF objects out of 1440 (max. 8388607)
  607 named destinations out of 1000 (max. 500000)
- 12725 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 15285 words of extra memory for PDF output out of 17280 (max. 10000000)
 
