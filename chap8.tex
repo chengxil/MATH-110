@@ -1,0 +1,103 @@
+%!TEX root = ./main.tex
+\section{Operators on Complex Vector Spaces}
+\setcounter{subsection}{3}
+\subsection{Jordan Form}
+\subsubsection*{Goal} To find te the sparest matrix representation for an arbitary linear operator on a finite dimensional vector space over $\b C$.
+\subsubsection{Observation}
+``Rough'' decomposition 1
+\[ \left[\begin{array}{ccc|ccc} 
+\ast & \cdots & \ast & 0 & \cdots & 0 \\ 
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\ 
+\ast & \cdots & \ast & 0 & \cdots & 0 \\
+\hline
+0 & \cdots & 0  & \ast & \cdots & \ast  \\ 
+\vdots & \ddots & \vdots & \vdots & \ddots & \vdots\\ 
+0 & \cdots & 0 & \ast & \cdots & \ast \\
+
+          \end{array}\right]  = \c M(T)\]
+          Notice that $T$ has two invariant subspaces that are direct sums of each other.
+\begin{definition}
+	An operator is called nilpotent if some power of it equals to $0$.
+\end{definition}
+\begin{proposition}
+	For any $T \in \c L(V)$, there exists two subsapces, $V_s$ and $V_r$ such that $V = V_s \oplus V_r$ and $V_s,V_r$ are both $T$-invariant, and $T\vert_{V_s}$ is nilpotent and $T\vert_{V_r}$ is invertible. 
+\end{proposition}
+
+\begin{proof}
+Consider 
+\[ \lb v \rb \subseteq \nul T \subseteq \nul T^2 \subseteq \cdots\]
+Because $\dim V \leq \infty$, we must be able to find $q \in \b N$ such that $T^q$ and $T^{q+h}$ for any $h \in \b N$ have the same null space. In other words 
+\[ \exists q\in \b N : \nul T^q = \nul T^{q + h} \qquad \forall k \in \b N\]
+Take $V_s : = \nul T^q$ and $V_r = \range T^q$. Obsrve that $V_s$ and $V_r$ ae $T$-invariant. 
+
+\noindent Next we want to check that $V_s \cap V_r = \lb \vec 0 \rb$. \\ 
+Suppose $\vec v \in V_s \cap V_r$. Then $T^q \vec v = \vec 0$, and $T^q \vec w = \vec v$ for some $\vec w \in V$. So $T^{2q}\vec w = \vec 0$. Hnec eby the choice of $q$ we have $\vec w \in \nul T^q$, so \[T^q \vec w = \vec 0 = \vec v\]
+So $\vec v = 0$, and $V_s \cap V_r = \lb \vec 0 \rb$. By Rank-Nullity, $V = V_s \oplus V_r$. \\
+$T\vert_{V_s}$ is nilpotent sicne $\left(T\vert_{V_s}\right)^2$ is zero. \\
+$T\vert_{V_r}$ is invertible since for any $\vec w \in V_r$ such that $T \vec w = \vec 0$ will also satify $T^q \vec w = \vec 0$, hence $\vec w = \vec 0$, and $T\vert_{V_r}$ being injective implies invertiablity.
+\end{proof}
+\newpage
+\subsubsection*{Zoom in to the nilpotent part}
+	Say, the whole space $V$ satifies the condition $T^q = 0$ and without the loss of generality we can take $q$ minimal with this property. This means there exists $\vec v_0 \in V$ such that $T^{q - 1} \vec v_0 \neq \vec 0$. Take 
+	\[ \vec v_0 = \spa \lb \vec v_0 , T\vec v_0, \ldots, T^{q-1} \vec v_0 \rb\]
+	Since there exists a vector such that $T^{q - 1} \vec v_0 \neq \vec 0$ we can also there exists $\vec w_0 \in V$ such that $\la T^{q-1}\vec v_0, \vec w_0\ra \neq 0$. Take the following matrix
+	\[ \left( \la T^{j-1}\vec v_0 , T^{*^{q-i}} \vec w_0 \ra\right)_{i,j = 1}^q = \left( \la T^{q + j - i - 1} \vec v_0, \vec w_0 \ra\right)_{i,j = 1}^q\]
+	Notice that this is a lower triangular matrix with nonzero diagonal matrix.
+\begin{corollary}
+	The list $\vec v_0 , T\vec v_0, \ldots, T^{q-1} \vec v_0$ is linearly indepedent and so is the list $\vec w_0 , T^*\vec w_0, \ldots, T^{*^{q-1}} \vec w_0 $
+\end{corollary}
+\begin{proof}
+	Take $V_1 := \left( \spa \left( \vec w_0 , T^*\vec w_0, \ldots, T^{*^{q-1}} \vec w_0 \right) \right)^{\perp}$. Notice that if $W$ is $T*$-invariant, $W^\perp$ is $T$-invariant. Indeed, for any $\vec v \in W^\perp$ and any $\vec w \in W$, we have \[\la T \vec v, \vec w \ra =\la  \vec v, T^* \vec w \ra = 0\]
+	Hence we have $V = V_0 \oplus V_1$, where $V_0, V_1$ are both $T$-invariant. To see that the sum is direct 
+	Suppose \[\alpha_0 \vec v_0 + \alpha_1 T\vec v_0 + \cdots + \alpha^{q-1}T^{q-1}\vec v\]
+	is orthogonal to $\vec w_0 , T^*\vec w_0, \ldots, T^{*^{q-1}} \vec w_0 $. Thn the matrix 
+	\[ \left( \la T^{j-1} \vec v_0, T^{*^{q-1}} \vec w_0 \ra\right)\] 
+	being invertible gurantees that
+	\[ \alpha_0 = \alpha_1 = \cdots = \alpha_{q-1} = 0\]
+\end{proof}
+\subsubsection*{fine decomposition}
+We look at $\c M\left( T\vert_{V_1}\right)$ with respect to the basis $\vec v_0 , T\vec v_0, \ldots, T\vec v_0$. Hence we have 
+\[ \bml 
+	0 & 0 & 0 & \cdots & 0 & 0\\ 
+	1 & 0 & 0 & \cdots & 0 & 0\\
+	0 & 1 & 0 & \cdots & 0 & 0\\
+	\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+
+	0 & 0 & 0 & \cdots & 1 & 0\bmr\]
+\subsubsection*{Warp-up}
+Repeat the process many gives 
+\[V = V_1 \oplus V_2 \oplus \cdots \oplus V_n \]
+This guarantees a bock-diagonal form where each block looks like 
+\[ \bml 
+\lambda_j & 1 \\	
+& \lambda_j & 1 \\
+&& \lambda_j & 1 \\
+&&& \lambda_j & 1 \\
+&&&& \ddots & \ddots \\
+&&&&& \lambda_j & 1 \\
+&&&&&& \lambda_j
+\bmr\]
+
+
+\begin{example}
+	Consider
+	\[ \c M(T) =  \bml 
+			3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0  \\
+			0 & 0 & 0 & 0 & 0 & 0 & -2 & 1 & 0 & 0 & 0 & 0 \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & -2 & 0 & 0 & 0 & 0 & \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \bmr\]
+Where the empty entries are zero. We can see that the $T$ has eigenvalue $3,-2,1,0$. \\
+We can see that \begin{align*} \dim \nul (T - 3\lambda \b I) = 3, \dim \nul (T - 3\lambda \b I)^2 = 5, \\ \dim \nul (T - 3\lambda \b I)^3 = 6, \dim \nul (T - 3\lambda \b I)^4 = 6
+\end{align*}
+\end{example}
+
+
+

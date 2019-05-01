@@ -142,7 +142,7 @@ Suppose self-adjoint $T \in \c L(V)$. and $\lambda$ is an eigenvalue of $T$ and 
 	\[ ||(T - \lambda \b I) \vec v ||=||(T^* - \bar \lambda \b I)\vec v||\]
 \end{theorem}
 \subsection{Spectral Theorem}
-\subsubsection{Over Complex Vector Space}
+\subsubsection*{Over Complex Vector Space}
 \begin{theorem}[Spectral Theorem over Complex Vector Space]
 	Suppose $T \in \c L(V)$ where $V$ is finite dimensioanl vector space and $\b F = \b C$ and $T$ is normal. Then $V$ is a orthonormal basis of eigenvactors of $T$, and vice versa,  if $T$ has a diagonal representation with respect to some orthonormal basis, then $T$ is normal.
 \end{theorem}
@@ -194,7 +194,7 @@ Suppose self-adjoint $T \in \c L(V)$. and $\lambda$ is an eigenvalue of $T$ and 
 	So actaully the schur form of a normal operator is neccisarily diagonal.
 \end{remark}
 \newpage
-\subsubsection{Over Real Vector Space}
+\subsubsection*{Over Real Vector Space}
 \begin{lemma}
 	Suppose $T \in \c L(V)$ is self-adjoint and $\beta, \gamma \in \b R$ such that $b\beta^2 - 4 \gamma$ then
 	\[ T^2 + \beta T + \gamma I\] is invertible.
@@ -321,7 +321,7 @@ Consider nonzero $\vec v \in V$. We can factor
 	So $\dim \range \sqrt{T^*T} = \dim \range T$. Now we need to extend $S_1$ to an operator on $V$. \\ 
 	Take $\left(\range \sqrt{T^*T}\right)^\perp$ and $(\range T)^\perp$. Send any orthonormal basis of $\left(\range \sqrt{T^*T}\right)^\perp$ to any orthonormal basis of $(\range T)^\perp$. This defines another isometry $S_2$.
 	Finally define  
-	\[ S\vec v = S_1 \vec u + S_2 \vec w\] where $\vec v = \vec u + \vec w , \vec u \in \range (\sqrt(T^*T)), \vec w \in \range (\sqrt(T^*T))^\perp$. This creates $S$ which is now an isometry on entire $V$. Hence $T = S \sqrt{T^*T}$.
+	\[ S\vec v = S_1 \vec u + S_2 \vec w\] where $\vec v = \vec u + \vec w , \vec u \in \range (\sqrt{(T^*T)}), \vec w \in \range \left(\sqrt{(T^*T)}\right)^\perp$. This creates $S$ which is now an isometry on entire $V$. Hence $T = S \sqrt{T^*T}$.
 \end{remark}
 \begin{theorem}
 	Let $T \in \c L(V)$, for finite dimensional $V$. Then there exists orthonormal basis $\li {\vec e}n$ and $\li {\vec f}n$ and values $\li sn$, all nonnegative such that 

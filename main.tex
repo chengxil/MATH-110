@@ -4,11 +4,6 @@
 \include{preamble}
 %%%%%%%%%%%% main doc%%%%%%%%%%%%
 \begin{document}
-<<<<<<< HEAD
-=======
-\centerline{\large \textbf{Math 110, Spring 2019}} 
-\vskip 0.6cm
->>>>>>> f24f8a2bd441fe70bd4f10ef40c355e5971073c9
 \thispagestyle{empty}
 $ $
 \vfill
@@ -20,6 +15,8 @@ $ $
 \newpage
 \tableofcontents
 \newpage
+\renewcommand\thesubsection{\thesection.\alph{subsection}}
+\renewcommand\thesubsubsection{\thesection.\roman{subsubsection}}
 \include{chap1} \vfill
 \include{chap2} \vfill
 \include{chap3} \vfill
@@ -27,7 +24,7 @@ $ $
 \include{chap5} \vfill
 \include{chap6} \vfill
 \include{chap7} \vfill
-%\include{chap8} \vfill
+\include{chap8} \vfill
 %\include{chap9} \vfill
 %\include{chap10} \vfill
 %\include{midterm1} \vfill

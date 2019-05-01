@@ -102,7 +102,7 @@ Logic: $A \implies B$ is equivalent to $\neg A \lor B$. Then we know that \[\neg
 \begin{proof}
     $V$ is finite dimensional means that $V$ is spanned by some $k$ vectors. Consider $W$. If $W = \lb \vec 0 \rb$, then $w$ is spanned by the empty list $\vec 0$. If $W \neq \vec 0$, there exists $\vec w_1 \in W$ such that $W = \spa\lb \vec u_1 \rb$, done. Otherwise take $\vec w_2 \in W \ \backslash \  \spa \lb \vec w_1 \rb$. Repeat this algorithm until it terminates. Now we want to show that this algorithm will terminate at $\vec w_k$, we know that $\li {\vec w}j$ is linearly independent by construction and the linearly dependence lemma. By remark 2.16, we know that the length of any such list will not exceed length $k$, therefore we know the algorithm will terminate in finite steps. This implies that $W$ is finitely spanned, or $W$ is finite dimension.
 \end{proof}
-\subsubsection{Dimension}
+\subsubsection*{Dimension}
 \begin{definition}
     Dimension of a vector space $V$ is the cardinality of any basis in a finite dimensional space.
 \end{definition}
@@ -147,7 +147,7 @@ Logic: $A \implies B$ is equivalent to $\neg A \lor B$. Then we know that \[\neg
     \noindent Now consider \[\tilde W:= \lb f \in \c P_3(x) : f''(5) \rb\].
     A basis for $W$ can be taken as $\lb 1, (x - 5)^2, (x-5)^3 \rb$. \\
 \end{example}
-\subsubsection{Dimension of a Sum}
+\subsubsection*{Dimension of a Sum}
 \textbf{Principal of Inclusion for subspaces}
 \begin{center}
     \begin{venndiagram2sets}[labelA=, labelB=]%
