@@ -33,5 +33,6 @@
 \contentsline {subsection}{\numberline {7.c}Positive Operators and Isometries}{56}{subsection.519}% 
 \contentsline {subsection}{\numberline {7.d}Polar Decomposition and Singular Value Decomposition}{58}{subsection.535}% 
 \contentsline {section}{\numberline {8}Operators on Complex Vector Spaces}{60}{section.546}% 
-\contentsline {subsection}{\numberline {8.d}Jordan Form}{60}{subsection.547}% 
-\contentsline {subsubsection}{\numberline {8.i}Observation}{60}{subsubsection.549}% 
+\contentsline {subsection}{\numberline {8.c}Characteristic and Minimal Polynomial}{60}{subsection.547}% 
+\contentsline {subsection}{\numberline {8.d}Jordan Form}{61}{subsection.562}% 
+\contentsline {subsubsection}{\numberline {8.i}Observation}{61}{subsubsection.564}% 

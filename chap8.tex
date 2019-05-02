@@ -1,6 +1,46 @@
 %!TEX root = ./main.tex
 \section{Operators on Complex Vector Spaces}
-\setcounter{subsection}{3}
+\setcounter{subsection}{2}
+\subsection{Characteristic and Minimal Polynomial}
+\begin{definition}
+	The number of times an eignevalue $\lambda$ appears in the matrix is called the algebragic multiplicity of $\lambda$.
+\end{definition}
+\begin{example}
+	Suppose $V$ is a complex vector space and let $T \in \c L(V)$. Supppose $T$ has the following matrix presentation
+\[ \bml 
+	2 & 1 & 0 \\
+	0 & 2 & 1 \\
+	0 & 0 & 2 \\
+	&&& 3 & 1 \\
+	&&& 0 & 3 \\
+	&&&&& 2	\bmr\]
+	We can see that $\lambda = 2$ has a multiplicity of $4$ and $\lambda = 3$ has a algebraic multiplicaity of $2$.
+\end{example}
+\begin{definition}
+	Suppose $V$ is a complex vector space and $T \in \c L(V)$. Suppose $T$ has eigenvalues $\li \lambda n$ with algebraic multiplicity of $\li dn$. Then the polynomial
+	\[ p_{\text{char}}(z) = \prod_{j} (z - \lambda_j)^{d_j} \] is the characteristic polynomial of $T$.
+\end{definition}
+\begin{theorem}[The Cayley-Hamilton Theorem]
+	Suppose V is a complex vector space and $T \in \c L(V)$. Then $p(T) = 0$, where $p$ is the characteristic polynomial. 
+\end{theorem}
+\begin{proof}
+	Trivial by Jordan Normal Form in section 8.d.
+\end{proof}	
+\begin{definition}
+	A minimal polynomial for $T \in \c L(V)$ os a monoic polynomial of the smallest degree that annihilates $T$. i.e. $q(T) = 0$ and $q$ is of smallest degree with this property of leading coefficient $1$.
+\end{definition}
+\begin{example}
+	Consider $T$ in example 8.2. Take the largest block of eahc eigenvalue and raise each term to the size of the block will yield the minimal polynomial
+	\[ p_{text{min}} (z) = (z - 2)^3(z - 3)^2\]
+\end{example}
+\begin{corollary}
+	Suppose $h(T) = 0$ for some polynomial $h \not\equiv 0$. Then $h(z) = p_{\text{min}} (z)q(x)$ for some $q$.
+\end{corollary}
+\begin{proof}
+	By the remainder theorem we have 
+	\[ h(z) = p_{\text{min}}(z)q(z) + r(z)\]
+	where $\deg r < \deg p_{\text{min}}$. By the minimality of $p_{\text{min}}$, $r \equiv 0$.
+\end{proof}
 \subsection{Jordan Form}
 \subsubsection*{Goal} To find te the sparest matrix representation for an arbitary linear operator on a finite dimensional vector space over $\b C$.
 \subsubsection{Observation}
@@ -36,7 +76,6 @@ So $\vec v = 0$, and $V_s \cap V_r = \lb \vec 0 \rb$. By Rank-Nullity, $V = V_s 
 $T\vert_{V_s}$ is nilpotent sicne $\left(T\vert_{V_s}\right)^2$ is zero. \\
 $T\vert_{V_r}$ is invertible since for any $\vec w \in V_r$ such that $T \vec w = \vec 0$ will also satify $T^q \vec w = \vec 0$, hence $\vec w = \vec 0$, and $T\vert_{V_r}$ being injective implies invertiablity.
 \end{proof}
-\newpage
 \subsubsection*{Zoom in to the nilpotent part}
 	Say, the whole space $V$ satifies the condition $T^q = 0$ and without the loss of generality we can take $q$ minimal with this property. This means there exists $\vec v_0 \in V$ such that $T^{q - 1} \vec v_0 \neq \vec 0$. Take 
 	\[ \vec v_0 = \spa \lb \vec v_0 , T\vec v_0, \ldots, T^{q-1} \vec v_0 \rb\]
@@ -82,22 +121,99 @@ This guarantees a bock-diagonal form where each block looks like
 \begin{example}
 	Consider
 	\[ \c M(T) =  \bml 
-			3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-			0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-			0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-			0 & 0 & 0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-			0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-			0 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0  \\
-			0 & 0 & 0 & 0 & 0 & 0 & -2 & 1 & 0 & 0 & 0 & 0 \\
-			0 & 0 & 0 & 0 & 0 & 0 & 0 & -2 & 0 & 0 & 0 & 0 & \\
-			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
-			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
-			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
-			0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \bmr\]
+		3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 3 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0  \\
+		0 & 0 & 0 & 0 & 0 & 0 & -2 & 1 & 0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & -2 & 0 & 0 & 0 & 0 & \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \bmr\]
 Where the empty entries are zero. We can see that the $T$ has eigenvalue $3,-2,1,0$. \\
-We can see that \begin{align*} \dim \nul (T - 3\lambda \b I) = 3, \dim \nul (T - 3\lambda \b I)^2 = 5, \\ \dim \nul (T - 3\lambda \b I)^3 = 6, \dim \nul (T - 3\lambda \b I)^4 = 6
+We can see that \begin{align*} \dim \nul (T - 3 \b I)^j &= 3,5,6,6,6, \ldots \\
+\dim \nul (T + 2\b I)^j &= 1,2, \ldots \\
+\dim \nul (T - 1 \b I)^j &= 1,2,2,\ldots \\
+\dim \nul (T - 0 \b I)^j &= 1,2,2,2, \ldots \\
+j = 1,2,3, \ldots & \qquad \forall\ j \in \b N
 \end{align*}
 \end{example}
+\begin{example}
+	Suppose $V:= \c P_4(\b C)$. Let $D$ be the differetiation operator. Construct the Jordan Normal Form of $D$ and the Jordan Basis of $V$. \\
+	We can compute for $\c M(T)$ with the standard basis
+	\[ \bml 
+		0 & 1 & 0 & 0 & 0 \\
+		0 & 0 & 2 & 0 & 0 \\
+		0 & 0 & 0 & 3 & 0 \\
+		0 & 0 & 0 & 0 & 4 \\
+		0 & 0 & 0 & 0 & 0 		
+	\bmr\]
+	with some algebraic manipulation we then can see that $D$ has jodran normal form of
+	\[ \bml 
+		0 & 1 & 0 & 0 & 0 \\
+		0 & 0 & 1 & 0 & 0 \\
+		0 & 0 & 0 & 1 & 0 \\
+		0 & 0 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 & 0 		
+	\bmr\]
+	with basis $\displaystyle 1, x, \frac 12 x^2, \frac 13 x^3, \frac 14 x^4$.
+\end{example}
+\begin{example}
+	Suppose $V = \spa \left( e^{ikt} : |k| \leq 3 \right)$. Let $D$ be the differetiation operator. Construct the Jordan Normal Form of $D$ and the Jordan Basis of $V$. \\
+	We can see that $V = \spa (e^{-i3t},e^{-i2t},e^{-it},e^{0},e^{it},e^{i2t},e^{i3t})$. 
+	We then have 
+	\[ \bml 1 \\
+	& 1 \\
+	&& 1 \\
+	&&& 1 \\
+	&&&& 1 \\
+	&&&&& 1 \\
+	&&&&&& 1 \bmr\]
+	with basis $\displaystyle V = \spa \left(\frac{1}{-3i} e^{-i3t}, \frac{1}{-2i}e^{-i2t},\frac{1}{-i}e^{-it}, e^{0}, \frac{1}{i}e^{it}, \frac{1}{2i}e^{i2t}, \frac{1}{3i}e^{i3t}\right)$
+\end{example}
+\newpage
+\subsubsection*{Reverse Engineering of the Jordan Normal Form}
+\[ \begin{array}{|c|c|c|c|c|c|}
+\hline 
+& \dim (T - \lambda \b I) & \dim (T - \lambda \b I)^2 & \dim (T - \lambda \b I)^3 & \dim (T - \lambda \b I)^4 & \dim (T - \lambda \b I)^j, j \geq 5 \\
+\hline
+\hline 
+\lambda = i & 3 & 6 & 7 & 7 & 7 \\
+\lambda = -i & 2 & 4 & 6 & 8 & 8 \\
+\lambda = 1 & 1 & 2 & 3 & \not5 \ \ 4 & 5 \\
+\hline
+\end{array}\]
+What is the Jordan Normal form og $T$ based on this info? Assume all eigenvalues of $T$ are given above.
+\begin{proof}[Solution] Notice that the difference in the sequence denotes the number of $1$'s that get send to $0$, hence we have the following matrix
 
+\[ \bml 
+	i & 1\\
+	& i & 1\\
+	&& i \\
+	&&& i & 1\\
+	&&&& i \\
+	&&&&& i & 1\\
+	&&&&&& i \\
+	&&&&&&& -i & 1 \\
+	&&&&&&&& -i & 1 \\
+	&&&&&&&&& -i & 1 \\
+	&&&&&&&&&& -i  \\
+	&&&&&&&&&&& -i & 1 \\
+	&&&&&&&&&&&& -i & 1 \\
+	&&&&&&&&&&&&& -i & 1\\
+	&&&&&&&&&&&&&& -i \\
+	&&&&&&&&&&&&&&& 1 & 1 \\
+	&&&&&&&&&&&&&&&& 1 & 1 \\
+	&&&&&&&&&&&&&&&&& 1 & 1 \\
+	&&&&&&&&&&&&&&&&&& 1 & 1 \\
+	&&&&&&&&&&&&&&&&&&& 1 \bmr\]
+\end{proof}
+ \vfill
+\begin{center} 
+    Last updated: \today
+\end{center}
 
 
