@@ -163,16 +163,24 @@ j = 1,2,3, \ldots & \qquad \forall\ j \in \b N
 \end{example}
 \begin{example}
 	Suppose $V = \spa \left( e^{ikt} : |k| \leq 3 \right)$. Let $D$ be the differetiation operator. Construct the Jordan Normal Form of $D$ and the Jordan Basis of $V$. \\
-	We can see that $V = \spa (e^{-i3t},e^{-i2t},e^{-it},e^{0},e^{it},e^{i2t},e^{i3t})$. 
-	We then have 
+	We can see that $V = \spa (e^{-i3t},e^{-i2t},e^{-it},e^{0},e^{it},e^{i2t},e^{i3t})$. We can compute for the matrxi representation with repsect to the standard basis
+	\[ \c M(T) = \bml 
+	-3 \\
+	& -2 \\
+	&& -1 \\
+	&&& 0 \\
+	&&&& 1 \\
+	&&&&& 2 \\
+	&&&&&& 3 
+	\bmr\]
+	Notice that if we use basis $\displaystyle V = \spa \left(\frac{1}{-3i} e^{-i3t}, \frac{1}{-2i}e^{-i2t},\frac{1}{-i}e^{-it}, e^{0}, \frac{1}{i}e^{it}, \frac{1}{2i}e^{i2t}, \frac{1}{3i}e^{i3t}\right)$ we can obtain the Jordan Normal Form
 	\[ \bml 1 \\
 	& 1 \\
 	&& 1 \\
-	&&& 1 \\
+	&&& 0 \\
 	&&&& 1 \\
 	&&&&& 1 \\
 	&&&&&& 1 \bmr\]
-	with basis $\displaystyle V = \spa \left(\frac{1}{-3i} e^{-i3t}, \frac{1}{-2i}e^{-i2t},\frac{1}{-i}e^{-it}, e^{0}, \frac{1}{i}e^{it}, \frac{1}{2i}e^{i2t}, \frac{1}{3i}e^{i3t}\right)$
 \end{example}
 \newpage
 \subsubsection*{Reverse Engineering of the Jordan Normal Form}
